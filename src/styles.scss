@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Reciple-primary: mat.define-palette(mat.$indigo-palette);
+$Reciple-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$Reciple-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$Reciple-theme: mat.define-light-theme((
+  color: (
+    primary: $Reciple-primary,
+    accent: $Reciple-accent,
+    warn: $Reciple-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($Reciple-theme);
+@import 'simple-keyboard/build/css/index.css';
+
+$angular-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $Reciple-primary,
+      accent: $Reciple-accent,
+      warn: $Reciple-warn,
+    ),
+  )
+);
+
+.darkMode {
+  @include mat.all-component-colors($angular-dark-theme);
+}
+
+.screen-ctn {
+    height: 100%;
+  }
+
+* {
+    font-family: "Sofia";
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.reciple-title{
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.text {
+  position: absolute;
+  top: 65px;
+  left: 55px;
+  bottom: 10px;
+  right: 10px;
+  line-height: 25px;
+  //font-family: 'Indie Flower';
+  overflow: hidden;
+  outline: none;
+}
+
+.app-header {
+  border-bottom: 0.5px solid #333;
+  padding: 0 1em 0;
+  text-align: center;
+  position: relative;
+
+  mat-icon {
+      font-size: 25px;
+      height: 25px;
+      width: 25px;
+      cursor: pointer;
+      margin-top: 0.5em;
+
+      &.left-icon {
+          margin-right: 0.5em;
+      }
+
+      &.inverted {
+          -webkit-filter: invert(1);
+          filter: invert(1);
+      }
+  }
+}

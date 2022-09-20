@@ -1,18 +1,47 @@
 import { NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { SettingsDialogComponent } from './dialogs/settings-dialog/settings-dialog.component';
+import { StoreModule } from '@ngrx/store';
+import { ContactPageComponent } from './screens/contact-page/contact-page.component';
+import { recipleReducer } from './store/reciple.reducer';
+import { AppService } from './app.service';
+import { KeyboardComponent } from './components/keyboard/keyboard.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeScreenComponent,
+    SettingsDialogComponent,
+    ContactPageComponent,
+    KeyboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    StoreModule.forRoot({reciple: recipleReducer })
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

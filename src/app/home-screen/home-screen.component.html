@@ -1,0 +1,66 @@
+<div class="app-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row">
+        <mat-icon class="left-icon" (click)="goToContact()" >favorite_border</mat-icon>
+        <mat-icon>help_outline</mat-icon>
+    </div>
+    <h1 class="reciple-title">Reciple</h1>
+    <div fxLayout="row">
+        <mat-icon class="left-icon">leaderboard</mat-icon>
+        <mat-icon (click)="goToSettings()">settings</mat-icon>
+    </div>
+</div>
+<div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
+    <div class="img-ctn">
+        <p *ngIf="guessedRecipes.length === 0 && !hit" class="question-mark">?</p>
+        <ng-container *ngIf="guessedRecipes !== undefined && !hit">
+            <ng-container *ngFor="let guess of guessedRecipes; let i = index">
+                <span>{{i + 1}}. {{guess.name}}: </span>
+                <span *ngFor="let ingredient of guess.ingredients" [ngClass]="ingredientsList[i].name === ingredient? 'rightGuess' : 'wrongGuess'">
+                    {{ingredient}}, 
+                </span>
+                <br>
+            </ng-container>
+        </ng-container>
+        <p *ngIf="hit">You found the recipe, Congratulations!</p>
+    </div>
+    <div >
+        <mat-form-field class="input-box">
+            <input id="Input" matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange($event) " 
+            autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="below" [formControl]="control"> 
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+          <button id="Btn" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
+            <mat-icon>keyboard_return</mat-icon>
+          </button>
+    </div>
+    <div class="recipe-misc" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon class="left-icon">access_time</mat-icon> 
+            <span>{{solution.cookTime}} h</span>
+        </div>
+        <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon class="left-icon">vignette</mat-icon> 
+            <span>{{solution.cookMethod}}</span>
+        </div>
+        <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon class="left-icon">local_dining</mat-icon> 
+            <span>{{solution.foodType}}</span>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="recipe-description-ctn">
+        <div class="ingredients">
+            <h3 style="text-decoration: underline;">Ingredients:</h3>
+                <ul  style="margin:0px;">
+                    <ng-container *ngFor="let ingredient of ingredientsList" >
+                        <li *ngIf="ingredient.guessed">{{ingredient.name}}</li>
+                    </ng-container>
+                </ul>
+        </div>
+
+    </div>
+</div>
+

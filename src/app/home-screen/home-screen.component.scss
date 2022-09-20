@@ -1,0 +1,77 @@
+.home-screen-ctn{
+    position:absolute;
+    left: 50px;
+    margin-top: 10px;
+    width: 85%;
+    max-width: 414px;
+
+    .img-ctn{
+        height: 150px;
+        width: 90%;
+        box-shadow: 0px 0px 0px 3px rgb(27, 135, 161);
+        background-color: white;
+    }
+    
+    .question-mark{
+        font-size: 45px;
+        font-weight: 1000;
+        text-align: center;
+        color: rgba(255, 0, 0, 0.537);
+    }
+
+    .input-box{
+        margin-top: 5px;
+        text-align: center;
+        background-color: rgb(0,0,0,0);
+        border-width: 0px 0px 3px 0px;
+        border-color: rgba(0, 153, 255, 0.537); 
+        font-size: 20px;
+        color:rgba(255, 0, 0, 0.537);
+    }
+
+    .recipe-description-ctn {
+        width: 100%;
+    }
+    
+    .recipe-misc {
+        background-color: rgb(227, 220, 249);
+        .clues-icon{
+            color:rgb(92, 43, 252);
+            margin: 0 0.5em;
+            span{
+                margin-left: 5px;
+            }
+        }
+    }
+
+    .ingredients{
+        h3{
+            margin-top: 0px;
+            margin-bottom:5px;
+            color:rgb(255, 139, 139);
+        }
+        margin-top: 0.8em;
+        padding-left: 10px; 
+        padding-right: 30px;
+        border: 1px solid rgb(227, 220, 249);
+        border-width: 0px 2px 0px 0px;
+
+    }
+
+    ul{
+        padding-left:1.5em;
+    }
+
+    li{
+        padding:0px;
+        margin:0px;
+    }
+
+    .rightGuess{
+        color: green;
+    }
+    .wrongGuess{
+        color:red;
+        text-decoration: line-through;
+    }
+}
