@@ -1,24 +1,31 @@
 .home-screen-ctn{
-    position:absolute;
-    left: 50px;
     margin-top: 10px;
-    width: 85%;
-    max-width: 414px;
 
     .img-ctn{
-        height: 150px;
+        height: 80%;
         width: 90%;
-        box-shadow: 0px 0px 0px 3px rgb(27, 135, 161);
+        //box-shadow: 0px 0px 0px 3px rgb(27, 135, 161);
         background-color: white;
+        .ingredient-ctn{
+            margin: 3px;
+            height: 50px;
+            width: 50px;
+            border: 1.5px solid grey;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            &.right-guess{
+                background-color: rgba(0, 255, 0, 0.275);
+                color: green;
+            }
+            &.wrong-guess{
+                background-color: rgba(255, 0, 0, 0.275);
+                color: red;
+            }
+        }
     }
     
-    .question-mark{
-        font-size: 45px;
-        font-weight: 1000;
-        text-align: center;
-        color: rgba(255, 0, 0, 0.537);
-    }
-
     .input-box{
         margin-top: 5px;
         text-align: center;

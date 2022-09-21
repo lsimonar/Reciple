@@ -8,6 +8,28 @@ export interface RecipeInterface {
     foodType   : string
 }
 
+export const ingredientToEmoji = {
+    'rice': '🍚',
+    'chicken' : '🐓',
+    'tomato' : '🍅',
+    'mushrooms': '🍄',
+    'cheese': '🧀',
+    'wine' : '🍷',
+    'pasta': '🍝',
+    'onion' : '🧅',
+    'meat' : '🥩',
+    'shrimp': '🦐',
+    'mussels': '🦐',
+    'carrot': '🥕',
+    'curry': '🍛',
+    'bechamel':'☃️',
+    'bacon': '🥓',
+    'lettuce': '🥬',
+    'olives': '🫒',
+    'egg': '🥚',
+    'bread': '🥖'
+}
+
 export const recipes = [
     {
         "id"         : 1,
@@ -20,7 +42,7 @@ export const recipes = [
     {
         "id"         : 2,
         "name"       : "Risotto",
-        "ingredients": ['rice', 'parmesano', 'wine', 'mushrooms'],
+        "ingredients": ['rice', 'cheese', 'wine', 'mushrooms'],
         "cookTime"   : 1,
         "cookMethod" : "hob",
         "foodType"   : "main"
@@ -28,7 +50,7 @@ export const recipes = [
     {
         "id"         : 3,
         "name"       : "Pasta bolognesa",
-        "ingredients": ['pasta', 'tomato', 'minced meat', 'onion'],
+        "ingredients": ['pasta', 'tomato', 'meat', 'onion'],
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
         "foodType"   : "main"
@@ -60,7 +82,7 @@ export const recipes = [
     {
         "id"         : 7,
         "name"       : "Lasagne",
-        "ingredients": ['minced meat', 'pasta', 'cheese', 'bechamel sauce', 'tomato'],
+        "ingredients": ['meat', 'pasta', 'cheese', 'bechamel sauce', 'tomato'],
         "cookTime"   : 1,
         "cookMethod" : "oven",
         "foodType"   : "main"
@@ -84,11 +106,11 @@ export const recipes = [
     {
         "id"         : 10,
         "name"       : "Burguer",
-        "ingredients": ['minced meat', 'Bread', 'onion', 'tomato', 'cheese'],
+        "ingredients": ['meat', 'bread', 'onion', 'tomato', 'cheese'],
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
         "foodType"   : "main"
-    },
+    },/*
     {
         "id"         : 11,
         "name"       : "Sushi",
@@ -168,5 +190,5 @@ export const recipes = [
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
         "foodType"   : "main"
-    }
+    }*/
 ]

@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentChecked, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import {recipes, RecipeInterface} from 'src/app/models/recipes';
+import {recipes, RecipeInterface, ingredientToEmoji} from 'src/app/models/recipes';
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
@@ -18,10 +18,8 @@ interface GuessedIngredients {
 export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
   recipes = recipes;
+  ingredientToEmoji = ingredientToEmoji;
   control = new FormControl('');
-  myForm: FormGroup = this.fb.group({
-    recipe: ['']
-  });
 
   filteredOptions: Observable<string[]> = of([]);
 
@@ -32,16 +30,21 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   hit : boolean = false;
   guessedRecipes : RecipeInterface[] = [];
   ingredientsList: GuessedIngredients[] = [];
+  numberOfSquares: number[] = [0, 1, 2, 3, 4];
+  numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
+  guess: Array<boolean[]> = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
+  guessList: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+  attempt: number = 0;
+
   constructor(
     private router: Router,
-    private fb: FormBuilder,
     private cdref: ChangeDetectorRef
   ) {
     this.recipeList = this.getRecipeList();
    }
 
   ngOnInit(): void {
-    this.myForm.valueChanges.subscribe((value: any) => {
+    this.control.valueChanges.subscribe((value: any) => {
       this.isRecipeValid=false;
       this.filteredOptions;
     });
@@ -94,19 +97,22 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
         this.guessedRecipes.push(this.guessedRecipe);
       }
       this.getGuessedIngredients()
-      this.control.setValue('');     
+      this.control.setValue('');    
+      this.attempt += 1; 
     }
   }
 
   getGuessedIngredients(){
-    if(this.ingredientsList)
-    this.guessedRecipe?.ingredients.forEach(ingredient => {
-      for(let i=0; i< this.ingredientsList.length; i++){
-        if(this.ingredientsList[i].name === ingredient){
-          this.ingredientsList[i].guessed = true;
-        }
-      }
-    });
+    if(this.ingredientsList){
+      let j=0;
+      this.guessedRecipe?.ingredients.forEach(ingredient => {
+        this.guessList[j][this.attempt] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
+          if(this.solution.ingredients.indexOf(ingredient) !== -1){
+            this.guess[j][this.attempt] = true;
+          }
+          j +=1;
+      });
+    }
   }
 
   _filter(value: string): string[] {
