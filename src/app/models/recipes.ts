@@ -2,7 +2,7 @@
 export interface RecipeInterface {
     id         : number,
     name       : string,
-    ingredients: string[],
+    ingredients: Object,
     cookTime   : number,
     cookMethod : string,
     foodType   : string
@@ -18,8 +18,7 @@ export const ingredientToEmoji = {
     'pasta': '🍝',
     'onion' : '🧅',
     'meat' : '🥩',
-    'shrimp': '🦐',
-    'mussels': '🦐',
+    'seafood': '🦐',
     'carrot': '🥕',
     'curry': '🍛',
     'bechamel':'☃️',
@@ -27,14 +26,24 @@ export const ingredientToEmoji = {
     'lettuce': '🥬',
     'olives': '🫒',
     'egg': '🥚',
-    'bread': '🥖'
+    'bread': '🥖',
+    'rabbit': '🐇',
+    'bean': '🫘',
+    'fish' : '🐟',
+    'pepper' : '🌶️'
 }
 
 export const recipes = [
     {
         "id"         : 1,
         "name"       : "Paella",
-        "ingredients": ['rice', 'chicken', 'tomato'],
+        "ingredients": {
+            'rice'    : ['400g bomba rice'], 
+            'chicken' : ['1kg diced chicken'],
+            'rabbit'  : ['500g diced rabbit'],
+            'bean'    : ['200g green beans', '100g white beans'], 
+            'tomato'  : ['100g chopped tomato']
+        },
         "cookTime"   : 2,
         "cookMethod" : "fire",
         "foodType"   : "main"
@@ -42,7 +51,12 @@ export const recipes = [
     {
         "id"         : 2,
         "name"       : "Risotto",
-        "ingredients": ['rice', 'cheese', 'wine', 'mushrooms'],
+        "ingredients": {
+            'rice'      : ['400g risotto rice'],
+            'cheese'    : ['50g parmesan cheese'],
+            'wine'      : ['1/2 glass of wine'],
+            'onion'     : ['1 onion'],
+            'mushrooms' : ['200g mushrooms']},
         "cookTime"   : 1,
         "cookMethod" : "hob",
         "foodType"   : "main"
@@ -50,7 +64,13 @@ export const recipes = [
     {
         "id"         : 3,
         "name"       : "Pasta bolognesa",
-        "ingredients": ['pasta', 'tomato', 'meat', 'onion'],
+        "ingredients": {
+            'pasta' : [],
+            'tomato' : [],
+            'meat' : [],
+            'onion' : [],
+            'cheese' : []
+        },
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
         "foodType"   : "main"
@@ -58,7 +78,13 @@ export const recipes = [
     {
         "id"         : 4,
         "name"       : "Seafood paella",
-        "ingredients": ['rice', 'tomato', 'mussels', 'shrimp'],
+        "ingredients": {
+            'rice'   : [], 
+            'tomato' : [], 
+            'seafood' : [], 
+            'pepper' : [],
+            'onion'  : []
+        },
         "cookTime"   : 2,
         "cookMethod" : "hob",
         "foodType"   : "main"
@@ -66,7 +92,13 @@ export const recipes = [
     {
         "id"         : 5,
         "name"       : "Chicken thighs",
-        "ingredients": ['chicken', 'tomato', 'wine', 'carrot'],
+        "ingredients": {
+            'chicken' : [], 
+            'tomato' : [], 
+            'wine' : [], 
+            'carrot' : [],
+            'onion' : []
+        },
         "cookTime"   : 1.5,
         "cookMethod" : "oven",
         "foodType"   : "main"
@@ -74,7 +106,13 @@ export const recipes = [
     {
         "id"         : 6,
         "name"       : "Katso Curry",
-        "ingredients": ['chicken', 'rice', 'curry', 'carrot'],
+        "ingredients": {
+            'chicken' : [],
+            'rice' : [],
+            'curry' : [],
+            'carrot' : [],
+            'onion' : []
+        },
         "cookTime"   : 1,
         "cookMethod" : "oven",
         "foodType"   : "main"
@@ -82,7 +120,13 @@ export const recipes = [
     {
         "id"         : 7,
         "name"       : "Lasagne",
-        "ingredients": ['meat', 'pasta', 'cheese', 'bechamel sauce', 'tomato'],
+        "ingredients": {
+            'meat' : [],
+            'pasta' : [], 
+            'cheese' : [], 
+            'onion' : [], 
+            'tomato' : []
+        },
         "cookTime"   : 1,
         "cookMethod" : "oven",
         "foodType"   : "main"
@@ -90,7 +134,13 @@ export const recipes = [
     {
         "id"         : 8,
         "name"       : "Pasta carbonara",
-        "ingredients": ['egg', 'pasta', 'onion', 'cheese', 'bacon'],
+        "ingredients": {
+            'egg' : [], 
+            'pasta' : [], 
+            'onion' : [], 
+            'cheese' : [], 
+            'bacon' : []
+        },
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
         "foodType"   : "main"
@@ -98,7 +148,13 @@ export const recipes = [
     {
         "id"         : 9,
         "name"       : "Salad",
-        "ingredients": ['tomato', 'lettuce', 'onion', 'olives'],
+        "ingredients": {
+            'tomato' : [],
+            'lettuce' : [], 
+            'onion' : [], 
+            'olives' : [],
+            'fish'   : []
+        },
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
         "foodType"   : "main"
@@ -106,7 +162,13 @@ export const recipes = [
     {
         "id"         : 10,
         "name"       : "Burguer",
-        "ingredients": ['meat', 'bread', 'onion', 'tomato', 'cheese'],
+        "ingredients": {
+            'meat'  : ['500g minced beef'], 
+            'bread' : ['Bun'], 
+            'onion' : ['1 sliced onion'], 
+            'tomato' : ['1 sliced tomato'], 
+            'cheese' : ['sliced cheese']
+        },
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
         "foodType"   : "main"

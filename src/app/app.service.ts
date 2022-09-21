@@ -43,6 +43,18 @@ export class AppService {
     this.setLocalSettings(localSettings);
   }
 
+  isDarkMode(): boolean {
+    const localSettings = this.getLocalSettings();
+    if(localSettings != null && localSettings.isDarkMode != null && localSettings.isDarkMode != undefined) {
+      return this.isTrue(localSettings.isDarkMode);
+    } else {
+      return false;
+    }
+  }
+  
+  private isTrue(checkVar: any) {
+    return checkVar == true || checkVar == 'true' || checkVar == 'True';
+  }
   
 }
 

@@ -55,25 +55,13 @@ $angular-dark-theme: mat.define-dark-theme(
 * {
     font-family: "Sofia";
 }
-html, body { height: 100%; }
+html, body, app-root { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .reciple-title{
   text-align: center;
   padding: 0px;
   margin: 0px;
-}
-
-.text {
-  position: absolute;
-  top: 65px;
-  left: 55px;
-  bottom: 10px;
-  right: 10px;
-  line-height: 25px;
-  //font-family: 'Indie Flower';
-  overflow: hidden;
-  outline: none;
 }
 
 .app-header {

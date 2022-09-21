@@ -1,19 +1,24 @@
-import { Component, OnInit, AfterContentChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, Renderer2, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import {recipes, RecipeInterface, ingredientToEmoji} from 'src/app/models/recipes';
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { AppService } from '../app.service';
+import { Store } from '@ngrx/store';
+import { setIsDarkMode } from '../store/reciple.actions';
 
 interface GuessedIngredients {
   name: string,
+  nameLong : string,
   guessed: boolean
 }
 
 @Component({
   selector: 'app-home-screen',
   templateUrl: './home-screen.component.html',
-  styleUrls: ['./home-screen.component.scss']
+  styleUrls: ['./home-screen.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
@@ -26,7 +31,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   isRecipeValid: boolean  = false; 
   guessedRecipe?: RecipeInterface;
   recipeList   : string[] = [];
-  solution = recipes[9];
+  solution = recipes[7];
   hit : boolean = false;
   guessedRecipes : RecipeInterface[] = [];
   ingredientsList: GuessedIngredients[] = [];
@@ -35,27 +40,31 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   guess: Array<boolean[]> = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
   guessList: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
   attempt: number = 0;
+  isDarkMode: boolean = false;
 
   constructor(
     private router: Router,
-    private cdref: ChangeDetectorRef
+    private cdref: ChangeDetectorRef,
+    private service: AppService,
+    private renderer: Renderer2,
+    private store: Store,
   ) {
     this.recipeList = this.getRecipeList();
    }
 
   ngOnInit(): void {
+    this.fetchSettings();
     this.control.valueChanges.subscribe((value: any) => {
       this.isRecipeValid=false;
       this.filteredOptions;
     });
-    console.log(this.solution)
     this.filteredOptions = this.control.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
     );
 
-    this.solution.ingredients.forEach((ingredient) => {
-      this.ingredientsList.push({name : ingredient, guessed : false});
+    Object.keys(this.solution.ingredients).forEach((ingredient) => {
+      this.ingredientsList.push({name : ingredient, nameLong: this.solution.ingredients[ingredient as keyof typeof this.solution.ingredients]![0], guessed : false});
     });
 
     let inputButton = document.getElementById("Input");
@@ -69,6 +78,22 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked() {
     this.cdref.detectChanges();
+  }
+
+  fetchSettings(){
+    this.fetchDarkMode();
+  }
+
+  fetchDarkMode() {
+    const isDarkMode = this.service.isDarkMode();
+    this.isDarkMode = isDarkMode
+    if(isDarkMode) {
+      this.renderer.addClass(document.body, 'darkMode');
+    } else {
+      this.renderer.removeClass(document.body, 'darkMode');
+    }
+    this.service.setIsDarkMode(isDarkMode);
+    this.store.dispatch(setIsDarkMode({isDarkMode: isDarkMode}));
   }
 
   goToSettings(){
@@ -105,10 +130,15 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   getGuessedIngredients(){
     if(this.ingredientsList){
       let j=0;
-      this.guessedRecipe?.ingredients.forEach(ingredient => {
+      Object.keys(this.guessedRecipe!.ingredients).forEach(ingredient => {
         this.guessList[j][this.attempt] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
-          if(this.solution.ingredients.indexOf(ingredient) !== -1){
+          if(Object.keys(this.solution.ingredients).indexOf(ingredient) !== -1){
             this.guess[j][this.attempt] = true;
+            this.ingredientsList.forEach((ing, i) => {
+              if(ing.name === ingredient){
+                this.ingredientsList[i].guessed = true;
+              }
+            })
           }
           j +=1;
       });

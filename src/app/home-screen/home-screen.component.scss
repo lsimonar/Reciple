@@ -1,19 +1,39 @@
+::ng-deep .mat-form-field-wrapper{
+    margin-bottom: -0.5em;
+    margin-top: -0.5em;
+    margin-right: 10px;
+ }
+
+.paper {
+    height: 95%;
+    min-height: 35em;
+    width: 100%;
+    max-width: 410px;
+    background: rgba(255,255,255,0.9);
+    margin-top: 2.5%;
+    box-shadow: 0px 0px 5px 0px #888;
+    &.inverted{
+        background: inherit;
+    }
+}
+
 .home-screen-ctn{
     margin-top: 10px;
 
     .img-ctn{
+        
         height: 80%;
         width: 90%;
         //box-shadow: 0px 0px 0px 3px rgb(27, 135, 161);
-        background-color: white;
+        //background-color: white;
         .ingredient-ctn{
             margin: 3px;
-            height: 50px;
-            width: 50px;
+            height: 2.2em;
+            width: 2.5em;
             border: 1.5px solid grey;
             border-radius: 5px;
             text-align: center;
-            line-height: 50px;
+            line-height: 2em;
             font-size: 20px;
             &.right-guess{
                 background-color: rgba(0, 255, 0, 0.275);
@@ -56,13 +76,11 @@
             margin-top: 0px;
             margin-bottom:5px;
             color:rgb(255, 139, 139);
+            &.inverted{
+                color:white;
+            }
         }
         margin-top: 0.8em;
-        padding-left: 10px; 
-        padding-right: 30px;
-        border: 1px solid rgb(227, 220, 249);
-        border-width: 0px 2px 0px 0px;
-
     }
 
     ul{

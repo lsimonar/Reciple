@@ -1,3 +1,4 @@
+<div class="paper" [class.inverted]="isDarkMode">
 <div class="app-header" fxLayout="row" fxLayoutAlign="space-between center">
     <div fxLayout="row">
         <mat-icon class="left-icon">favorite_border</mat-icon>
@@ -9,13 +10,14 @@
         <mat-icon (click)="goBack()">settings</mat-icon>
     </div>
 </div>
-<div class="text" contenteditable spellcheck="false">
+<div style="padding: 20%;">
     <mat-icon class="close-btn">close</mat-icon>
     <div fxLayout="row" fxLayoutAlign="space-between center">
         <span>Dark mode: </span>
         <label class="switch">
-            <input type="checkbox" (click)="darkModeChange()" [checked]="!isDarkMode">
+            <input type="checkbox" (click)="darkModeChange()" [checked]="isDarkMode">
             <span class="normal-slider"></span>
         </label>
     </div>
+</div>
 </div>

@@ -1,62 +1,64 @@
-<div class="app-header" fxLayout="row" fxLayoutAlign="space-between center">
-    <div fxLayout="row">
-        <mat-icon class="left-icon" (click)="goToContact()" >favorite_border</mat-icon>
-        <mat-icon>help_outline</mat-icon>
-    </div>
-    <h1 class="reciple-title">Reciple</h1>
-    <div fxLayout="row">
-        <mat-icon class="left-icon">leaderboard</mat-icon>
-        <mat-icon (click)="goToSettings()">settings</mat-icon>
-    </div>
-</div>
-<div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
-    <ng-container *ngFor="let j of numberOfTries" > 
-        <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center" >
-            <ng-container *ngFor="let i of numberOfSquares">                
-            <div fxFlex=20 [ngClass]="attempt<=j? '' : guess[i][j]? 'right-guess' : 'wrong-guess'" class="ingredient-ctn">{{guessList[i][j]}}</div>
-            </ng-container>
+<div class="paper" [class.inverted]="isDarkMode">
+    <div class="app-header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row">
+            <mat-icon class="left-icon" (click)="goToContact()" >favorite_border</mat-icon>
+            <mat-icon>help_outline</mat-icon>
         </div>
-    </ng-container>
-    <div >
-        <mat-form-field class="input-box">
-            <input id="Input" matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange($event) " 
-            autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="below" [formControl]="control"> 
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                  {{option}}
-                </mat-option>
-              </mat-autocomplete>
-          </mat-form-field>
-          <button id="Btn" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
-            <mat-icon>keyboard_return</mat-icon>
-          </button>
-    </div>
-    <!--
-    <div class="recipe-misc" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
-            <mat-icon class="left-icon">access_time</mat-icon> 
-            <span>{{solution.cookTime}} h</span>
-        </div>
-        <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
-            <mat-icon class="left-icon">vignette</mat-icon> 
-            <span>{{solution.cookMethod}}</span>
-        </div>
-        <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
-            <mat-icon class="left-icon">local_dining</mat-icon> 
-            <span>{{solution.foodType}}</span>
+        <h1 class="reciple-title">Reciple</h1>
+        <div fxLayout="row">
+            <mat-icon class="left-icon">leaderboard</mat-icon>
+            <mat-icon (click)="goToSettings()">settings</mat-icon>
         </div>
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="recipe-description-ctn">
-        <div class="ingredients">
-            <h3 style="text-decoration: underline;">Ingredients:</h3>
-                <ul  style="margin:0px;">
-                    <ng-container *ngFor="let ingredient of ingredientsList" >
-                        <li *ngIf="ingredient.guessed">{{ingredient.name}}</li>
-                    </ng-container>
-                </ul>
+    <div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
+        <div >
+            <mat-form-field class="input-box">
+                <input id="Input" matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange($event) " 
+                autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="below" [formControl]="control"> 
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <button id="Btn" style="line-height: 10px; border-radius: 25%; text-align: center;" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
+                <mat-icon>keyboard_return</mat-icon>
+            </button>
         </div>
-
+        <ng-container *ngFor="let j of numberOfTries" > 
+            <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center" >
+                <ng-container *ngFor="let i of numberOfSquares">                
+                <div [ngClass]="attempt<=j? '' : guess[i][j]? 'right-guess' : 'wrong-guess'" class="ingredient-ctn">{{guessList[i][j]}}</div>
+                </ng-container>
+            </div>
+        </ng-container>
+        <div fxLayout="row" fxLayoutAlign="center center" class="recipe-description-ctn">
+            <div class="ingredients">
+                <h3 style="text-decoration: underline;">Ingredients:</h3>
+                    <ul  style="margin:0px;">
+                        <ng-container *ngFor="let ingredient of ingredientsList" >
+                            <li *ngIf="ingredient.guessed">{{ingredient.nameLong}}</li>
+                        </ng-container>
+                    </ul>
+            </div>
+        </div>
+        <!--
+        <div class="recipe-misc" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
+                <mat-icon class="left-icon">access_time</mat-icon> 
+                <span>{{solution.cookTime}} h</span>
+            </div>
+            <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
+                <mat-icon class="left-icon">vignette</mat-icon> 
+                <span>{{solution.cookMethod}}</span>
+            </div>
+            <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
+                <mat-icon class="left-icon">local_dining</mat-icon> 
+                <span>{{solution.foodType}}</span>
+            </div>
+        </div>
+        -->
+    
     </div>
-    -->
 </div>
 

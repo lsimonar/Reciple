@@ -1,23 +1,7 @@
 .app-container {
     max-height: 100vh;
+    height: 100vh;
     max-height: -webkit-fill-available;
-    max-width: 410px;
+    max-width: 420px;
     margin: auto;
-
-
-body {
-    margin: 0;
-    padding: 0;
-  }
-  .paper {
-    position: absolute;
-    height: 90%;
-    min-height: 35em;
-    width: 95%;
-    max-width: 410px;
-    background: rgba(255,255,255,0.9);
-    top: 2.5%;
-    box-shadow: 0px 0px 5px 0px #888;
-  }
- 
 }
