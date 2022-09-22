@@ -28,7 +28,7 @@
         <ng-container *ngFor="let j of numberOfTries" > 
             <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center" >
                 <ng-container *ngFor="let i of numberOfSquares">                
-                <div [ngClass]="attempt<=j? '' : guess[i][j]? 'right-guess' : 'wrong-guess'" class="ingredient-ctn">{{guessList[i][j]}}</div>
+                <div [ngClass]="attempt <=j? '' : guess[j][i]? 'right-guess' : 'wrong-guess'" class="ingredient-ctn">{{guessList[j][i]}}</div>
                 </ng-container>
             </div>
         </ng-container>

@@ -1,6 +1,9 @@
 import { Renderer2, RendererFactory2 } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { RecipleInterface, Attempt, DailyGuesses, GameHistoric } from './models/recipes';
+import { TodayDateHelper } from './helpers/todayDateHelper';
+import { recipes } from './models/recipes';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +11,67 @@ import { Router } from '@angular/router';
 export class AppService {
   
   private settingsStorageKey = 'reciple_settings';
+  private gameHistoricStorageKey = 'reciple_game_historic';
   private renderer : Renderer2;
+  private todaysRecipe = recipes[1];
+  private gameHistoric: GameHistoric = {};
+  private todaysNumber: number = 0;
+  private todaysHistoric?: DailyGuesses;
 
   constructor(
     private router: Router,
     rendererFactory: RendererFactory2
     ) { 
       this.renderer = rendererFactory.createRenderer(null, null);
+      this.gameHistoric = this.getLocalStoreGameHistoric();
   }
   
-  
+  makeGuess(country: RecipleInterface) {
+    let todaysDate = TodayDateHelper.getTodaysDateString();
+    const attempt: Attempt = this.populateAttemptFromGuess(country, this.todaysRecipe);
+    let todayHistoric = this.getDayHistoric(todaysDate);
+    if(todayHistoric != null && todayHistoric != undefined) {
+      todayHistoric.attempts.push(attempt);
+    } else {
+      todayHistoric = {
+        complete: false,
+        number: this.todaysNumber,
+        attempts: [attempt]
+      } as DailyGuesses;
+    }
+    if(attempt.hit === true) {
+      todayHistoric.complete = true;
+    }
+    this.todaysHistoric = todayHistoric;
+    this.gameHistoric[todaysDate] = todayHistoric;
+    this.setLocalStoreGameHistoric();
+    return todayHistoric;
+  }
+
+  populateAttemptFromGuess(guess:RecipleInterface, gameSolution: RecipleInterface) {
+    const attempt: Attempt = {} as Attempt;
+    if(gameSolution.id != null && gameSolution.id != undefined && gameSolution.id != 0) {
+      attempt.recipe = guess.name;
+      attempt.ingredients = guess.ingredients;
+      attempt.ingredientsHit = [false, false , false, false, false]
+      attempt.hit = false;
+      if(guess.id === gameSolution.id) {
+        attempt.hit = true;
+        attempt.ingredientsHit = [true, true, true, true, true]
+      } else {
+          guess.ingredients.forEach((ingredient, i) => {
+            if(gameSolution.ingredients.indexOf(ingredient) !== -1) {
+              attempt.ingredientsHit[i] = true;
+            }
+        });
+      }
+    }
+    return attempt;
+  }
+
+  getDayHistoric(day: string): DailyGuesses | undefined {
+    return this.gameHistoric[day];
+  }
   //Store functions
 
   getLocalSettings() {
@@ -41,6 +95,19 @@ export class AppService {
     }
     localSettings.isDarkMode = isDarkMode;
     this.setLocalSettings(localSettings);
+  }
+
+  setLocalStoreGameHistoric() {
+    localStorage.setItem(this.gameHistoricStorageKey, JSON.stringify(this.gameHistoric));
+  }
+
+  getLocalStoreGameHistoric(): GameHistoric {
+    const localHistoric = localStorage.getItem(this.gameHistoricStorageKey);
+    if(localHistoric != null) {      
+      return JSON.parse(localHistoric);
+    } else {
+      return {} as GameHistoric;
+    }
   }
 
   isDarkMode(): boolean {
