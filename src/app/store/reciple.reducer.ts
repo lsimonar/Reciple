@@ -8,9 +8,7 @@ export interface RecipleState {
 }
 
 export interface RecipleSettings {
-  isCommaSeparator: boolean;
   isDarkMode: boolean;
-  isFahrenheit: boolean;
   isFirstLogin: boolean;
   isHighContrast: boolean;
 }
@@ -19,9 +17,7 @@ export const initialState: RecipleState = {
     innerHeight: 0,
     availableLanguages: [],
     settings: {
-      isCommaSeparator: true,
       isDarkMode: false,
-      isFahrenheit: false,
       isFirstLogin: true,
       isHighContrast: false
     }

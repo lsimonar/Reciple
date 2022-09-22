@@ -13,7 +13,7 @@
     <div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
         <div >
             <mat-form-field class="input-box">
-                <input id="Input" matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange($event) " 
+                <input id="Input" matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange() " 
                 autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="below" [formControl]="control"> 
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">

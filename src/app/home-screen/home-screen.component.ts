@@ -104,7 +104,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     this.router.navigateByUrl('/contact', {skipLocationChange: false});
   }
 
-  onChange(event: any){
+  onChange(){
     this.isRecipeValid = false;
     Object.values(this.recipes).forEach((recipe) => {
       if(recipe.name === this.control.value) {
