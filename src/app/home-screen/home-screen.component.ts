@@ -3,7 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
 import { Observable, of } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map, max, startWith } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statistics-dialog.component';
 import { AppService } from '../app.service';
 import { Store } from '@ngrx/store';
 import { setGameHistoric, setIsDarkMode } from '../store/reciple.actions';
@@ -35,7 +37,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   solution = recipes[7];
   todaySolved : boolean = false;
   guessedRecipes : RecipleInterface[] = [];
-  ingredientsList: GuessedIngredients[] = [];
   numberOfSquares: number[] = [0, 1, 2, 3, 4];
   numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
   guess: Array<boolean[]> = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
@@ -54,6 +55,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     private service: AppService,
     private renderer: Renderer2,
     private store: Store,
+    public dialog: MatDialog
   ) {
     const self = this;
     this.recipeList = this.getRecipeList();
@@ -68,9 +70,10 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     this.fetchSettings();
     let stringDate = TodayDateHelper.getTodaysDateString();
     this.gameHistoric = this.service.getLocalStoreGameHistoric();
-    console.log(this.gameHistoric)
     this.todaysGuesses = this.service.getDayHistoric(stringDate);
-    console.log(this.todaysGuesses)
+    if(this.todaysGuesses?.attempts && this.todaysGuesses?.attempts.length > 0 && this.todaysGuesses?.attempts[this.todaysGuesses?.attempts.length - 1].hit === true) {
+      this.todaySolved = true;
+    }
     
     this.todaysGuesses === undefined? this.attempt = 0 : this.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
@@ -88,10 +91,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       startWith(''),
       map(value => this._filter(value || '')),
     );
-
-    Object.keys(this.solution.ingredients).forEach((ingredient) => {
-      this.ingredientsList.push({name : ingredient, nameLong: '', guessed : false});
-    });
 
     let inputButton = document.getElementById("Input");
     inputButton?.addEventListener("keypress", function(event) {
@@ -147,6 +146,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       this.recipeUrl = this.recipes.find(c => c.name === todayRecipe.recipe)?.recipeUrl;
       this.gameHistoric = this.service.getLocalStoreGameHistoric();
       this.store.dispatch(setGameHistoric({gameHistoric: this.gameHistoric}));
+      setTimeout(() => { this.openStatisticsDialog(); }, 3000);
     }
     this.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
@@ -156,47 +156,16 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
         });
     });
     this.control.setValue('');    
-
-
-
-  /*
-    if(this.guessedRecipe){
-      if(this.guessedRecipe.id === this.solution.id){
-        this.todaySolved = true;
-      } else{
-        this.guessedRecipes.push(this.guessedRecipe);
-      }
-      this.getGuessedIngredients()
-      this.control.setValue('');    
-      this.attempt += 1; 
-    }*/
   }
 
-  getGuessedIngredients(){
-    if(this.ingredientsList){
-      let j=0;
-      this.guessedRecipe!.ingredients.forEach((ingredient: string) => {
-        this.guessList[j][this.attempt] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
-          if(this.solution.ingredients.indexOf(ingredient) !== -1){
-            this.guess[j][this.attempt] = true;
-            this.ingredientsList.forEach((ing, i) => {
-              if(ing.name === ingredient){
-                this.ingredientsList[i].guessed = true;
-              }
-            })
-          }
-          j +=1;
-      });
-    }
+  openStatisticsDialog(){
+    this.dialog.open(StatisticsDialogComponent, {width: '300px', height: '500px', maxHeight : '95vh'});
   }
 
   _filter(value: string): string[] {
     const filterValue = this.normalizeValue(value);
     return this.recipeList.filter(recipe => {
-      let guessedRecipes: string[] = []
-      this.guessedRecipes.forEach(recipe => {
-        guessedRecipes.push(recipe.name.toLowerCase());  
-      });
+      const guessedRecipes = this.todaysGuesses?.attempts?.map(a => a.recipe.toLowerCase());
       if(guessedRecipes && guessedRecipes.length){
         return this.normalizeValue(recipe).toLowerCase().includes(filterValue)
                && guessedRecipes.indexOf(recipe.toLowerCase()) == -1

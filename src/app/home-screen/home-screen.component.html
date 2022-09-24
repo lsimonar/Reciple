@@ -6,12 +6,12 @@
         </div>
         <h1 class="reciple-title">Reciple</h1>
         <div fxLayout="row">
-            <mat-icon class="left-icon">leaderboard</mat-icon>
+            <mat-icon (click)="openStatisticsDialog()" class="left-icon">leaderboard</mat-icon>
             <mat-icon (click)="goToSettings()">settings</mat-icon>
         </div>
     </div>
     <div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
-        <div >
+        <div *ngIf="!todaySolved">
             <mat-form-field class="input-box">
                 <input id="Input" matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange() " 
                 autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="below" [formControl]="control"> 
@@ -25,6 +25,7 @@
                 <mat-icon>keyboard_return</mat-icon>
             </button>
         </div>
+        <h2 *ngIf="todaySolved" style="text-decoration: underline;">{{solution.name}}</h2>
         <ng-container *ngFor="let j of numberOfTries" > 
             <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center" >
                 <ng-container *ngFor="let i of numberOfSquares">                
@@ -36,9 +37,6 @@
             <div class="ingredients">
                 <h3 style="text-decoration: underline;">Ingredients:</h3>
                     <ul  style="margin:0px;">
-                        <ng-container *ngFor="let ingredient of ingredientsList" >
-                            <li *ngIf="ingredient.guessed">{{ingredient.nameLong}}</li>
-                        </ng-container>
                     </ul>
             </div>
         </div>

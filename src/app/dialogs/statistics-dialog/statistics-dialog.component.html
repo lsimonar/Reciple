@@ -1,0 +1,36 @@
+<button mat-icon-button class="close-btn" [mat-dialog-close]="true">
+    <i mat-icon-button mat-dialog-close class="fa-sharp fa-solid fa-circle-xmark"></i>
+</button>
+<h2 mat-dialog-title class="dialog-titles">Statistics</h2>
+<mat-dialog-content class="stats-ctn">
+    <div fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
+            <span class="stats-number">{{playedGames}}</span>
+            <span>Played</span>
+        </div>
+        <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
+            <span class="stats-number">{{wins}}</span>
+            <span>Wins</span>
+        </div>
+        <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
+            <span class="stats-number">{{currentStreak}}</span>
+            <span>Current<br>Streak</span>
+        </div>
+        <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
+            <span class="stats-number">{{maxStreak}}</span>
+            <span>Max<br>Streak</span>
+        </div>
+    </div>
+</mat-dialog-content>
+<h2 mat-dialog-title>Guess distribution</h2>
+<mat-dialog-content>
+    <ol padding-right="40px;">
+        <div *ngFor="let item of [1, 2, 3, 4, 5, 6]" fxLayout="row" fxLayoutAlign="start center">
+        <li  key={item} ></li>
+        <div role="stats-bar" style="--percentage:{{countDistr[item - 1]}}%;" fxLayoutAlign="end center">
+            <span class="bar-text">{{guessDistr[item - 1]}}</span>
+        </div>
+    </div>
+    </ol>
+</mat-dialog-content>
+

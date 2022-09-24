@@ -13,7 +13,7 @@ export class AppService {
   private settingsStorageKey = 'reciple_settings';
   private gameHistoricStorageKey = 'reciple_game_historic';
   private renderer : Renderer2;
-  private todaysRecipe = recipes[1];
+  private todaysRecipe = recipes[7];
   private gameHistoric: GameHistoric = {};
   private todaysNumber: number = 0;
   private todaysHistoric?: DailyGuesses;

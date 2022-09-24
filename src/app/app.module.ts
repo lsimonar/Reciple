@@ -8,6 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
@@ -17,6 +18,7 @@ import { ContactPageComponent } from './screens/contact-page/contact-page.compon
 import { recipleReducer } from './store/reciple.reducer';
 import { AppService } from './app.service';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
+import { StatisticsDialogComponent } from './dialogs/statistics-dialog/statistics-dialog.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { KeyboardComponent } from './components/keyboard/keyboard.component';
     HomeScreenComponent,
     SettingsDialogComponent,
     ContactPageComponent,
-    KeyboardComponent
+    KeyboardComponent,
+    StatisticsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { KeyboardComponent } from './components/keyboard/keyboard.component';
     MatAutocompleteModule,
     MatInputModule,
     FormsModule,
+    NgScrollbarModule,
     ReactiveFormsModule,
     MatDialogModule,
     FlexLayoutModule,

@@ -25,6 +25,7 @@
     "@ngrx/store": "^13.2.0",
     "angular-simple-keyboard": "^1.1.2",
     "material-icons": "^1.11.11",
+    "ngx-scrollbar": "^9.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
