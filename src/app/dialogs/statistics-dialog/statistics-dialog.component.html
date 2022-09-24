@@ -1,6 +1,8 @@
-<button mat-icon-button class="close-btn" [mat-dialog-close]="true">
-    <i mat-icon-button mat-dialog-close class="fa-sharp fa-solid fa-circle-xmark"></i>
+<div style="position:relative; width: 100%">
+<button mat-icon-button class="close-btn" align="end" [mat-dialog-close]="true">
+    <i mat-icon-button mat-dialog-close class="fa-sharp fa-solid fa-circle-xmark" [class.inverted]="isDarkMode"></i>
 </button>
+</div>
 <h2 mat-dialog-title class="dialog-titles">Statistics</h2>
 <mat-dialog-content class="stats-ctn">
     <div fxLayout="row" fxLayoutAlign="start start">
@@ -24,10 +26,11 @@
 </mat-dialog-content>
 <h2 mat-dialog-title>Guess distribution</h2>
 <mat-dialog-content>
-    <ol padding-right="40px;">
+    <ol>
         <div *ngFor="let item of [1, 2, 3, 4, 5, 6]" fxLayout="row" fxLayoutAlign="start center">
         <li  key={item} ></li>
-        <div role="stats-bar" style="--percentage:{{countDistr[item - 1]}}%;" fxLayoutAlign="end center">
+        <div role="stats-bar" style="--percentage:{{countDistr[item - 1]}}%;" 
+             [ngClass]="todaySolvedIn === item? 'highlight-bar' : ''" fxLayoutAlign="end center">
             <span class="bar-text">{{guessDistr[item - 1]}}</span>
         </div>
     </div>

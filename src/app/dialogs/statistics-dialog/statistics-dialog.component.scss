@@ -1,11 +1,15 @@
 .close-btn{
-    float: right;
-    top:0px;
-    right:0px;
+    position:absolute;
+    top: -15px;
+    right:-17px;
     background-color: rgb(0,0,0,0);
     border-color: rgb(0,0,0,0);
     outline: none;
+    font-size: 17px;
     cursor: pointer;
+    &.inverted{
+        color:white;
+    }
 }
 
 .stats-ctn{
@@ -14,12 +18,19 @@
 
 h2{
     text-align: center;
+    padding-top: 10px;
+    margin: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 5px;
 }
 
 div[role="stats-bar"]{
     --percentage : 0%;
     flex: 0 1 var(--percentage);
     background-color: gray; height: 20px;
+    &.highlight-bar{
+        background-color: #6aaa64;
+    }
 }
 
 span{
@@ -33,7 +44,17 @@ span{
     }
 }
 
+ol{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+li{
+    padding: 0px;
+    margin: 0px;
+}
+
 .stats-number{
-    font-weight: 600;
+    font-weight: 500;
     font-size : 38px;
 }

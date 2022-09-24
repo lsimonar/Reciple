@@ -87,3 +87,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       }
   }
 }
+
+.paper {
+    height: 98%;
+    min-height: 35em;
+    width: 97%;
+    max-width: 420px;
+    background: rgba(255,255,255,0.9);
+    margin: 1.5%;
+    box-shadow: 0px 0px 5px 0px #888;
+    &.inverted{
+        background: inherit;
+    }
+}

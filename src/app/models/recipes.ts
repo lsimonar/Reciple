@@ -13,6 +13,7 @@ export interface RecipleInterface {
 
 export interface DailyGuesses {
     complete : boolean,
+    solved   : boolean,
     number   : number,
     attempts : Array<Attempt> 
 }

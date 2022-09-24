@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppService } from 'src/app/app.service';
 import { TodayDateHelper } from 'src/app/helpers/todayDateHelper';
 import { GameHistoric } from 'src/app/models/recipes';
-import { selectGameHistoric } from 'src/app/store';
+import { selectGameHistoric, selectIsDarkMode } from 'src/app/store';
 
 @Component({
   selector: 'app-statistics-dialog',
@@ -13,7 +13,9 @@ import { selectGameHistoric } from 'src/app/store';
 export class StatisticsDialogComponent implements OnInit {
 
   gameHistoric : GameHistoric = {} as GameHistoric;
+  isDarkMode : boolean = false;
   todayDate : string = "";
+  todaySolvedIn : number = 0;
 
   playedGames : number = 0;
   wins : number = 0;
@@ -33,12 +35,21 @@ export class StatisticsDialogComponent implements OnInit {
       }
       this.gameHistoric = gameHistoric;
     });
+
+    this.store.select(selectIsDarkMode).subscribe((isDarkMode: boolean) => {
+      this.isDarkMode = isDarkMode;
+    });
   }
 
   ngOnInit(): void {
     this.todayDate = TodayDateHelper.getTodaysDateString();
     this.getValuesFromGameHistoric();
     this.getStreak();
+    if(this.gameHistoric[this.todayDate]){
+      if(this.gameHistoric[this.todayDate].solved){
+        this.todaySolvedIn = this.gameHistoric[this.todayDate].attempts.length
+      }
+    }
   }
 
   getValuesFromGameHistoric() {
@@ -50,13 +61,13 @@ export class StatisticsDialogComponent implements OnInit {
       let data = new Array();
 
       gameHistoricKeys.forEach(key => {
-        if(this.gameHistoric![key].complete === true) {
+        if(this.gameHistoric![key].solved && this.gameHistoric![key].complete) {
           wins ++;
           playedGames ++;
           tries = this.gameHistoric![key].attempts.length;
           console.log(tries)
           data.push(tries);
-        } else if(this.gameHistoric![key].attempts.length === 6){
+        } else if(this.gameHistoric![key].complete){
           playedGames ++;
         }
       });
@@ -74,28 +85,30 @@ export class StatisticsDialogComponent implements OnInit {
 
   getStreak(){
     let streak = 0;
-    let prevNumber = this.gameHistoric![Object.keys(this.gameHistoric!)[0]].number;
-    for (let day in this.gameHistoric) {
-      if(day !== this.todayDate){
-        if(this.gameHistoric[day].number != prevNumber + 1){
-          if(this.gameHistoric[day].complete === false){
-            streak = 0;
-          } else {
-            streak = 1;
+    if(Object.keys(this.gameHistoric).length !== 0){
+      let prevNumber = this.gameHistoric![Object.keys(this.gameHistoric!)[0]].number;
+      for (let day in this.gameHistoric) {
+        if(day !== this.todayDate){
+          if(this.gameHistoric[day].number != prevNumber + 1){
+            if(this.gameHistoric[day].solved === false){
+              streak = 0;
+            } else {
+              streak = 1;
+            }
+          } else if(this.gameHistoric[day].solved && this.gameHistoric[day].number === prevNumber + 1){
+            streak += 1;
           }
-        } else if(this.gameHistoric[day].complete && this.gameHistoric[day].number === prevNumber + 1){
-          streak += 1;
+        } else{
+          if(this.gameHistoric[day].solved){
+            streak += 1;
+          }
         }
-      } else{
-        if(this.gameHistoric[day].complete){
-          streak += 1;
-        }
-      }
 
-      if(this.maxStreak < streak){
-        this.maxStreak = streak;
+        if(this.maxStreak < streak){
+          this.maxStreak = streak;
+        }
+        prevNumber = this.gameHistoric[day].number;
       }
-      prevNumber = this.gameHistoric[day].number;
     }
     this.currentStreak = streak;
   }

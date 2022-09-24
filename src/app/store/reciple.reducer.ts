@@ -35,5 +35,9 @@ export const recipleReducer = createReducer(
   on(
     actions.setGameHistoric,
     (state, {gameHistoric}) => ({...state, gameHistoric: gameHistoric})
-  )
+  ),
+  on(
+    actions.setIsHighContrast,
+    (state, {isHighContrast}) => ({...state, settings: {...state.settings, isHighContrast: isHighContrast}})
+  ),
 );

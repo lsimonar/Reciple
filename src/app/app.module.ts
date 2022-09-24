@@ -19,6 +19,7 @@ import { recipleReducer } from './store/reciple.reducer';
 import { AppService } from './app.service';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { StatisticsDialogComponent } from './dialogs/statistics-dialog/statistics-dialog.component';
+import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { StatisticsDialogComponent } from './dialogs/statistics-dialog/statistic
     SettingsDialogComponent,
     ContactPageComponent,
     KeyboardComponent,
-    StatisticsDialogComponent
+    StatisticsDialogComponent,
+    InfoDialogComponent
   ],
   imports: [
     BrowserModule,

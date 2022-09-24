@@ -35,11 +35,15 @@ export class AppService {
     } else {
       todayHistoric = {
         complete: false,
+        solved  : false, 
         number: this.todaysNumber,
         attempts: [attempt]
       } as DailyGuesses;
     }
     if(attempt.hit === true) {
+      todayHistoric.solved = true;
+      todayHistoric.complete = true;
+    } else if(todayHistoric.attempts.length === 6){
       todayHistoric.complete = true;
     }
     this.todaysHistoric = todayHistoric;
@@ -81,6 +85,24 @@ export class AppService {
 
   setLocalSettings(localSettings: any) {
     localStorage.setItem(this.settingsStorageKey, JSON.stringify(localSettings));
+  }
+
+  isHighContrast(): boolean {
+    const localSettings = this.getLocalSettings();
+    if(localSettings != null && localSettings.isHighContrast != null && localSettings.isHighContrast != undefined) {
+      return this.isTrue(localSettings.isHighContrast);
+    } else {
+      return false;
+    }
+  }
+
+  setIsHighContrast(isHighContrast: boolean) {
+    let localSettings = this.getLocalSettings();
+    if(localSettings == null) {
+      localSettings = {};
+    }
+    localSettings.isHighContrast = isHighContrast;
+    this.setLocalSettings(localSettings);
   }
 
   setIsDarkMode(isDarkMode: boolean) {

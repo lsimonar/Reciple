@@ -3,19 +3,16 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
 import { Observable, of } from 'rxjs';
-import { map, max, startWith } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statistics-dialog.component';
+import { SettingsDialogComponent } from '../dialogs/settings-dialog/settings-dialog.component';
 import { AppService } from '../app.service';
 import { Store } from '@ngrx/store';
-import { setGameHistoric, setIsDarkMode } from '../store/reciple.actions';
+import { setGameHistoric, setIsDarkMode, setIsHighContrast } from '../store/reciple.actions';
 import { TodayDateHelper } from '../helpers/todayDateHelper';
-
-interface GuessedIngredients {
-  name: string,
-  nameLong : string,
-  guessed: boolean
-}
+import { selectSettings } from '../store';
+import { RecipleSettings } from '../store/reciple.reducer';
 
 @Component({
   selector: 'app-home-screen',
@@ -43,6 +40,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   guessList: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
   attempt: number = 0;
   isDarkMode: boolean = false;
+  isHighContrast: boolean = false;
 
   todaysGuesses?: DailyGuesses = {} as DailyGuesses;
   gameHistoric?: GameHistoric;
@@ -64,6 +62,10 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
         self.ngOnInit();
       }
     });
+    this.store.select(selectSettings).subscribe((settings: RecipleSettings) => {
+      this.isHighContrast = settings.isHighContrast;
+      this.isDarkMode = settings.isDarkMode;
+    });
    }
 
   ngOnInit(): void {
@@ -71,7 +73,8 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     let stringDate = TodayDateHelper.getTodaysDateString();
     this.gameHistoric = this.service.getLocalStoreGameHistoric();
     this.todaysGuesses = this.service.getDayHistoric(stringDate);
-    if(this.todaysGuesses?.attempts && this.todaysGuesses?.attempts.length > 0 && this.todaysGuesses?.attempts[this.todaysGuesses?.attempts.length - 1].hit === true) {
+    if(this.todaysGuesses?.attempts && this.todaysGuesses?.attempts.length > 0 
+       && this.todaysGuesses?.complete === true) {
       this.todaySolved = true;
     }
     
@@ -80,7 +83,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       this.guess[index] = attempt.ingredientsHit
       attempt.ingredients.forEach((ingredient, index2) => {
           this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
-        });
+      });
     });
 
     this.control.valueChanges.subscribe((value: any) => {
@@ -107,6 +110,11 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
   fetchSettings(){
     this.fetchDarkMode();
+    const isHighContrast = this.service.isHighContrast();
+    console.log(this.isHighContrast)
+    this.service.setIsHighContrast(isHighContrast);
+    this.store.dispatch(setIsHighContrast({isHighContrast: isHighContrast}));
+    this.isHighContrast = isHighContrast;
   }
 
   fetchDarkMode() {
@@ -121,8 +129,12 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     this.store.dispatch(setIsDarkMode({isDarkMode: isDarkMode}));
   }
 
-  goToSettings(){
-    this.router.navigateByUrl('/settings', {skipLocationChange: false});
+  openSettingsDialog(){
+    this.dialog.open(SettingsDialogComponent, {width: '300px', height: '500px', maxHeight : '95vh'});
+  }
+
+  openStatisticsDialog(){
+    this.dialog.open(StatisticsDialogComponent, {width: '300px', height: '500px', maxHeight : '95vh'});
   }
 
   goToContact(){
@@ -140,10 +152,10 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
   makeGuess() {
     this.todaysGuesses = this.service.makeGuess(this.guessedRecipe);
-    if(this.todaysGuesses.attempts[this.todaysGuesses.attempts.length - 1].hit === true) {
+    if(this.todaysGuesses.complete === true) {
       this.todaySolved = true;
-      const todayRecipe = this.todaysGuesses.attempts[this.todaysGuesses.attempts.length - 1];
-      this.recipeUrl = this.recipes.find(c => c.name === todayRecipe.recipe)?.recipeUrl;
+      const todayRecipe = this.solution.name;
+      this.recipeUrl = this.recipes.find(c => c.name === todayRecipe)?.recipeUrl;
       this.gameHistoric = this.service.getLocalStoreGameHistoric();
       this.store.dispatch(setGameHistoric({gameHistoric: this.gameHistoric}));
       setTimeout(() => { this.openStatisticsDialog(); }, 3000);
@@ -156,10 +168,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
         });
     });
     this.control.setValue('');    
-  }
-
-  openStatisticsDialog(){
-    this.dialog.open(StatisticsDialogComponent, {width: '300px', height: '500px', maxHeight : '95vh'});
   }
 
   _filter(value: string): string[] {

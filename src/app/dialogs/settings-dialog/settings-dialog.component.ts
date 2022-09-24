@@ -4,7 +4,6 @@ import { AppService } from 'src/app/app.service';
 import { selectSettings } from '../../store';
 import { RecipleSettings } from 'src/app/store/reciple.reducer';
 import * as actions from 'src/app/store/reciple.actions'
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-settings-dialog',
@@ -14,14 +13,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SettingsDialogComponent implements OnInit {
 
   isDarkMode: boolean = false;
+  isHighContrast: boolean = false;
 
   constructor(
     private store : Store,
     private service : AppService,
-    private router :Router
   ) { 
     this.store.select(selectSettings).subscribe((settings: RecipleSettings) => {
       this.isDarkMode = settings.isDarkMode;
+      this.isHighContrast = settings.isHighContrast;
     })
   }
 
@@ -34,8 +34,10 @@ export class SettingsDialogComponent implements OnInit {
     this.store.dispatch(actions.setIsDarkMode({isDarkMode: this.isDarkMode}));
   }
 
-  goBack() {
-    this.router.navigateByUrl('/', {skipLocationChange: false});
+  highContrastChange() {
+    this.isHighContrast = !this.isHighContrast;
+    this.service.setIsHighContrast(this.isHighContrast);
+    this.store.dispatch(actions.setIsHighContrast({isHighContrast: this.isHighContrast}));
   }
 
 }

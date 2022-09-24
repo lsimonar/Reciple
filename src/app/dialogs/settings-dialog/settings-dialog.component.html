@@ -1,17 +1,10 @@
-<div class="paper" [class.inverted]="isDarkMode">
-<div class="app-header" fxLayout="row" fxLayoutAlign="space-between center">
-    <div fxLayout="row">
-        <mat-icon class="left-icon">favorite_border</mat-icon>
-        <mat-icon>help_outline</mat-icon>
-    </div>
-    <h1 class="reciple-title">Settings</h1>
-    <div fxLayout="row">
-        <mat-icon class="left-icon">leaderboard</mat-icon>
-        <mat-icon (click)="goBack()">settings</mat-icon>
-    </div>
+<div style="position:relative; width: 100%">
+    <button mat-icon-button class="close-btn" align="end" [mat-dialog-close]="true">
+        <i mat-icon-button mat-dialog-close class="fa-sharp fa-solid fa-circle-xmark" [class.inverted]="isDarkMode"></i>
+    </button>
 </div>
+<h2 mat-dialog-title >Set the Table</h2>
 <div style="padding: 20%;">
-    <mat-icon class="close-btn">close</mat-icon>
     <div fxLayout="row" fxLayoutAlign="space-between center">
         <span>Dark mode: </span>
         <label class="switch">
@@ -19,5 +12,11 @@
             <span class="normal-slider"></span>
         </label>
     </div>
-</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span>High Contrast: </span>
+        <label class="switch">
+            <input type="checkbox" (click)="highContrastChange()" [checked]="isHighContrast">
+            <span class="normal-slider"></span>
+        </label>
+    </div>
 </div>

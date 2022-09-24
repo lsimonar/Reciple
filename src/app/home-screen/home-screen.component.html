@@ -7,7 +7,7 @@
         <h1 class="reciple-title">Reciple</h1>
         <div fxLayout="row">
             <mat-icon (click)="openStatisticsDialog()" class="left-icon">leaderboard</mat-icon>
-            <mat-icon (click)="goToSettings()">settings</mat-icon>
+            <mat-icon (click)="openSettingsDialog()">settings</mat-icon>
         </div>
     </div>
     <div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
@@ -26,37 +26,25 @@
             </button>
         </div>
         <h2 *ngIf="todaySolved" style="text-decoration: underline;">{{solution.name}}</h2>
-        <ng-container *ngFor="let j of numberOfTries" > 
-            <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center" >
-                <ng-container *ngFor="let i of numberOfSquares">                
-                <div [ngClass]="attempt <=j? '' : guess[j][i]? 'right-guess' : 'wrong-guess'" class="ingredient-ctn">{{guessList[j][i]}}</div>
+        <ng-container *ngFor="let j of numberOfTries"> 
+            <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
+                <ng-container *ngFor="let i of numberOfSquares">         
+                    <!--[ngClass]="attempt <=j? '' : guess[j][i]? 'right-guess' : 'wrong-guess'" -->       
+                <div class="reciple-tile" style="margin:3px">
+                     <div class="reciple-tile-inner" [ngClass]="attempt >= j+1? 'reciple-tile-inner-rotate': ''" style="--delay:{{i}}">
+                        <div class="reciple-tile-front" style="margin:2px;">
+                            <div></div>
+                        </div>
+                        <div class="reciple-tile-back" 
+                             [ngClass]="attempt <=j? '' : guess[j][i]? 'right-guess' : 'wrong-guess'"
+                             [class.high-contrast]="isHighContrast">
+                            {{guessList[j][i]}}
+                        </div>
+                     </div>
+                </div>
                 </ng-container>
             </div>
         </ng-container>
-        <div fxLayout="row" fxLayoutAlign="center center" class="recipe-description-ctn">
-            <div class="ingredients">
-                <h3 style="text-decoration: underline;">Ingredients:</h3>
-                    <ul  style="margin:0px;">
-                    </ul>
-            </div>
-        </div>
-        <!--
-        <div class="recipe-misc" fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
-                <mat-icon class="left-icon">access_time</mat-icon> 
-                <span>{{solution.cookTime}} h</span>
-            </div>
-            <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
-                <mat-icon class="left-icon">vignette</mat-icon> 
-                <span>{{solution.cookMethod}}</span>
-            </div>
-            <div class="clues-icon" fxLayout="row" fxLayoutAlign="center center">
-                <mat-icon class="left-icon">local_dining</mat-icon> 
-                <span>{{solution.foodType}}</span>
-            </div>
-        </div>
-        -->
-    
     </div>
 </div>
 
