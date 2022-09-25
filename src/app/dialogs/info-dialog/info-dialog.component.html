@@ -1,1 +1,62 @@
-<p>info-dialog works!</p>
+<div style="position:relative; width: 100%">
+    <button mat-icon-button class="close-btn" align="end" [mat-dialog-close]="true">
+        <i mat-icon-button mat-dialog-close class="fa-sharp fa-solid fa-circle-xmark"></i>
+    </button>
+</div>
+<h2 mat-dialog-title>How to play</h2> 
+<mat-dialog-content style="height: 95vh">
+    <p>Guess the daily <span style="font-weight:600;">RECIPLE</span> in 6 tries.</p>
+    <p>Each guess must be one of the world's most popular dishes. Click the enter button to submit an attempt.</p>
+    <p style="border-bottom: 1px solid rgb(180, 178, 178); padding-bottom:10px;">After each guess, the tiles will turn to show the five main ingredients of the guessed dish - colored green if they coincide with these of the solution.</p>
+    <p style="font-weight:600">Example</p>
+    <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
+            <div class="reciple-tile" style="margin:3px;">
+                <div class="reciple-tile-inner reciple-tile-inner-rotate" style="--delay:{{i}}">
+                    <div class="reciple-tile-front" style="margin:2px;">
+                        <div></div>
+                    </div>
+                    <div class="reciple-tile-back" 
+                        [ngClass]="i ===1 || i === 2? 'right-guess' : 'wrong-guess'"
+                        [class.high-contrast]="isHighContrast">
+                        {{example2Icons[i]}}
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <p>When guessing "Lasagne" the pasta and cheese ingredients turned green. These are present in today's RECIPLE!</p>
+    <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
+            <div class="reciple-tile" style="margin:3px;">
+                <div class="reciple-tile-inner reciple-tile-inner-rotate" style="--delay:{{i}}">
+                    <div class="reciple-tile-front" style="margin:2px;">
+                        <div></div>
+                    </div>
+                    <div class="reciple-tile-back" 
+                        [ngClass]="i ===0 || i === 3 || i === 4 ? 'right-guess' : 'wrong-guess'"
+                        [class.high-contrast]="isHighContrast">
+                        {{example1Icons[i]}}
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <p>Second guess is "pasta bolognesa", we discovered a new ingredient!</p>
+    <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
+            <div class="reciple-tile" style="margin:3px;">
+                <div class="reciple-tile-inner reciple-tile-inner-rotate" style="--delay:{{i}}">
+                    <div class="reciple-tile-front" style="margin:2px;">
+                        <div></div>
+                    </div>
+                    <div class="reciple-tile-back right-guess" 
+                        [class.high-contrast]="isHighContrast">
+                        {{example3Icons[i]}}
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <p>Next guess is "pasta carbonara", which was the RECIPLE of the day! Congratulations!</p>
+</mat-dialog-content>

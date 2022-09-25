@@ -115,13 +115,8 @@
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
   }
-
-.reciple-tile-front {
-    //border: 1.7px solid grey;
-  }
   
   .reciple-tile-back {
-    //border: 1.7px solid grey;
     &.right-guess{
         background-color: #73d25d7f;
         color: green;
@@ -138,3 +133,13 @@
     }    
     transform: rotateY(180deg);
   }
+
+.guess-box{
+    margin-top: 10px;
+    padding: 0 5px 0;
+    min-width: 30px;
+    margin-bottom: -4.5px;
+    border: 1.7px solid grey;
+    border-radius: 5px;
+    font-size:13px;
+}

@@ -13,6 +13,7 @@ import { setGameHistoric, setIsDarkMode, setIsHighContrast } from '../store/reci
 import { TodayDateHelper } from '../helpers/todayDateHelper';
 import { selectSettings } from '../store';
 import { RecipleSettings } from '../store/reciple.reducer';
+import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-home-screen',
@@ -38,6 +39,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
   guess: Array<boolean[]> = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
   guessList: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+  guessBoxList: string[] = ['','','','','','']
   attempt: number = 0;
   isDarkMode: boolean = false;
   isHighContrast: boolean = false;
@@ -81,6 +83,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     this.todaysGuesses === undefined? this.attempt = 0 : this.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
       this.guess[index] = attempt.ingredientsHit
+      this.guessBoxList[index] = attempt.recipe
       attempt.ingredients.forEach((ingredient, index2) => {
           this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
       });
@@ -130,15 +133,15 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   }
 
   openSettingsDialog(){
-    this.dialog.open(SettingsDialogComponent, {width: '300px', height: '500px', maxHeight : '95vh'});
+    this.dialog.open(SettingsDialogComponent, {width: '300px', height: '300px', maxHeight : '95vh'});
   }
 
   openStatisticsDialog(){
     this.dialog.open(StatisticsDialogComponent, {width: '300px', height: '500px', maxHeight : '95vh'});
   }
 
-  goToContact(){
-    this.router.navigateByUrl('/contact', {skipLocationChange: false});
+  openInfoDialog(){
+    this.dialog.open(InfoDialogComponent, {width: '420px', height: '95vh', maxHeight : '95vh'});
   }
 
   onChange(){
