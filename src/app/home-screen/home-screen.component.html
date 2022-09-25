@@ -11,21 +11,6 @@
         </div>
     </div>
     <div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
-        <div *ngIf="!todaySolved">
-            <mat-form-field class="input-box">
-                <input id="Input" matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange() " 
-                autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="below" [formControl]="control"> 
-                <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                    {{option}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-            <button id="Btn" style="line-height: 10px; border-radius: 25%; text-align: center;" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
-                <mat-icon>keyboard_return</mat-icon>
-            </button>
-        </div>
-        <h2 *ngIf="todaySolved" style="text-decoration: underline;">{{solution.name}}</h2>
         <ng-container *ngFor="let j of numberOfTries">
             <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
                 <ng-container *ngFor="let i of numberOfSquares">         
@@ -42,8 +27,25 @@
                         </div>
                     </div>
                 </ng-container>
+                <div *ngIf="false" class="guessed-recipe-text">{{guessBoxList[j]}}</div>
+                <div class="attempt-circle" [ngClass]="attempt <=j? '' : todaysGuesses!.attempts[j].hit? 'attempted right-guess' : 'attempted wrong-guess'"></div>
             </div>
         </ng-container>
+        <div *ngIf="!todaySolved">
+            <mat-form-field class="input-box">
+                <input #recipleInput matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange() " 
+                autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="below" [formControl]="control"> 
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <button id="Btn" style="line-height: 10px; border-radius: 25%; text-align: center;" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
+                <mat-icon>keyboard_return</mat-icon>
+            </button>
+        </div>
+        <h2 *ngIf="todaySolved" style="text-decoration: underline;">Congratulations!</h2>
     </div>
 </div>
 

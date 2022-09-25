@@ -1,4 +1,4 @@
-import { Component, Renderer2, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
+import { Component, Renderer2, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
@@ -9,7 +9,7 @@ import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statisti
 import { SettingsDialogComponent } from '../dialogs/settings-dialog/settings-dialog.component';
 import { AppService } from '../app.service';
 import { Store } from '@ngrx/store';
-import { setGameHistoric, setIsDarkMode, setIsHighContrast } from '../store/reciple.actions';
+import { setGameHistoric, setIsDarkMode, setIsFirstLogin, setIsHighContrast } from '../store/reciple.actions';
 import { TodayDateHelper } from '../helpers/todayDateHelper';
 import { selectSettings } from '../store';
 import { RecipleSettings } from '../store/reciple.reducer';
@@ -22,6 +22,8 @@ import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.componen
   encapsulation: ViewEncapsulation.None
 })
 export class HomeScreenComponent implements OnInit, AfterContentChecked {
+
+  @ViewChild('recipleInput') input1ElementRef: { nativeElement: any; } | undefined;
 
   recipes = recipes;
   ingredientToEmoji = ingredientToEmoji;
@@ -50,7 +52,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
 
   constructor(
-    private router: Router,
     private cdref: ChangeDetectorRef,
     private service: AppService,
     private renderer: Renderer2,
@@ -72,6 +73,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
   ngOnInit(): void {
     this.fetchSettings();
+    this.checkFirstLogin();
     let stringDate = TodayDateHelper.getTodaysDateString();
     this.gameHistoric = this.service.getLocalStoreGameHistoric();
     this.todaysGuesses = this.service.getDayHistoric(stringDate);
@@ -111,10 +113,14 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     this.cdref.detectChanges();
   }
 
+  captureKeyboardChange(event: any){
+    this.control.setValue(event,{emitEvent: true});
+    this.filteredOptions;
+  }
+
   fetchSettings(){
     this.fetchDarkMode();
     const isHighContrast = this.service.isHighContrast();
-    console.log(this.isHighContrast)
     this.service.setIsHighContrast(isHighContrast);
     this.store.dispatch(setIsHighContrast({isHighContrast: isHighContrast}));
     this.isHighContrast = isHighContrast;
@@ -141,7 +147,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   }
 
   openInfoDialog(){
-    this.dialog.open(InfoDialogComponent, {width: '420px', height: '95vh', maxHeight : '95vh'});
+    this.dialog.open(InfoDialogComponent, {width: '420px', height: '95vh', maxHeight : '90vh'});
   }
 
   onChange(){
@@ -196,6 +202,15 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       recipeList.push(this.recipes[i].name);
     }
     return recipeList;
+  }
+
+  checkFirstLogin() {
+    const isFirstLogin = this.service.isFirstLogin();
+    this.store.dispatch(setIsFirstLogin({isFirstLogin: isFirstLogin}));
+    if(isFirstLogin) {
+      this.openInfoDialog();
+      this.service.setFirstLoginToFalse();
+    }
   }
 
 }

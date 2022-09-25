@@ -40,4 +40,8 @@ export const recipleReducer = createReducer(
     actions.setIsHighContrast,
     (state, {isHighContrast}) => ({...state, settings: {...state.settings, isHighContrast: isHighContrast}})
   ),
+  on(
+    actions.setIsFirstLogin,
+    (state, {isFirstLogin}) => ({...state, settings: {...state.settings, isFirstLogin: isFirstLogin}})
+  ),
 );

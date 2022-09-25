@@ -17,13 +17,35 @@
     }
 }
 
+.attempt-circle{
+    width: 2em;
+    height: 2em;
+    margin-left: 8px;
+    margin-top: 9px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2em;
+    outline: 1px solid rgb(211, 214, 218);
+
+    &.attempted{
+        outline: 1px solid grey;
+    }
+
+    &.wrong-guess::after{
+        content: '❌';
+    }
+    &.right-guess::after{ 
+        content: '🎉';
+    }
+}
+
 .home-screen-ctn{
     margin-top: 10px;
 
     .img-ctn{
         
         height: 80%;
-        width: 90%;
+        width: 95%;
     }
     
     .input-box{
@@ -71,14 +93,6 @@
         padding:0px;
         margin:0px;
     }
-
-    .rightGuess{
-        color: green;
-    }
-    .wrongGuess{
-        color:red;
-        text-decoration: line-through;
-    }
 }
 
 .reciple-tile{
@@ -92,7 +106,7 @@
 
 .reciple-tile-inner {
     position: relative;
-    border: 1.7px solid grey;
+    border: 1px solid rgb(211, 214, 218);
     margin: 3px;
     width: 100%;    
     height: 100%;
@@ -116,21 +130,7 @@
     backface-visibility: hidden;
   }
   
-  .reciple-tile-back {
-    &.right-guess{
-        background-color: #73d25d7f;
-        color: green;
-        &.high-contrast{
-            background-color: #f5783a8d;
-        }
-    }
-    &.wrong-guess{
-        background-color: rgba(128, 128, 128, 0.564);
-        color: red;
-        &.high-contrast{
-            background-color: #85c1f994;
-        }
-    }    
+  .reciple-tile-back {    
     transform: rotateY(180deg);
   }
 
@@ -142,4 +142,29 @@
     border: 1.7px solid grey;
     border-radius: 5px;
     font-size:13px;
+}
+
+.right-guess{
+    background-color: #73d25d7f;
+    outline: 1px solid grey;
+    &.high-contrast{
+        background-color: #f5783a8d;
+    }
+}
+.wrong-guess{
+    background-color: rgba(255, 0, 0, 0.326);
+    outline: 1px solid grey;
+    &.high-contrast{
+        background-color: #85c1f994;
+    }
+}
+
+.guessed-recipe-text{
+    position:absolute;
+    background-color: rgb(253, 130, 130);
+    z-index: 1;
+    margin-left: -33px;
+    margin-top: 8px;
+    height: 3em;
+    width: 16.6em;
 }

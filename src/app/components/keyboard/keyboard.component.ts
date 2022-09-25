@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from "@angular/core";
+import { Component, Output, EventEmitter, ViewEncapsulation } from "@angular/core";
 import Keyboard from "simple-keyboard";
 
 @Component({
@@ -8,6 +8,7 @@ import Keyboard from "simple-keyboard";
   styleUrls: ['./keyboard.component.scss']
 })
 export class KeyboardComponent {
+  @Output() typedValue: EventEmitter<any> = new EventEmitter();
   value = "";
   keyboard: Keyboard | undefined;
 
@@ -22,7 +23,7 @@ export class KeyboardComponent {
           "q w e r t y u i o p",
           "a s d f g h j k l",
           "{shift} z x c v b n m {backspace}",
-          "{space} {ent}"
+          "{space}"
         ],
         shift: [
           "Q W E R T Y U I O P",
@@ -53,6 +54,7 @@ export class KeyboardComponent {
 
   onChange = (input: string) => {
     this.value = input;
+    this.typedValue.emit(this.value);
     console.log("Input changed", input);
   };
 

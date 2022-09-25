@@ -140,6 +140,27 @@ export class AppService {
       return false;
     }
   }
+
+  isFirstLogin() {
+    const localSettings = this.getLocalSettings();
+    if(localSettings == null) {
+      return true;
+    } else {
+      return localSettings.isFirstLogin == undefined ||
+      localSettings.isFirstLogin == null ||
+      localSettings.isFirstLogin == true ||
+      localSettings.isFirstLogin == 'true';
+    }
+  }
+
+  setFirstLoginToFalse() {
+    let localSettings = this.getLocalSettings();
+    if(localSettings == null) {
+      localSettings = {};
+    }
+    localSettings.isFirstLogin = false;
+    this.setLocalSettings(localSettings);
+  }
   
   private isTrue(checkVar: any) {
     return checkVar == true || checkVar == 'true' || checkVar == 'True';
