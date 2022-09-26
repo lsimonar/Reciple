@@ -162,7 +162,7 @@ export const recipes = [
     {
         "id"         : 12,
         "name"       : "Tortas",
-        "ingredients": ['beef', 'bread', 'beans', 'avocado', 'cheese'],
+        "ingredients": ['beef', 'bread', 'bean', 'avocado', 'cheese'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
@@ -171,7 +171,7 @@ export const recipes = [
     {
         "id"         : 13,
         "name"       : "Gyros",
-        "ingredients": ['wrap' ,'beef', 'beans', 'avocado', 'cheese'],
+        "ingredients": ['wrap' ,'beef', 'bean', 'avocado', 'cheese'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
