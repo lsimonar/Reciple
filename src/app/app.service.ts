@@ -76,6 +76,15 @@ export class AppService {
   getDayHistoric(day: string): DailyGuesses | undefined {
     return this.gameHistoric[day];
   }
+
+  setTodaysRecipe(recipe: RecipleInterface){
+    this.todaysRecipe = recipe;
+  }
+
+  setTodaysNumber(number: number){
+    this.todaysNumber = number;
+  }
+  
   //Store functions
 
   getLocalSettings() {

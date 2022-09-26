@@ -14,6 +14,7 @@ import { TodayDateHelper } from '../helpers/todayDateHelper';
 import { selectSettings } from '../store';
 import { RecipleSettings } from '../store/reciple.reducer';
 import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
+import { dailyReciples } from '../models/dailyReciples';
 
 @Component({
   selector: 'app-home-screen',
@@ -75,6 +76,15 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     this.fetchSettings();
     this.checkFirstLogin();
     let stringDate = TodayDateHelper.getTodaysDateString();
+
+    const recipeId : number = dailyReciples[stringDate as keyof typeof dailyReciples].recipe
+
+    const todayRecipe = this.recipes.find(c => c.id === recipeId);
+    if(todayRecipe != undefined) {
+      this.service.setTodaysRecipe(todayRecipe);
+      this.service.setTodaysNumber(dailyReciples[stringDate as keyof typeof dailyReciples].number);
+    }
+
     this.gameHistoric = this.service.getLocalStoreGameHistoric();
     this.todaysGuesses = this.service.getDayHistoric(stringDate);
     if(this.todaysGuesses?.attempts && this.todaysGuesses?.attempts.length > 0 
@@ -147,7 +157,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   }
 
   openInfoDialog(){
-    this.dialog.open(InfoDialogComponent, {width: '420px', height: '95vh', maxHeight : '90vh'});
+    this.dialog.open(InfoDialogComponent, {width: '420px', height: '90vh', maxHeight : '90vh'});
   }
 
   onChange(){
@@ -201,6 +211,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     for (let i = 0; i < Object.values(this.recipes).length; i++) {
       recipeList.push(this.recipes[i].name);
     }
+    recipeList = recipeList.sort((a,b) => a.localeCompare(b))
     return recipeList;
   }
 

@@ -8,7 +8,8 @@ export interface RecipleInterface {
     ingredients: string[],
     cookTime   : number,
     serves : number,
-    foodType   : string
+    foodType   : string,
+    recipeUrl : string,
 }
 
 export interface DailyGuesses {
@@ -231,4 +232,4 @@ export const recipes = [
         "cookMethod" : "hob",
         "foodType"   : "main"
     }*/
-]
+] as Array<RecipleInterface>
