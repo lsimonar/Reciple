@@ -170,6 +170,24 @@ export class AppService {
     localSettings.isFirstLogin = false;
     this.setLocalSettings(localSettings);
   }
+
+  getLanguage() {
+    const localSettings = this.getLocalSettings();
+    if(localSettings != null && localSettings.language != null && localSettings.language != undefined) {
+      return localSettings.language;
+    } else {
+      return null;
+    }
+  }
+
+  setLanguage(language: string) {
+    let localSettings = this.getLocalSettings();
+    if(localSettings == null) {
+      localSettings = {};
+    }
+    localSettings.language = language;
+    this.setLocalSettings(localSettings);
+  }
   
   private isTrue(checkVar: any) {
     return checkVar == true || checkVar == 'true' || checkVar == 'True';

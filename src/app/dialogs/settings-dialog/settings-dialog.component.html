@@ -6,6 +6,12 @@
 <h2 mat-dialog-title >Settings</h2>
 <div style="padding: 20%;">
     <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span>{{ 'settingsPage.languageTitle' | translate }}</span>  
+        <select #selLang class="custom-select" (change)="changeLanguage(selLang.value)" [(ngModel)]='lang'>
+            <option *ngFor="let language of availableLanguages" [value]="language">{{ language }}</option>
+        </select>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
         <span>Dark mode: </span>
         <label class="switch">
             <input type="checkbox" (click)="darkModeChange()" [checked]="isDarkMode">

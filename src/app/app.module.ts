@@ -11,7 +11,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { HomeScreenComponent, recipleAvailableLangs } from './home-screen/home-screen.component';
 import { SettingsDialogComponent } from './dialogs/settings-dialog/settings-dialog.component';
 import { StoreModule } from '@ngrx/store';
 import { ContactPageComponent } from './screens/contact-page/contact-page.component';
@@ -23,7 +23,12 @@ import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CountdownComponent } from './components/countdown/countdown.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -51,7 +56,15 @@ import { CountdownComponent } from './components/countdown/countdown.component';
     HttpClientModule,
     ClipboardModule,
     MatSnackBarModule,
-    StoreModule.forRoot({reciple: recipleReducer })
+    StoreModule.forRoot({reciple: recipleReducer }),
+    TranslateModule.forRoot({
+      defaultLanguage: recipleAvailableLangs[0],
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

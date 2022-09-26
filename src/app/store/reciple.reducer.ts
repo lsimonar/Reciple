@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import * as actions from './reciple.actions';
 import { GameHistoric } from '../models/recipes';
-
+import { recipleAvailableLangs } from '../home-screen/home-screen.component';
 export interface RecipleState {
   innerHeight: number;
   availableLanguages: Array<string>;
@@ -13,6 +13,7 @@ export interface RecipleSettings {
   isDarkMode: boolean;
   isFirstLogin: boolean;
   isHighContrast: boolean;
+  language: string;
 }
 
 export const initialState: RecipleState = {
@@ -22,7 +23,8 @@ export const initialState: RecipleState = {
     settings: {
       isDarkMode: false,
       isFirstLogin: true,
-      isHighContrast: false
+      isHighContrast: false,
+      language: recipleAvailableLangs[0]
     }
 };
 
@@ -43,5 +45,13 @@ export const recipleReducer = createReducer(
   on(
     actions.setIsFirstLogin,
     (state, {isFirstLogin}) => ({...state, settings: {...state.settings, isFirstLogin: isFirstLogin}})
+  ),
+  on(
+    actions.setLanguage,
+    (state, {language}) => ({...state, settings: {...state.settings, language: language}})
+  ),
+  on(
+    actions.setAvailableLanguages,
+    (state, {availableLanguages}) => ({...state, availableLanguages: availableLanguages})
   ),
 );

@@ -23,6 +23,8 @@
     "@angular/router": "~13.3.0",
     "@fontsource/sofia": "^4.5.10",
     "@ngrx/store": "^13.2.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "angular-simple-keyboard": "^1.1.2",
     "material-icons": "^1.11.11",
     "ngx-scrollbar": "^9.0.2",

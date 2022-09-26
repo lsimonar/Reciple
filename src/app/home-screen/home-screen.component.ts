@@ -9,12 +9,15 @@ import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statisti
 import { SettingsDialogComponent } from '../dialogs/settings-dialog/settings-dialog.component';
 import { AppService } from '../app.service';
 import { Store } from '@ngrx/store';
-import { setGameHistoric, setIsDarkMode, setIsFirstLogin, setIsHighContrast } from '../store/reciple.actions';
+import { setAvailableLanguages, setGameHistoric, setIsDarkMode, setIsFirstLogin, setIsHighContrast, setLanguage } from '../store/reciple.actions';
 import { TodayDateHelper } from '../helpers/todayDateHelper';
 import { selectSettings } from '../store';
 import { RecipleSettings } from '../store/reciple.reducer';
 import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
 import { dailyReciples } from '../models/dailyReciples';
+import { TranslateService } from '@ngx-translate/core';
+
+export const recipleAvailableLangs = ['en', 'es'];
 
 @Component({
   selector: 'app-home-screen',
@@ -58,8 +61,15 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     private service: AppService,
     private renderer: Renderer2,
     private store: Store,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public translate: TranslateService,
   ) {
+    translate.addLangs(recipleAvailableLangs);
+    this.store.dispatch(setAvailableLanguages({availableLanguages: recipleAvailableLangs}));
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang(recipleAvailableLangs[0]);
+    this.store.dispatch(setLanguage({language: recipleAvailableLangs[0]}));
+
     const self = this;
     this.recipeList = this.getRecipeList();
     document.addEventListener("visibilitychange", function() {
@@ -133,10 +143,29 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
   fetchSettings(){
     this.fetchDarkMode();
+    this.fetchLanguage();
     const isHighContrast = this.service.isHighContrast();
     this.service.setIsHighContrast(isHighContrast);
     this.store.dispatch(setIsHighContrast({isHighContrast: isHighContrast}));
     this.isHighContrast = isHighContrast;
+  }
+
+  fetchLanguage() {
+    const lang = this.service.getLanguage();
+    if(lang != null) {
+      this.translate.use(lang);
+      this.service.setLanguage(lang);
+      this.store.dispatch(setLanguage({language: lang}));
+    } else {
+      const navigatorLang = navigator.language;
+      let chosenLang = 'en';
+      if(navigatorLang.toLowerCase().indexOf('es') > -1) {
+        chosenLang = 'es';
+      }
+      this.translate.use(chosenLang);
+      this.service.setLanguage(chosenLang);
+      this.store.dispatch(setLanguage({language: chosenLang}));
+    }
   }
 
   fetchDarkMode() {
@@ -230,3 +259,4 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   }
 
 }
+

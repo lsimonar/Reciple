@@ -7,3 +7,5 @@ export const selectSettings = createSelector(selectFeature, (state: RecipleState
 export const selectGameHistoric = createSelector(selectFeature, (state: RecipleState) => state.gameHistoric);
 export const selectIsDarkMode = createSelector(selectFeature, (state: RecipleState) => state.settings.isDarkMode);
 export const selectIsFirstLogin = createSelector(selectFeature, (state: RecipleState) => state.settings.isFirstLogin);
+export const selectAvailableLanguages = createSelector(selectFeature, (state: RecipleState) => state.availableLanguages);
+
