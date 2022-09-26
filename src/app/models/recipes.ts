@@ -55,7 +55,8 @@ export const ingredientToEmoji = {
     'pork' : '🐖',
     'wrap' : '🌯',
     'alcohol' : '🍶',
-    'broth' : '🥣'
+    'broth' : '🥣',
+    'garlic': '🧄'
 } 
 
 export const recipes = [

@@ -141,7 +141,7 @@ export class StatisticsDialogComponent implements OnInit {
         summary += '\n';
       });
     }
-    summary += 'www.reciple.com';
+    //summary += 'www.reciple.com';
     return summary;
   }
 
