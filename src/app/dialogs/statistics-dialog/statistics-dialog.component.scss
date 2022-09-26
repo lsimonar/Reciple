@@ -27,7 +27,9 @@ h2{
 div[role="stats-bar"]{
     --percentage : 0%;
     flex: 0 1 var(--percentage);
-    background-color: gray; height: 20px;
+    background-color: gray; 
+    height: 18px;
+    border-radius: 5px;
     &.highlight-bar{
         background-color: #6aaa64;
     }
@@ -57,4 +59,22 @@ li{
 .stats-number{
     font-weight: 500;
     font-size : 38px;
+}
+
+.share-button{
+    border: 3px solid;
+    //margin: 10px 4px;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    font-size: 20px;
+    height: 50px;
+    //line-height: 50px;
+    //padding: 0.5em;
+    cursor: pointer;
+    background-color: #4CAF50;
+    border-color: #3b8a3e;
 }

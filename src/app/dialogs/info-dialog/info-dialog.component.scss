@@ -64,7 +64,7 @@ h2{
         }
     }
     &.wrong-guess{
-        background-color: rgba(128, 128, 128, 0.564);
+        background-color: rgba(255, 0, 0, 0.326);
         color: red;
         &.high-contrast{
             background-color: #85c1f994;
@@ -72,3 +72,30 @@ h2{
     }    
     transform: rotateY(180deg);
   }
+
+  .attempt-circle{
+    width: 2em;
+    height: 2em;
+    margin-left: 8px;
+    margin-top: 9px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2em;
+    outline: 1px solid rgb(211, 214, 218);
+
+    &.attempted{
+        outline: 1.7px solid grey;
+    }
+
+    &.wrong-guess::after{
+        content: '❌';
+    }
+    &.right-guess::after{ 
+        content: '🎉';
+    }
+}
+
+.line-separator{
+    border-bottom: 1px solid rgb(180, 178, 178);
+    padding-bottom:10px;
+}

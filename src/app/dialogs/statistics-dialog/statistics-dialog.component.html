@@ -35,5 +35,11 @@
         </div>
     </div>
     </ol>
+    <div  *ngIf="todaysHistoric?.complete" fxLayout="column" fxLayoutAlign="center center">
+        <app-countdown [nextDate]="nextCountryDate"></app-countdown>
+        <button fxLayoutAlign="center center" class="share-button" (click)="notifyClipboard()" [cdkCopyToClipboard]="getSummaryToClipboard()">
+            Share it! <mat-icon style="margin-left: 10px">content_copy</mat-icon>
+        </button>
+    </div>
 </mat-dialog-content>
 

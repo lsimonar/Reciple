@@ -1,0 +1,3 @@
+<div *ngIf="hoursToNextDate >= 0 && minutesToNextDate >= 0 && secondsToNextDate >= 0 && !(hoursToNextDate === 0 && minutesToNextDate === 0 && secondsToNextDate === 0)">
+    <h4>NEXT RECIPLE IN: <span>{{hoursToNextDate | number: '2.'}}:{{minutesToNextDate | number: '2.'}}:{{secondsToNextDate | number: '2.'}}</span></h4>
+</div>

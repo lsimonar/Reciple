@@ -23,12 +23,19 @@
     margin-left: 8px;
     margin-top: 9px;
     border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -khtml-border-radius: 50%;
     text-align: center;
     line-height: 2em;
     outline: 1px solid rgb(211, 214, 218);
 
     &.attempted{
-        outline: 1px solid grey;
+        border-radius:50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -khtml-border-radius: 50%;
+        outline: 1.7px solid grey;
     }
 
     &.wrong-guess::after{
@@ -40,7 +47,7 @@
 }
 
 .home-screen-ctn{
-    margin-top: 10px;
+    margin-top: 2em;
 
     .img-ctn{
         
@@ -146,14 +153,14 @@
 
 .right-guess{
     background-color: #73d25d7f;
-    outline: 1px solid grey;
+    outline: 1.7px solid grey;
     &.high-contrast{
         background-color: #f5783a8d;
     }
 }
 .wrong-guess{
     background-color: rgba(255, 0, 0, 0.326);
-    outline: 1px solid grey;
+    outline: 1.7px solid grey;
     &.high-contrast{
         background-color: #85c1f994;
     }
@@ -168,3 +175,33 @@
     height: 3em;
     width: 16.6em;
 }
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: fit-content;
+    min-width: 2.35em;
+    height: 2.35em;
+    line-height: 2.35em;
+    margin-left: 6px;
+    margin-top: 2.5px;
+    background-color: white;
+    text-align: center;
+    padding: 5px 5px;
+    border: 1.7px solid grey;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

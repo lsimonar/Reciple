@@ -42,6 +42,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
   guess: Array<boolean[]> = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
   guessList: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+  guessListText: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
   guessBoxList: string[] = ['','','','','','']
   attempt: number = 0;
   isDarkMode: boolean = false;
@@ -80,6 +81,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     const recipeId : number = dailyReciples[stringDate as keyof typeof dailyReciples].recipe
 
     const todayRecipe = this.recipes.find(c => c.id === recipeId);
+    this.solution = todayRecipe!;
     if(todayRecipe != undefined) {
       this.service.setTodaysRecipe(todayRecipe);
       this.service.setTodaysNumber(dailyReciples[stringDate as keyof typeof dailyReciples].number);
@@ -97,6 +99,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       this.guess[index] = attempt.ingredientsHit
       this.guessBoxList[index] = attempt.recipe
       attempt.ingredients.forEach((ingredient, index2) => {
+        this.guessListText[index][index2] = ingredient;
           this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
       });
     });
@@ -157,7 +160,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   }
 
   openInfoDialog(){
-    this.dialog.open(InfoDialogComponent, {width: '420px', height: '90vh', maxHeight : '90vh'});
+    this.dialog.open(InfoDialogComponent, {width: '450px', height: '90vh', maxHeight : '90vh'});
   }
 
   onChange(){
@@ -166,7 +169,8 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       if(r.name === this.control.value){
         this.isRecipeValid = true;
         this.guessedRecipe = r;
-    }});
+      }
+    });
   }
 
   makeGuess() {
@@ -177,14 +181,15 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       this.recipeUrl = this.recipes.find(c => c.name === todayRecipe)?.recipeUrl;
       this.gameHistoric = this.service.getLocalStoreGameHistoric();
       this.store.dispatch(setGameHistoric({gameHistoric: this.gameHistoric}));
-      setTimeout(() => { this.openStatisticsDialog(); }, 3000);
+      setTimeout(() => { this.openStatisticsDialog(); }, 2000);
     }
     this.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
       this.guess[index] = attempt.ingredientsHit
       attempt.ingredients.forEach((ingredient, index2) => {
+          this.guessListText[index][index2] = ingredient;
           this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
-        });
+      });
     });
     this.control.setValue('');    
   }

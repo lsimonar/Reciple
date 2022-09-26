@@ -30,7 +30,7 @@ export const ingredientToEmoji = {
     'rice': '🍚',
     'chicken' : '🐓',
     'tomato' : '🍅',
-    'mushrooms': '🍄',
+    'mushroom': '🍄',
     'cheese': '🧀',
     'wine' : '🍷',
     'pasta': '🍝',
@@ -39,9 +39,8 @@ export const ingredientToEmoji = {
     'seafood': '🦐',
     'carrot': '🥕',
     'curry': '🍛',
-    'bechamel':'☃️',
     'bacon': '🥓',
-    'lettuce': '🥬',
+    'leafygreen': '🥬',
     'olives': '🫒',
     'egg': '🥚',
     'bread': '🥖',
@@ -49,8 +48,15 @@ export const ingredientToEmoji = {
     'bean': '🫘',
     'fish' : '🐟',
     'pepper' : '🌶️',
-    'milk' : '🥛'
-}
+    'milk' : '🥛',
+    'butter' : '🧈',
+    'avocado' : '🥑',
+    'beef' : '🐄',
+    'pork' : '🐖',
+    'wrap' : '🌯',
+    'alcohol' : '🍶',
+    'broth' : '🥣'
+} 
 
 export const recipes = [
     {
@@ -65,7 +71,7 @@ export const recipes = [
     {
         "id"         : 2,
         "name"       : "Risotto",
-        "ingredients": ['rice', 'cheese', 'mushrooms', 'wine', 'onion'],
+        "ingredients": ['rice', 'cheese', 'butter', 'mushroom', 'onion'],
         "cookTime"   : 1,
         "serves"     : 4,
         "foodType"   : "main",
@@ -75,7 +81,7 @@ export const recipes = [
     {
         "id"         : 3,
         "name"       : "Pasta bolognesa",
-        "ingredients": ['pasta', 'tomato', 'meat', 'onion', 'cheese'],
+        "ingredients": ['pasta', 'tomato', 'beef', 'onion', 'cheese'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
@@ -92,12 +98,11 @@ export const recipes = [
     },
     {
         "id"         : 5,
-        "name"       : "Chicken thighs",
-        "ingredients": ['chicken', 'tomato', 'wine', 'carrot', 'onion'],
-        "cookTime"   : 1.5,
-        "serves"     : 4,
-        "foodType"   : "main",
-        "recipeUrl"  : ""
+        "name"       : "Meat caneloni",
+        "ingredients": ['beef', 'pasta', 'milk', 'butter', 'cheese'],
+        "cookTime"   : 1,
+        "cookMethod" : "oven",
+        "foodType"   : "main"
     },
     {
         "id"         : 6,
@@ -111,7 +116,7 @@ export const recipes = [
     {
         "id"         : 7,
         "name"       : "Lasagne",
-        "ingredients": ['meat', 'pasta', 'cheese', 'milk', 'tomato'],
+        "ingredients": ['beef', 'pasta', 'cheese', 'milk', 'tomato'],
         "cookTime"   : 1,
         "serves"     : 4,
         "foodType"   : "main",
@@ -129,7 +134,7 @@ export const recipes = [
     {
         "id"         : 9,
         "name"       : "Salad",
-        "ingredients": ['tomato', 'lettuce', 'onion', 'olives', 'pepper'],
+        "ingredients": ['tomato', 'leafygreen', 'onion', 'olives', 'pepper'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
@@ -137,13 +142,129 @@ export const recipes = [
     },
     {
         "id"         : 10,
-        "name"       : "Burguer",
-        "ingredients": ['meat', 'bread', 'onion', 'tomato', 'cheese'],
+        "name"       : "Cheeseburguer",
+        "ingredients": ['bread', 'beef', 'onion', 'tomato', 'cheese'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
         "recipeUrl"  : ""
-    },/*
+    },
+    {
+        "id"         : 11,
+        "name"       : "Lobster Bisque",
+        "ingredients": ['seafood', 'onion', 'carrot', 'leafygreen', 'butter'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 12,
+        "name"       : "Tortas",
+        "ingredients": ['beef', 'bread', 'beans', 'avocado', 'cheese'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 13,
+        "name"       : "Gyros",
+        "ingredients": ['wrap' ,'beef', 'beans', 'avocado', 'cheese'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 14,
+        "name"       : "Yakisoba",
+        "ingredients": ['pasta', 'pork', 'leafygreen', 'onion', 'carrot'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 15,
+        "name"       : "Fondue",
+        "ingredients": ['cheese', 'wine', 'garlic', 'bread', 'alcohol'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 16,
+        "name"       : "Bibimbap",
+        "ingredients": ['rice', 'beef', 'leafygreen', 'carrot', 'egg'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 17,
+        "name"       : "Fajita",
+        "ingredients": ['wrap', 'beef', 'onion', 'avocado', 'garlic'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 18,
+        "name"       : "Pho",
+        "ingredients": ['pasta', 'beef', 'onion', 'garlic', 'broth'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 19,
+        "name"       : "Quiche",
+        "ingredients": ['egg', 'milk', 'cheese', 'bacon', 'butter'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 20,
+        "name"       : "Sushi",
+        "ingredients": ['rice', 'milk', 'cheese', 'bacon', 'butter'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
+    {
+        "id"         : 21,
+        "name"       : "Ramen",
+        "ingredients": ['pasta', 'pork', 'broth', 'egg', 'mushrooms'],
+        "cookTime"   : 0.5,
+        "cookMethod" : "hob",
+        "foodType"   : "main"
+    },
+    {
+        "id"         : 22,
+        "name"       : "Chicken croquetas",
+        "ingredients": ['chicken', 'milk', 'butter', 'egg', 'bread'],
+        "cookTime"   : 2,
+        "cookMethod" : "fried",
+        "foodType"   : "side"
+    }
+    /*
+    {
+        "id"         : 11,
+        "name"       : "pretzel",
+        "ingredients": ['flour', 'yeast', 'butter', 'sugar', 'salt'],
+        "cookTime"   : 0.5,
+        "serves"     : 4,
+        "foodType"   : "main",
+        "recipeUrl"  : ""
+    },
         {
         "id"         : 0,
         "name"       : "Spinach caneloni",
@@ -168,22 +289,7 @@ export const recipes = [
         "cookMethod" : "hob",
         "foodType"   : "main"
     },
-    {
-        "id"         : 13,
-        "name"       : "Yakisoba",
-        "ingredients": ['pasta', 'chicken', 'onion', 'pepper', 'soy sauce'],
-        "cookTime"   : 0.5,
-        "cookMethod" : "hob",
-        "foodType"   : "main"
-    },
-    {
-        "id"         : 14,
-        "name"       : "Caneloni",
-        "ingredients": ['minced meat', 'pasta', 'bechamel sauce', 'cheese'],
-        "cookTime"   : 1,
-        "cookMethod" : "oven",
-        "foodType"   : "main"
-    },
+
     {
         "id"         : 15,
         "name"       : "Spinach and Ricotta Caneloni",
@@ -193,25 +299,9 @@ export const recipes = [
         "foodType"   : "main"
     },
     {
-        "id"         : 16,
-        "name"       : "Chicken croquetas",
-        "ingredients": ['chicken', 'bechamel sauce', 'bread', 'egg'],
-        "cookTime"   : 2,
-        "cookMethod" : "fried",
-        "foodType"   : "side"
-    },
-    {
         "id"         : 17,
         "name"       : "Patatas bravas",
         "ingredients": ['potatoes', 'tomato sauce'],
-        "cookTime"   : 0.5,
-        "cookMethod" : "hob",
-        "foodType"   : "main"
-    },
-    {
-        "id"         : 18,
-        "name"       : "Ramen",
-        "ingredients": ['pasta', 'pork', 'broth', 'egg', 'onion', 'mushrooms'],
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
         "foodType"   : "main"

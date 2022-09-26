@@ -12,9 +12,9 @@ export class InfoDialogComponent implements OnInit {
 
   isHighContrast: boolean = false;
 
-  example1Icons=['🍝', '🍅', '🥩', '🧅', '🧀']
-  example2Icons=['🥩', '🍝', '🧀', '🥛', '🍅']
-  example3Icons=['🥩', '🍝', '🧀', '🥛', '🍅']
+  example1Icons=['🍝', '🍅', '🐄', '🧅', '🧀']
+  example2Icons=['🐄', '🍝', '🧀', '🥛', '🍅']
+  example3Icons=['🐄', '🍝', '🧀', '🥛', '🍅']
   constructor(
     private store : Store,
   ) { 

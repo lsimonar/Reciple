@@ -20,6 +20,9 @@ import { AppService } from './app.service';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { StatisticsDialogComponent } from './dialogs/statistics-dialog/statistics-dialog.component';
 import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CountdownComponent } from './components/countdown/countdown.component';
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component
     ContactPageComponent,
     KeyboardComponent,
     StatisticsDialogComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    CountdownComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,8 @@ import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component
     MatDialogModule,
     FlexLayoutModule,
     HttpClientModule,
+    ClipboardModule,
+    MatSnackBarModule,
     StoreModule.forRoot({reciple: recipleReducer })
   ],
   providers: [AppService],

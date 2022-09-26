@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppService } from 'src/app/app.service';
 import { TodayDateHelper } from 'src/app/helpers/todayDateHelper';
-import { GameHistoric } from 'src/app/models/recipes';
+import { DailyGuesses, GameHistoric, RecipleInterface } from 'src/app/models/recipes';
 import { selectGameHistoric, selectIsDarkMode } from 'src/app/store';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-statistics-dialog',
@@ -23,11 +24,14 @@ export class StatisticsDialogComponent implements OnInit {
   maxStreak : number = 0;
   guessDistr : number[] = [0,0,0,0,0,0];
   countDistr : number[] = [0,0,0,0,0,0];
+  todaysHistoric: DailyGuesses = {} as DailyGuesses;
+  nextCountryDate: Date = new Date();
 
 
   constructor(
     private store : Store,
-    private service: AppService
+    private service: AppService,
+    private _snackBar: MatSnackBar
   ) { 
     this.store.select(selectGameHistoric).subscribe((gameHistoric: GameHistoric) => {
       if(JSON.stringify(gameHistoric) === "{}") {
@@ -39,12 +43,15 @@ export class StatisticsDialogComponent implements OnInit {
     this.store.select(selectIsDarkMode).subscribe((isDarkMode: boolean) => {
       this.isDarkMode = isDarkMode;
     });
+    this.nextCountryDate = new Date();
+    this.nextCountryDate.setHours(24,0,0,0);
   }
 
   ngOnInit(): void {
     this.todayDate = TodayDateHelper.getTodaysDateString();
     this.getValuesFromGameHistoric();
     this.getStreak();
+    this.todaysHistoric = this.gameHistoric[this.todayDate];
     if(this.gameHistoric[this.todayDate]){
       if(this.gameHistoric[this.todayDate].solved){
         this.todaySolvedIn = this.gameHistoric[this.todayDate].attempts.length
@@ -113,5 +120,36 @@ export class StatisticsDialogComponent implements OnInit {
     this.currentStreak = streak;
   }
 
+  getSummaryToClipboard(): string {
+    let summary = '';
+    let todaysHistoric = this.gameHistoric[this.todayDate]
+    if(todaysHistoric) {
+        summary += `#Reciple\n`;
+        summary += 'Guessed in ' + todaysHistoric.attempts.length + ' tries.\n\n';
 
+      todaysHistoric.attempts.forEach(attempt => {
+        attempt.ingredientsHit.forEach(hit => {
+          switch(hit) {
+            case true:
+              return summary += '🍏';
+            case false: 
+              return summary += '🍎';
+            default:
+              return ''
+          }
+        });
+        summary += '\n';
+      });
+    }
+    summary += 'www.reciple.com';
+    return summary;
+  }
+
+  notifyClipboard() {
+    this._snackBar.open('Game copied to clipboard.', undefined, {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 3000 //milliseconds
+    });
+  }
 }
