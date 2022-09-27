@@ -16,7 +16,7 @@
         </div>
         <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
             <span class="stats-number">{{currentStreak}}</span>
-            <span>Current<br>{{'statisticsPage.streak' | translate}}</span>
+            <span>{{'statisticsPage.streak' | translate}}</span>
         </div>
         <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
             <span class="stats-number">{{maxStreak}}</span>
@@ -35,7 +35,7 @@
         </div>
     </div>
     </ol>
-    <div  *ngIf="todaysHistoric?.complete" fxLayout="column" fxLayoutAlign="center center">
+    <div *ngIf="todaysHistoric?.complete" fxLayout="column" fxLayoutAlign="center center">
         <app-countdown [nextDate]="nextCountryDate"></app-countdown>
         <button fxLayoutAlign="center center" class="share-button" (click)="notifyClipboard()" [cdkCopyToClipboard]="getSummaryToClipboard()">
             {{'statisticsPage.share' | translate}} <mat-icon style="margin-left: 10px">content_copy</mat-icon>
