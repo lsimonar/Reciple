@@ -12,7 +12,7 @@
             <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
                 <ng-container *ngFor="let i of numberOfSquares">    
                     <div class="tooltip"> 
-                        <span class="tooltiptext">{{guessListText[j][i]}}</span>    
+                        <span class="tooltiptext">{{'ingredients.' + guessListText[j][i] | translate}}</span>    
                         <div class="reciple-tile" style="margin:3px;">
                             <div class="reciple-tile-inner" [ngClass]="attempt >= j+1? 'reciple-tile-inner-rotate': ''" style="--delay:{{i}}">
                                 <div class="reciple-tile-front" style="margin:2px;">
@@ -33,11 +33,11 @@
         </ng-container>
         <div *ngIf="!todaySolved">
             <mat-form-field class="input-box">
-                <input #recipleInput matInput type="text" placeholder="Enter reciple title" (ngModelChange)="onChange() " 
+                <input #recipleInput matInput type="text" placeholder="{{'homePage.inputPlaceholder' | translate}}" (ngModelChange)="onChange() " 
                 autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="above" [formControl]="control"> 
-                <mat-autocomplete #auto="matAutocomplete">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayCountryFn.bind(this)">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                    {{option}}
+                    {{'recipe.' + option | translate}}
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
@@ -46,7 +46,7 @@
             </button>
         </div>
         <ng-container *ngIf="todaySolved">
-            <h3>{{solution.name}}, tasty!</h3>
+            <h3>{{'recipe.' + solution.name | translate}}!</h3>
         </ng-container>
     </div>
 </div>

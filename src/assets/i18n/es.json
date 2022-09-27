@@ -1,5 +1,92 @@
 {
+    "recipe":{
+        "Paella" : "Paella",
+        "Risotto": "Risoto",
+        "Pasta bolognesa": "Pasta boloñesa",
+        "Seafood paella": "Paella de marisco",
+        "Meat caneloni" : "Canelones de carne",
+        "Katso Curry"  : "Katso Curry",
+        "Lasagne" : "Lasaña",
+        "Pasta carbonara" : "Pasta carbonara",
+        "Salad" : "Ensalada",
+        "Cheeseburguer" : "Hamburguesa de queso",
+        "Lobster bisque" : "Bisque de langosta",
+        "Tortas" : "Tortas",
+        "Gyros" : "Gyros",
+        "Yakisoba" : "Yakisoba",
+        "Fondue" : "Fondue",
+        "Bibimbap" : "Bibimbap",
+        "Fajita" : "Fajita",
+        "Pho" : "Pho",
+        "Quiche" : "Quiche",
+        "Ramen" : "Ramen",
+        "Chicken croquetas" : "Croquetas de pollo"
+    },
+    "ingredients":{
+        "rice": "Arroz",
+        "chicken" : "Pollo",
+        "tomato" : "Tomate",
+        "mushroom": "Setas",
+        "cheese": "Queso",
+        "wine" : "Vino",
+        "pasta": "Pasta",
+        "onion" : "Cebolla",
+        "meat" : "Carne",
+        "seafood": "Marisco",
+        "carrot": "Zanahoria",
+        "curry": "Curry",
+        "bacon": "Bacon",
+        "leafygreen": "Lechuga",
+        "olives": "Aceituna",
+        "egg": "Huevo",
+        "bread": "Pan",
+        "rabbit": "Conejo",
+        "bean": "Judia",
+        "fish" : "Pescado",
+        "pepper" : "Pimiento",
+        "milk" : "Leche",
+        "butter" : "Mantequilla",
+        "avocado" : "Aguacate",
+        "beef" : "Ternera",
+        "pork" : "Cerdo",
+        "wrap" : "Tortilla",
+        "alcohol" : "Alcohol",
+        "broth" : "Caldo",
+        "garlic": "Ajo",
+        "" : ""
+
+    },
+    "homePage":{
+        "inputPlaceholder": "Escribe aqui"
+    },
+    "settingsPage":{
+        "settingsTitle" : "Ajustes",
+        "language": "Idioma",
+        "darkMode": "Modo oscuro",
+        "highContrast": "Alto Contraste"
+    },
+    "statisticsPage":{
+        "statisticsTitle": "Estadísticas",
+        "played": "Jugadas",
+        "wins" : "Victorias",
+        "streak" : "Racha",
+        "max" : "Mejor",
+        "guessTitle" : "Distribucion de Aciertos",
+        "share" : "Compartelo!",
+        "nextIn" : "SIGUIENTE RECIPLE EN"
+    },
     "infoPage":{
-        "infoTitle": "Como jugar"
+        "infoTitle": "Como jugar",
+        "intro1-p1": "Adivina el",
+        "intro1-p2": "diario en 6 intentos.",
+        "intro2": "Cada intento debe ser uno de los platos mas populares del mundo. Utiliza el filtro del campo de texto para conocer las opciones válidas.",
+        "intro3": "Despues de cada intento, las casillas mostraran los cinco ingredientes principales del plato que has escogido - de color verde si coinciden con los de la solución.",
+        "example": "Ejemplo",
+        "example1": "Si intentamos \"Lasaña\" los ingredientes 'pasta' y 'queso' aparecen en color verde. ¡Significa que se encuentran en el RECIPLE de hoy!",
+        "example2": "El segundo intento es \"pasta bolognesa\", hemos descubierto un nuevo ingrediente!",
+        "example3": "El siguiente intento es \"pasta carbonara\", lo hemos acertado ¡Felicidades!",
+        "newReciple": "¡Un nuevo RECIPLE cada día!",
+        "inspiredBy-p1": "RECIPLE esta inspirado en",
+        "inspiredBy-p2": "creado por"
     }
 }

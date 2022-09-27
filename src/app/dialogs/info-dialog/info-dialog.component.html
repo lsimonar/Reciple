@@ -4,11 +4,11 @@
     </button>
 </div>
 <h2 mat-dialog-title>{{'infoPage.infoTitle' | translate}}</h2> 
-<div style="height: 100%">
-    <p>Guess the daily <span style="font-weight:600;">RECIPLE</span> in 6 tries.</p>
-    <p>Each guess must be one of the world's most popular dishes. Click the enter button to submit an attempt.</p>
-    <p class="line-separator">After each guess, the tiles will turn to show the five main ingredients of the guessed dish - colored green if they coincide with these of the solution.</p>
-    <p style="font-weight:600">Example</p>
+<div>
+    <p>{{'infoPage.intro1-p1' | translate}} <span style="font-weight:600;">RECIPLE</span> {{'infoPage.intro1-p2' | translate}}</p>
+    <p>{{'infoPage.intro2' | translate}}</p>
+    <p class="line-separator">{{'infoPage.intro3' | translate}}</p>
+    <p style="font-weight:600">{{'infoPage.example' | translate}}</p>
     <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
         <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
             <div class="reciple-tile" style="margin:3px;">
@@ -26,7 +26,7 @@
         </ng-container>
         <div class="attempt-circle attempted wrong-guess"></div>
     </div>
-    <p>When guessing "Lasagne" the pasta and cheese ingredients turned green. These are present in today's RECIPLE!</p>
+    <p>{{'infoPage.example1' | translate}}</p>
     <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
         <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
             <div class="reciple-tile" style="margin:3px;">
@@ -44,7 +44,7 @@
         </ng-container>
         <div class="attempt-circle attempted wrong-guess"></div>
     </div>
-    <p>Second guess is "pasta bolognesa", we discovered a new ingredient!</p>
+    <p>{{'infoPage.example2' | translate}}</p>
     <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
         <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
             <div class="reciple-tile" style="margin:3px;">
@@ -61,8 +61,7 @@
         </ng-container>
         <div class="attempt-circle attempted right-guess"></div>
     </div>
-    <p class="line-separator">Next guess is "pasta carbonara", which was the RECIPLE of the day. Tasty!</p>
-    <p class="line-separator"><b>A new RECIPLE will be available every day!</b></p>
-    <p>RECIPLE has been inspired by <a href="https://www.nytimes.com/games/wordle/index.html" target='_blank'>Wordle</a> created by <a href="https://twitter.com/powerlanguish" target='_blank'>Josh Wardle (@powerlanguish)</a>.</p>
-
+    <p class="line-separator">{{'infoPage.example3' | translate}}</p>
+    <p class="line-separator"><b>{{'infoPage.newReciple' | translate}}</b></p>
+    <p style="margin-bottom: 0.3em;">{{'infoPage.inspiredBy-p1' | translate}} <a href="https://www.nytimes.com/games/wordle/index.html" target='_blank'>Wordle</a> {{'infoPage.inspiredBy-p2' | translate}} <a href="https://twitter.com/powerlanguish" target='_blank'>Josh Wardle (@powerlanguish)</a>.</p>
 </div>

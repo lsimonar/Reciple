@@ -1,5 +1,93 @@
 {
+    "recipe":{
+        "Paella" : "Paella",
+        "Risotto": "Risotto",
+        "Pasta bolognesa": "Pasta bolognesa",
+        "Seafood paella": "Seafood paella",
+        "Meat caneloni" : "Meat caneloni",
+        "Katso Curry"  : "Katso Curry",
+        "Lasagne" : "Lasagne",
+        "Pasta carbonara" : "Pasta carbonara",
+        "Salad" : "Salad",
+        "Cheeseburguer" : "Cheeseburguer",
+        "Lobster bisque" : "Lobster bisque",
+        "Tortas" : "Tortas",
+        "Gyros" : "Gyros",
+        "Yakisoba" : "Yakisoba",
+        "Fondue" : "Fondue",
+        "Bibimbap" : "Bibimbap",
+        "Fajita" : "Fajita",
+        "Pho" : "Pho",
+        "Quiche" : "Quiche",
+        "Ramen" : "Ramen",
+        "Chicken croquetas" : "Chicken croquetas"
+    },
+    "ingredients":{
+        "rice": "Rice",
+        "chicken" : "Chicken",
+        "tomato" : "Tomato",
+        "mushroom": "Mushroom",
+        "cheese": "Cheese",
+        "wine" : "Wine",
+        "pasta": "Pasta",
+        "onion" : "Onion",
+        "meat" : "Meat",
+        "seafood": "Seafood",
+        "carrot": "Carrot",
+        "curry": "Curry",
+        "bacon": "Bacon",
+        "leafygreen": "Leafy green",
+        "olives": "Olive",
+        "egg": "Egg",
+        "bread": "Bread",
+        "rabbit": "Rabbit",
+        "bean": "Bean",
+        "fish" : "Fish",
+        "pepper" : "Pepper",
+        "milk" : "Milk",
+        "butter" : "Butter",
+        "avocado" : "Avocado",
+        "beef" : "Beef",
+        "pork" : "Pork",
+        "wrap" : "Wrap",
+        "alcohol" : "Alcohol",
+        "broth" : "Broth",
+        "garlic": "Garlic",
+        "" : ""
+    },
+    "homePage":{
+        "inputPlaceholder": "Start typing"
+    },
+    "settingsPage":{
+        "settingsTitle" : "Settings",
+        "language": "Language",
+        "darkMode": "Dark Mode",
+        "highContrast": "High Contrast Mode"
+    },
+    "statisticsPage":{
+        "statisticsTitle": "Statistics",
+        "played": "Played",
+        "wins" : "Wins",
+        "streak" : "Streak",
+        "max" : "Max",
+        "guessTitle" : "Guess Distribution",
+        "share" : "Share it!",
+        "nextIn" : "NEXT RECIPLE IN"
+    },
     "infoPage":{
-        "infoTitle": "How to play"
+        "infoTitle": "How to play",
+        "intro1-p1": "Guess the daily",
+        "intro1-p2": "in 6 tries.",
+        "intro2": "Each guess must be one of the world's most popular dishes. Click the enter button to submit an attempt.",
+        "intro3": "After each guess, the tiles will turn to show the five main ingredients of the guessed dish - colored green if they coincide with these of the solution.",
+        "example": "Example",
+        "example1": "When guessing \"Lasagne\" the pasta and cheese ingredients turned green. These are present in today's RECIPLE!",
+        "example2": "Second guess is \"pasta bolognesa\", we discovered a new ingredient!",
+        "example3": "Next guess is \"pasta carbonara\", which was the RECIPLE of the day. Tasty!",
+        "newReciple": "A new RECIPLE will be available every day!",
+        "inspiredBy-p1": "RECIPLE has been inspired by",
+        "inspiredBy-p2": "created by"
     }
+
+
 }

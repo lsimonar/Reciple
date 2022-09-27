@@ -3,23 +3,23 @@
         <i mat-icon-button mat-dialog-close class="fa-sharp fa-solid fa-circle-xmark" [class.inverted]="isDarkMode"></i>
     </button>
 </div>
-<h2 mat-dialog-title >Settings</h2>
-<div style="padding: 20%;">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <span>{{ 'settingsPage.languageTitle' | translate }}</span>  
+<h2 mat-dialog-title >{{ 'settingsPage.settingsTitle' | translate }}</h2>
+<div style="padding: 10%;">
+    <div style="margin-bottom: 20px;" fxLayout="row" fxLayoutAlign="space-between center">
+        <span>{{ 'settingsPage.language' | translate }}: </span>  
         <select #selLang class="custom-select" (change)="changeLanguage(selLang.value)" [(ngModel)]='lang'>
             <option *ngFor="let language of availableLanguages" [value]="language">{{ language }}</option>
         </select>
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <span>Dark mode: </span>
+    <div style="margin-bottom: 20px;" fxLayout="row" fxLayoutAlign="space-between center">
+        <span>{{ 'settingsPage.darkMode' | translate }}: </span>
         <label class="switch">
             <input type="checkbox" (click)="darkModeChange()" [checked]="isDarkMode">
             <span class="normal-slider"></span>
         </label>
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <span>High Contrast: </span>
+    <div style="margin-bottom: 20px;" fxLayout="row" fxLayoutAlign="space-between center">
+        <span>{{ 'settingsPage.highContrast' | translate }}: </span>
         <label class="switch">
             <input type="checkbox" (click)="highContrastChange()" [checked]="isHighContrast">
             <span class="normal-slider"></span>

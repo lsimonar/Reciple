@@ -35,7 +35,7 @@
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
         -khtml-border-radius: 50%;
-        outline: 1.7px solid grey;
+        outline: 1.5px solid grey;
     }
 
     &.wrong-guess::after{
@@ -146,21 +146,21 @@
     padding: 0 5px 0;
     min-width: 30px;
     margin-bottom: -4.5px;
-    border: 1.7px solid grey;
+    border: 1.5px solid grey;
     border-radius: 5px;
     font-size:13px;
 }
 
 .right-guess{
     background-color: #73d25d7f;
-    outline: 1.7px solid grey;
+    outline: 1.5px solid grey;
     &.high-contrast{
         background-color: #f5783a8d;
     }
 }
 .wrong-guess{
     background-color: rgba(255, 0, 0, 0.326);
-    outline: 1.7px solid grey;
+    outline: 1.5px solid grey;
     &.high-contrast{
         background-color: #85c1f994;
     }
@@ -194,7 +194,7 @@
     background-color: white;
     text-align: center;
     padding: 5px 5px;
-    border: 1.7px solid grey;
+    border: 1.5px solid grey;
    
     /* Position the tooltip text - see examples below! */
     position: absolute;

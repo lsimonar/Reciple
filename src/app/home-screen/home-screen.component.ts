@@ -189,7 +189,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   }
 
   openInfoDialog(){
-    this.dialog.open(InfoDialogComponent, {width: '450px', height: '90vh', maxHeight : '90vh'});
+    this.dialog.open(InfoDialogComponent, {width: '450px', maxWidth: '100vw', height: '90vh', maxHeight : '90vh'});
   }
 
   onChange(){
@@ -227,17 +227,22 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     const filterValue = this.normalizeValue(value);
     return this.recipeList.filter(recipe => {
       const guessedRecipes = this.todaysGuesses?.attempts?.map(a => a.recipe.toLowerCase());
+      const translatedRecipe: string = this.translate.instant('recipe.'+recipe).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       if(guessedRecipes && guessedRecipes.length){
-        return this.normalizeValue(recipe).toLowerCase().includes(filterValue)
+        return this.normalizeValue(translatedRecipe).toLowerCase().includes(filterValue)
                && guessedRecipes.indexOf(recipe.toLowerCase()) == -1
       } else{
-        return this.normalizeValue(recipe).toLowerCase().includes(filterValue);
+        return this.normalizeValue(translatedRecipe).toLowerCase().includes(filterValue);
       }
     });
   }
 
   normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
+  }
+
+  displayCountryFn(value?: any) {      
+    return value ? this.translate.instant('recipe.'+value) : undefined;
   }
 
   getRecipeList(): string[] {

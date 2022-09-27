@@ -3,28 +3,28 @@
     <i mat-icon-button mat-dialog-close class="fa-sharp fa-solid fa-circle-xmark" [class.inverted]="isDarkMode"></i>
 </button>
 </div>
-<h2 mat-dialog-title class="dialog-titles">Statistics</h2>
+<h2 mat-dialog-title class="dialog-titles">{{'statisticsPage.statisticsTitle' | translate}}</h2>
 <mat-dialog-content class="stats-ctn">
     <div fxLayout="row" fxLayoutAlign="start start">
         <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
             <span class="stats-number">{{playedGames}}</span>
-            <span>Played</span>
+            <span>{{'statisticsPage.played' | translate}}</span>
         </div>
         <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
             <span class="stats-number">{{wins}}</span>
-            <span>Wins</span>
+            <span>{{'statisticsPage.wins' | translate}}</span>
         </div>
         <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
             <span class="stats-number">{{currentStreak}}</span>
-            <span>Current<br>Streak</span>
+            <span>Current<br>{{'statisticsPage.streak' | translate}}</span>
         </div>
         <div fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
             <span class="stats-number">{{maxStreak}}</span>
-            <span>Max<br>Streak</span>
+            <span>{{'statisticsPage.max' | translate}}<br>{{'statisticsPage.streak' | translate}}</span>
         </div>
     </div>
 </mat-dialog-content>
-<h2 mat-dialog-title>Guess distribution</h2>
+<h2 mat-dialog-title>{{'statisticsPage.guessTitle' | translate}}</h2>
 <mat-dialog-content>
     <ol>
         <div *ngFor="let item of [1, 2, 3, 4, 5, 6]" fxLayout="row" fxLayoutAlign="start center">
@@ -38,7 +38,7 @@
     <div  *ngIf="todaysHistoric?.complete" fxLayout="column" fxLayoutAlign="center center">
         <app-countdown [nextDate]="nextCountryDate"></app-countdown>
         <button fxLayoutAlign="center center" class="share-button" (click)="notifyClipboard()" [cdkCopyToClipboard]="getSummaryToClipboard()">
-            Share it! <mat-icon style="margin-left: 10px">content_copy</mat-icon>
+            {{'statisticsPage.share' | translate}} <mat-icon style="margin-left: 10px">content_copy</mat-icon>
         </button>
     </div>
 </mat-dialog-content>

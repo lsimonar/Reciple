@@ -152,7 +152,7 @@ export const recipes = [
     },
     {
         "id"         : 11,
-        "name"       : "Lobster Bisque",
+        "name"       : "Lobster bisque",
         "ingredients": ['seafood', 'onion', 'carrot', 'leafygreen', 'butter'],
         "cookTime"   : 0.5,
         "serves"     : 4,
@@ -233,15 +233,6 @@ export const recipes = [
     },
     {
         "id"         : 20,
-        "name"       : "Sushi",
-        "ingredients": ['rice', 'milk', 'cheese', 'bacon', 'butter'],
-        "cookTime"   : 0.5,
-        "serves"     : 4,
-        "foodType"   : "main",
-        "recipeUrl"  : ""
-    },
-    {
-        "id"         : 21,
         "name"       : "Ramen",
         "ingredients": ['pasta', 'pork', 'broth', 'egg', 'mushrooms'],
         "cookTime"   : 0.5,
@@ -249,7 +240,7 @@ export const recipes = [
         "foodType"   : "main"
     },
     {
-        "id"         : 22,
+        "id"         : 21,
         "name"       : "Chicken croquetas",
         "ingredients": ['chicken', 'milk', 'butter', 'egg', 'bread'],
         "cookTime"   : 2,
