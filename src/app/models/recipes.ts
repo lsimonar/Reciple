@@ -56,7 +56,16 @@ export const ingredientToEmoji = {
     'wrap' : '🌯',
     'alcohol' : '🍶',
     'broth' : '🥣',
-    'garlic': '🧄'
+    'garlic': '🧄',
+    'flour' : '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/flour.svg" alt="Flour"/>',
+    'celery': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/celery.svg" alt="Celery"/>',
+    'cinnamon': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/cinnamon.svg" alt="Cinnamon"/>',
+    'yeast': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/yeast.png" alt="Yeast"/>',
+    'salt': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/salt.svg" alt="Salt"/>',
+    'sugar': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/sugar.svg" alt="Sugar"/>',
+    'oil': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/oil.png" alt="Oil"/>',
+    'jelly': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/jelly.svg" alt="Jelly"/>'
+
 } 
 
 export const recipes = [
@@ -246,17 +255,16 @@ export const recipes = [
         "cookTime"   : 2,
         "cookMethod" : "fried",
         "foodType"   : "side"
-    }
-    /*
+    },
     {
-        "id"         : 11,
+        "id"         : 22,
         "name"       : "pretzel",
-        "ingredients": ['flour', 'yeast', 'butter', 'sugar', 'salt'],
+        "ingredients": ['celery', 'cinnamon', 'salt', 'sugar', 'yeast'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
         "recipeUrl"  : ""
-    },
+    },/*
         {
         "id"         : 0,
         "name"       : "Spinach caneloni",

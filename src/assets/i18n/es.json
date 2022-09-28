@@ -20,7 +20,8 @@
         "Pho" : "Pho",
         "Quiche" : "Quiche",
         "Ramen" : "Ramen",
-        "Chicken croquetas" : "Croquetas de pollo"
+        "Chicken croquetas" : "Croquetas de pollo",
+        "Pretzel" : "Pretzel"
     },
     "ingredients":{
         "rice": "Arroz",
@@ -53,6 +54,14 @@
         "alcohol" : "Alcohol",
         "broth" : "Caldo",
         "garlic": "Ajo",
+        "flour" : "Harina",
+        "celery": "Apio",
+        "cinnamon": "Canela",
+        "yeast": "Levadura",
+        "salt": "Sal",
+        "sugar": "Azucar",
+        "oil": "Aceite",
+        "jelly": "Gelatina",
         "" : ""
 
     },

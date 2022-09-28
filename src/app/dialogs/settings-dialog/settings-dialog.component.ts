@@ -33,7 +33,7 @@ export class SettingsDialogComponent implements OnInit, OnChanges {
       this.isHighContrast = settings.isHighContrast;
       this.lang = settings.language;
       this.currentLanguage = settings.language;
-    })
+    });
   }
 
   ngOnInit(): void {

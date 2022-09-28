@@ -20,8 +20,8 @@
                                 </div>
                                 <div class="reciple-tile-back" 
                                     [ngClass]="attempt <=j? '' : guess[j][i]? 'right-guess' : 'wrong-guess'"
-                                    [class.high-contrast]="isHighContrast">
-                                    {{guessList[j][i]}}
+                                    [class.high-contrast]="isHighContrast" >
+                                    <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(guessList[j][i])></span>
                                 </div>
                             </div>
                         </div>

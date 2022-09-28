@@ -16,6 +16,7 @@ import { RecipleSettings } from '../store/reciple.reducer';
 import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
 import { dailyReciples } from '../models/dailyReciples';
 import { TranslateService } from '@ngx-translate/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export const recipleAvailableLangs = ['en', 'es'];
 
@@ -63,6 +64,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     private store: Store,
     public dialog: MatDialog,
     public translate: TranslateService,
+    public sanitizer: DomSanitizer
   ) {
     translate.addLangs(recipleAvailableLangs);
     this.store.dispatch(setAvailableLanguages({availableLanguages: recipleAvailableLangs}));

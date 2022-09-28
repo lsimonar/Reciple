@@ -20,7 +20,8 @@
         "Pho" : "Pho",
         "Quiche" : "Quiche",
         "Ramen" : "Ramen",
-        "Chicken croquetas" : "Chicken croquetas"
+        "Chicken croquetas" : "Chicken croquetas",
+        "Pretzel" : "Pretzel"
     },
     "ingredients":{
         "rice": "Rice",
@@ -53,6 +54,14 @@
         "alcohol" : "Alcohol",
         "broth" : "Broth",
         "garlic": "Garlic",
+        "flour" : "Flour",
+        "celery": "Celery",
+        "cinnamon": "Cinnamon",
+        "yeast": "Yeast",
+        "salt": "Salt",
+        "sugar": "Sugar",
+        "oil": "Oil",
+        "jelly": "Jelly",
         "" : ""
     },
     "homePage":{
