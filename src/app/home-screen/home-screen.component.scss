@@ -47,7 +47,7 @@
 }
 
 .home-screen-ctn{
-    margin-top: 2em;
+    margin-top: 1em;
 
     .img-ctn{
         
@@ -186,6 +186,7 @@
   .tooltip .tooltiptext {
     visibility: hidden;
     width: fit-content;
+    word-break:keep-all;
     min-width: 2.35em;
     height: 2.35em;
     line-height: 2.35em;
@@ -205,3 +206,19 @@
   .tooltip:hover .tooltiptext {
     visibility: visible;
   }
+
+
+h2{
+    font-size: 20px;
+    font-family: 'Sofia';
+    margin: 0px;
+    color:rgb(255, 139, 139);
+}
+
+.ingredients-ctn{
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    width: 90%;
+    padding: 5px;
+    height: 20vh;
+}

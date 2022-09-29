@@ -27,7 +27,7 @@
 <h2 mat-dialog-title>{{'statisticsPage.guessTitle' | translate}}</h2>
 <mat-dialog-content>
     <ol>
-        <div *ngFor="let item of [1, 2, 3, 4, 5, 6]" fxLayout="row" fxLayoutAlign="start center">
+        <div style="margin-right: 30px" *ngFor="let item of [1, 2, 3, 4, 5, 6]" fxLayout="row" fxLayoutAlign="start center">
         <li  key={item} ></li>
         <div role="stats-bar" style="--percentage:{{countDistr[item - 1]}}%;" 
              [ngClass]="todaySolvedIn === item? 'highlight-bar' : ''" fxLayoutAlign="end center">
@@ -37,9 +37,14 @@
     </ol>
     <div *ngIf="todaysHistoric?.complete" fxLayout="column" fxLayoutAlign="center center">
         <app-countdown [nextDate]="nextCountryDate"></app-countdown>
-        <button fxLayoutAlign="center center" class="share-button" (click)="notifyClipboard()" [cdkCopyToClipboard]="getSummaryToClipboard()">
-            {{'statisticsPage.share' | translate}} <mat-icon style="margin-left: 10px">content_copy</mat-icon>
-        </button>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <button fxLayoutAlign="center center" class="share-button" (click)="notifyClipboard()" [cdkCopyToClipboard]="getSummaryToClipboard()">
+                {{'statisticsPage.share' | translate}} <mat-icon style="margin-left: 5px; font-size: 20px;">content_copy</mat-icon>
+            </button>
+            <a fxLayoutAlign="center center" class="recipe-url" href="{{todaySolution.recipeUrl}}" target="_blank">
+                {{'statisticsPage.recipe' | translate}} <mat-icon style="margin-left: 3px"> restaurant_menu</mat-icon>
+            </a>
+        </div>
     </div>
 </mat-dialog-content>
 

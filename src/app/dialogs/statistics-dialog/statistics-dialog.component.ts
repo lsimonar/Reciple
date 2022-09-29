@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppService } from 'src/app/app.service';
 import { TodayDateHelper } from 'src/app/helpers/todayDateHelper';
-import { DailyGuesses, GameHistoric, RecipleInterface } from 'src/app/models/recipes';
+import { recipes, DailyGuesses, GameHistoric, RecipleInterface } from 'src/app/models/recipes';
 import { selectGameHistoric, selectIsDarkMode } from 'src/app/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { dailyReciples } from 'src/app/models/dailyReciples';
+
 
 @Component({
   selector: 'app-statistics-dialog',
@@ -17,6 +19,7 @@ export class StatisticsDialogComponent implements OnInit {
   isDarkMode : boolean = false;
   todayDate : string = "";
   todaySolvedIn : number = 0;
+  todaySolution : RecipleInterface = {} as RecipleInterface;
 
   playedGames : number = 0;
   wins : number = 0;
@@ -49,6 +52,9 @@ export class StatisticsDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.todayDate = TodayDateHelper.getTodaysDateString();
+    const recipeId : number = dailyReciples[this.todayDate as keyof typeof dailyReciples].recipe
+    this.todaySolution = recipes.find(c => c.id === recipeId)!;
+
     this.getValuesFromGameHistoric();
     this.getStreak();
     this.todaysHistoric = this.gameHistoric[this.todayDate];
@@ -124,8 +130,12 @@ export class StatisticsDialogComponent implements OnInit {
     let summary = '';
     let todaysHistoric = this.gameHistoric[this.todayDate]
     if(todaysHistoric) {
-        summary += `#Reciple\n`;
-        summary += 'Guessed in ' + todaysHistoric.attempts.length + ' tries.\n\n';
+        summary += `#Reciple `;
+        if(todaysHistoric.solved){
+          summary += String(todaysHistoric.number) + ' ' + todaysHistoric.attempts.length + '/6\n\n';
+        } else{
+          summary += String(todaysHistoric.number) + ' X/6\n\n';
+        }
 
       todaysHistoric.attempts.forEach(attempt => {
         attempt.ingredientsHit.forEach(hit => {

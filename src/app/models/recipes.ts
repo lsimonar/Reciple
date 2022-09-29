@@ -9,6 +9,7 @@ export interface RecipleInterface {
     cookTime   : number,
     serves : number,
     foodType   : string,
+    country    : string,
     recipeUrl : string,
 }
 
@@ -57,6 +58,11 @@ export const ingredientToEmoji = {
     'alcohol' : '🍶',
     'broth' : '🥣',
     'garlic': '🧄',
+    'apple' : '🍏',
+    'water' : '🥤',
+    'lemon' : '🍋',
+    'potato' : '🥔',
+    'chocolate' : '🍫',
     'flour' : '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/flour.svg" alt="Flour"/>',
     'celery': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/celery.svg" alt="Celery"/>',
     'cinnamon': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/cinnamon.svg" alt="Cinnamon"/>',
@@ -64,7 +70,8 @@ export const ingredientToEmoji = {
     'salt': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/salt.svg" alt="Salt"/>',
     'sugar': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/sugar.svg" alt="Sugar"/>',
     'oil': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/oil.png" alt="Oil"/>',
-    'jelly': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/jelly.svg" alt="Jelly"/>'
+    'jelly': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/jelly.svg" alt="Jelly"/>',
+    'soy' : '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/soy.png" alt="Soy Sauce"/>'
 
 } 
 
@@ -76,7 +83,8 @@ export const recipes = [
         "cookTime"   : 2,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "spain",
+        "recipeUrl"  : "https://www.tasteatlas.com/paella/recipe"
     },
     {
         "id"         : 2,
@@ -85,43 +93,49 @@ export const recipes = [
         "cookTime"   : 1,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.tasteatlas.com/risotto/recipe"
 
     },
     {
         "id"         : 3,
         "name"       : "Pasta bolognesa",
-        "ingredients": ['pasta', 'tomato', 'beef', 'onion', 'cheese'],
+        "ingredients": ['pasta', 'tomato', 'beef', 'onion', 'butter'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.tasteatlas.com/bolognese/recipe"
     },
     {
         "id"         : 4,
         "name"       : "Seafood paella",
-        "ingredients": ['rice', 'tomato', 'seafood', 'pepper', 'onion'],
+        "ingredients": ['rice', 'tomato', 'seafood', 'pepper', 'broth'],
         "cookTime"   : 2,
         "serves"     : 4,
         "foodType"   : "main",
+        "country"    : "spain",
         "recipeUrl"  : ""
     },
     {
         "id"         : 5,
-        "name"       : "Meat caneloni",
+        "name"       : "beef cannelloni",
         "ingredients": ['beef', 'pasta', 'milk', 'butter', 'cheese'],
         "cookTime"   : 1,
         "cookMethod" : "oven",
-        "foodType"   : "main"
+        "foodType"   : "main",
+        "country"    : "italy, spain",
+        "recipeUrl"  : "https://www.greatitalianchefs.com/recipes/cannelloni-di-carne-recipe"
     },
     {
         "id"         : 6,
         "name"       : "Katso Curry",
-        "ingredients": ['chicken', 'rice', 'curry', 'carrot', 'onion'],
+        "ingredients": ['rice', 'chicken', 'curry', 'carrot', 'onion'],
         "cookTime"   : 1,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "japan",
+        "recipeUrl"  : "https://thewoksoflife.com/chicken-katsu-curry-rice/"
     },
     {
         "id"         : 7,
@@ -130,7 +144,8 @@ export const recipes = [
         "cookTime"   : 1,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.tasteatlas.com/lasagne/recipe"
     },
     {
         "id"         : 8,
@@ -139,16 +154,18 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.tasteatlas.com/carbonara/recipe"
     },
     {
         "id"         : 9,
-        "name"       : "Salad",
-        "ingredients": ['tomato', 'leafygreen', 'onion', 'olives', 'pepper'],
+        "name"       : "caesar salad",
+        "ingredients": ['bread', 'leafygreen', 'egg', 'cheese', 'garlic'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "mexico",
+        "recipeUrl"  : "https://www.tasteatlas.com/caesar-salad/recipe"
     },
     {
         "id"         : 10,
@@ -157,16 +174,18 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "usa",
+        "recipeUrl"  : "https://www.tasteatlas.com/cheeseburger/recipe"
     },
     {
         "id"         : 11,
         "name"       : "Lobster bisque",
-        "ingredients": ['seafood', 'onion', 'carrot', 'leafygreen', 'butter'],
+        "ingredients": ['seafood', 'butter', 'onion', 'carrot', 'celery'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "france",
+        "recipeUrl"  : "https://www.tasteatlas.com/bisque/recipe"
     },
     {
         "id"         : 12,
@@ -175,7 +194,8 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "mexico",
+        "recipeUrl"  : "https://www.tasteatlas.com/tortas/recipe"
     },
     {
         "id"         : 13,
@@ -184,16 +204,18 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "greece",
+        "recipeUrl"  : "https://www.tasteatlas.com/gyros/recipe"
     },
     {
         "id"         : 14,
         "name"       : "Yakisoba",
-        "ingredients": ['pasta', 'pork', 'leafygreen', 'onion', 'carrot'],
+        "ingredients": ['pasta', 'pork', 'soy', 'onion', 'carrot'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "japan",
+        "recipeUrl"  : "https://www.tasteatlas.com/yakisoba/recipe"
     },
     {
         "id"         : 15,
@@ -202,7 +224,8 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "switzerland, france",
+        "recipeUrl"  : "https://www.tasteatlas.com/fondue"
     },
     {
         "id"         : 16,
@@ -211,7 +234,8 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "south korea",
+        "recipeUrl"  : "https://www.tasteatlas.com/bibimbap"
     },
     {
         "id"         : 17,
@@ -220,7 +244,8 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "mexico",
+        "recipeUrl"  : "https://www.tasteatlas.com/fajitas/recipe"
     },
     {
         "id"         : 18,
@@ -229,7 +254,8 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "vietnam",
+        "recipeUrl"  : "https://www.tasteatlas.com/pho"
     },
     {
         "id"         : 19,
@@ -238,15 +264,18 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
+        "country"    : "france",
+        "recipeUrl"  : "https://www.tasteatlas.com/quiche/recipe"
     },
     {
         "id"         : 20,
         "name"       : "Ramen",
-        "ingredients": ['pasta', 'pork', 'broth', 'egg', 'mushrooms'],
+        "ingredients": ['pasta', 'pork', 'broth', 'egg', 'mushroom'],
         "cookTime"   : 0.5,
         "cookMethod" : "hob",
-        "foodType"   : "main"
+        "foodType"   : "main",
+        "country"    : "japan",
+        "recipeUrl"  : "https://www.tasteatlas.com/ramen/recipe"
     },
     {
         "id"         : 21,
@@ -254,72 +283,307 @@ export const recipes = [
         "ingredients": ['chicken', 'milk', 'butter', 'egg', 'bread'],
         "cookTime"   : 2,
         "cookMethod" : "fried",
-        "foodType"   : "side"
+        "foodType"   : "side",
+        "country"    : "spain",
+        "recipeUrl"  : "https://www.tasteatlas.com/croquetas"
     },
     {
         "id"         : 22,
         "name"       : "pretzel",
-        "ingredients": ['celery', 'cinnamon', 'salt', 'sugar', 'yeast'],
+        "ingredients": ['flour', 'yeast', 'butter', 'sugar', 'salt'],
         "cookTime"   : 0.5,
-        "serves"     : 4,
         "foodType"   : "main",
-        "recipeUrl"  : ""
-    },/*
-        {
-        "id"         : 0,
-        "name"       : "Spinach caneloni",
-        "ingredients": ['pasta', 'spinach', 'milk', 'cheese', 'pinenuts'],
-        "cookTime"   : 2,
-        "cookMethod" : "fire",
-        "foodType"   : "main"
+        "country"    : "germany",
+        "recipeUrl"  : "https://www.tasteatlas.com/pretzel/recipe"
     },
     {
-        "id"         : 11,
-        "name"       : "Sushi",
-        "ingredients": ['rice', 'fish', 'algae', 'rice vinegar', 'soy sauce'],
+        "id"         : 23,
+        "name"       : "croissant",
+        "ingredients": ['flour', 'butter', 'milk', 'egg', 'sugar'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main"
+        "foodType"   : "main",
+        "country"    : "france",
+        "recipeUrl"  : "https://www.tasteatlas.com/croissant/recipe"
     },
     {
-        "id"         : 12,
-        "name"       : "Fish and Chips",
-        "ingredients": ['fish', 'potatoes', 'beer', 'flour'],
-        "cookTime"   : 1,
-        "cookMethod" : "hob",
-        "foodType"   : "main"
-    },
-
-    {
-        "id"         : 15,
-        "name"       : "Spinach and Ricotta Caneloni",
-        "ingredients": ['spinach', 'cheese', 'bechamel sauce', 'pasta'],
-        "cookTime"   : 0.5,
-        "cookMethod" : "hob",
-        "foodType"   : "main"
+        "id"         : 24,
+        "name"       : "crumble",
+        "ingredients": ['apple', 'flour', 'butter', 'sugar', 'cinnamon'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "uk",
+        "recipeUrl"  : "https://www.tasteatlas.com/crumble/recipe"   
     },
     {
-        "id"         : 17,
-        "name"       : "Patatas bravas",
-        "ingredients": ['potatoes', 'tomato sauce'],
-        "cookTime"   : 0.5,
-        "cookMethod" : "hob",
-        "foodType"   : "main"
+        "id"         : 25,
+        "name"       : "pizza margarita",
+        "ingredients": ['flour', 'water', 'yeast', 'tomato', 'cheese'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.tasteatlas.com/margherita/recipe"   
     },
     {
-        "id"         : 19,
-        "name"       : "Escudella",
-        "ingredients": ['minced meat', 'broth', 'pasta'],
-        "cookTime"   : 0.5,
-        "cookMethod" : "hob",
-        "foodType"   : "main"
+        "id"         : 26,
+        "name"       : "eclair",
+        "ingredients": ['flour', 'egg', 'butter', 'milk', 'sugar'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "france",
+        "recipeUrl"  : "https://www.tasteatlas.com/eclair/recipe"   
     },
     {
-        "id"         : 20,
-        "name"       : "Chicken Fajitas",
-        "ingredients": ['Chicken', 'tortilla wrap', 'onion', 'pepper', 'tomato sauce'],
-        "cookTime"   : 0.5,
-        "cookMethod" : "hob",
-        "foodType"   : "main"
-    }*/
+        "id"         : 27,
+        "name"       : "apple pie",
+        "ingredients": ['apple', 'flour', 'butter', 'sugar', 'cinnamon'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "usa",
+        "recipeUrl"  : "https://www.tasteatlas.com/apple-pie/recipe"   
+    },
+    {
+        "id"         : 28,
+        "name"       : "churros",
+        "ingredients": ['flour', 'water', 'oil', 'sugar', 'salt'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "spain",
+        "recipeUrl"  : "https://www.tasteatlas.com/churros/recipe"   
+    },
+    {
+        "id"         : 29,
+        "name"       : "spring roll",
+        "ingredients": ['flour', 'egg', 'mushroom', 'carrot', 'pork'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "china",
+        "recipeUrl"  : "https://www.tasteatlas.com/spring-rolls/recipe"   
+    },
+    {
+        "id"         : 30,
+        "name"       : "ceviche",
+        "ingredients": ['fish', 'lemon', 'pepper', 'onion', 'salt'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "peru",
+        "recipeUrl"  : "https://www.tasteatlas.com/ceviche/recipe"   
+    },
+    {        
+        "id"         : 31,
+        "name"       : "doughnut",
+        "ingredients": ['flour', 'butter', 'egg', 'sugar', 'milk'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "usa",
+        "recipeUrl"  : "https://www.tasteatlas.com/doughnut/recipe"   
+    },
+    {        
+        "id"         : 32,
+        "name"       : "guacamole",
+        "ingredients": ['avocado', 'lemon', 'onion', 'pepper', 'tomato'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "mexico",
+        "recipeUrl"  : "https://www.tasteatlas.com/guacamole/recipe/guacamole-with-tomatoes"   
+    },
+    {        
+        "id"         : 33,
+        "name"       : "tonkatsu",
+        "ingredients": ['pork', 'flour', 'bread', 'egg', 'oil'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "japan",
+        "recipeUrl"  : "https://www.tasteatlas.com/tonkatsu/recipe"   
+    },
+    {        
+        "id"         : 34,
+        "name"       : "mochi",
+        "ingredients": ['flour', 'water', 'sugar', 'bean', 'potato'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "japan",
+        "recipeUrl"  : "https://www.tasteatlas.com/mochi/recipe"   
+    },
+    {        
+        "id"         : 35,
+        "name"       : "shrimp wonton",
+        "ingredients": ['flour', 'egg', 'seafood', 'onion', 'soy'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "china",
+        "recipeUrl"  : "https://www.tasteatlas.com/wonton"   
+    },
+    {        
+        "id"         : 36,
+        "name"       : "spanish omelette",
+        "ingredients": ['egg', 'potato', 'onion', 'salt', 'oil'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "spain",
+        "recipeUrl"  : "https://spanishsabores.com/best-spanish-omelet-recipe/"   
+    },
+    {        
+        "id"         : 37,
+        "name"       : "kimchi",
+        "ingredients": ['leafygreen', 'onion', 'fish', 'seafood', 'garlic'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "south korea",
+        "recipeUrl"  : "https://www.tasteatlas.com/kimchi/recipe"   
+    },
+    {        
+        "id"         : 38,
+        "name"       : "cupcake",
+        "ingredients": ['flour', 'butter', 'egg', 'milk', 'sugar'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "usa",
+        "recipeUrl"  : "https://www.tasteatlas.com/cupcake/recipe"   
+    },
+    {        
+        "id"         : 39,
+        "name"       : "catalan cream",
+        "ingredients": ['milk', 'egg', 'lemon', 'cinnamon', 'sugar'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "spain",
+        "recipeUrl"  : "https://www.jamieoliver.com/recipes/eggs-recipes/crema-catalana/"   
+    },
+    {        
+        "id"         : 40,
+        "name"       : "bruschetta",
+        "ingredients": ['bread', 'tomato', 'garlic', 'oil', 'salt'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.delish.com/uk/cooking/recipes/a30165416/best-bruschetta-tomato-recipe/"   
+    },
+    {        
+        "id"         : 41,
+        "name"       : "english breakfast",
+        "ingredients": ['bean', 'pork', 'tomato', 'egg', 'mushroom'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "uk",
+        "recipeUrl"  : "https://www.tasteatlas.com/english-breakfast/recipe"   
+    },
+    {        
+        "id"         : 42,
+        "name"       : "onion soup",
+        "ingredients": ['onion', 'flour', 'butter', 'broth', 'bread'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "france",
+        "recipeUrl"  : "https://www.tasteatlas.com/soupe-a-loignon/recipe"   
+    },
+    {        
+        "id"         : 43,
+        "name"       : "custard tart",
+        "ingredients": ['flour', 'butter', 'milk', 'egg', 'sugar'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "portugal",
+        "recipeUrl"  : "https://www.tasteatlas.com/pastel-de-nata/recipe"   
+    },
+    {        
+        "id"         : 43,
+        "name"       : "spaghetti alla puttanesca",
+        "ingredients": ['pasta', 'tomato', 'olive', 'fish', 'garlic'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.tasteatlas.com/pastel-de-nata/recipe"   
+    },
+    {        
+        "id"         : 44,
+        "name"       : "french toast",
+        "ingredients": ['bread', 'milk', 'egg', 'sugar', 'butter'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "france",
+        "recipeUrl"  : "https://tastesbetterfromscratch.com/classic-french-toast/"   
+    },
+    {        
+        "id"         : 45,
+        "name"       : "gazpacho",
+        "ingredients": ['bread', 'tomato', 'onion', 'pepper', 'oil'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "spain",
+        "recipeUrl"  : "https://www.tasteatlas.com/gazpacho/recipe"   
+    },
+    {        
+        "id"         : 46,
+        "name"       : "souffle au chocolat",
+        "ingredients": ['chocolate', 'flour', 'egg', 'milk', 'sugar'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "france",
+        "recipeUrl"  : "https://www.tasteatlas.com/chocolate-souffle/recipe"   
+    },
+    {        
+        "id"         : 47,
+        "name"       : "mousse au chocolat",
+        "ingredients": ['chocolate', 'egg', 'butter', 'sugar', 'salt'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "france",
+        "recipeUrl"  : "https://www.tasteatlas.com/mousse-au-chocolat/recipe"   
+    },
+    {        
+        "id"         : 48,
+        "name"       : "minestrone",
+        "ingredients": ['pasta', 'onion', 'bean', 'potato', 'water'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.tasteatlas.com/minestrone/recipe"   
+    },
+    {
+        "id"         : 49,
+        "name"       : "ratatouille",
+        "ingredients": ['leafygreen', 'pepper', 'tomato', 'onion', 'garlic'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "france",
+        "recipeUrl"  : "https://www.tasteatlas.com/ratatouille/recipe" 
+    },
+    {
+        "id"         : 50,
+        "name"       : "cannoli",
+        "ingredients": ['flour', 'cheese', 'chocolate', 'sugar', 'egg'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "main",
+        "country"    : "italy",
+        "recipeUrl"  : "https://www.tasteatlas.com/cannoli/recipe" 
+    }
 ] as Array<RecipleInterface>
