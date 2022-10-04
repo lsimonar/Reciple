@@ -163,7 +163,7 @@ export const recipes = [
         "ingredients": ['bread', 'leafygreen', 'egg', 'cheese', 'garlic'],
         "cookTime"   : 0.5,
         "serves"     : 4,
-        "foodType"   : "main",
+        "foodType"   : "starter",
         "country"    : "mexico",
         "recipeUrl"  : "https://www.tasteatlas.com/caesar-salad/recipe"
     },
@@ -283,7 +283,7 @@ export const recipes = [
         "ingredients": ['chicken', 'milk', 'butter', 'egg', 'bread'],
         "cookTime"   : 2,
         "cookMethod" : "fried",
-        "foodType"   : "side",
+        "foodType"   : "starter",
         "country"    : "spain",
         "recipeUrl"  : "https://www.tasteatlas.com/croquetas"
     },
@@ -292,7 +292,7 @@ export const recipes = [
         "name"       : "pretzel",
         "ingredients": ['flour', 'yeast', 'butter', 'sugar', 'salt'],
         "cookTime"   : 0.5,
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "germany",
         "recipeUrl"  : "https://www.tasteatlas.com/pretzel/recipe"
     },
@@ -302,7 +302,7 @@ export const recipes = [
         "ingredients": ['flour', 'butter', 'milk', 'egg', 'sugar'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/croissant/recipe"
     },
@@ -312,7 +312,7 @@ export const recipes = [
         "ingredients": ['apple', 'flour', 'butter', 'sugar', 'cinnamon'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "uk",
         "recipeUrl"  : "https://www.tasteatlas.com/crumble/recipe"   
     },
@@ -332,7 +332,7 @@ export const recipes = [
         "ingredients": ['flour', 'egg', 'butter', 'milk', 'sugar'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/eclair/recipe"   
     },
@@ -342,7 +342,7 @@ export const recipes = [
         "ingredients": ['apple', 'flour', 'butter', 'sugar', 'cinnamon'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "usa",
         "recipeUrl"  : "https://www.tasteatlas.com/apple-pie/recipe"   
     },
@@ -352,7 +352,7 @@ export const recipes = [
         "ingredients": ['flour', 'water', 'oil', 'sugar', 'salt'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "spain",
         "recipeUrl"  : "https://www.tasteatlas.com/churros/recipe"   
     },
@@ -362,7 +362,7 @@ export const recipes = [
         "ingredients": ['flour', 'egg', 'mushroom', 'carrot', 'pork'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "starter",
         "country"    : "china",
         "recipeUrl"  : "https://www.tasteatlas.com/spring-rolls/recipe"   
     },
@@ -382,7 +382,7 @@ export const recipes = [
         "ingredients": ['flour', 'butter', 'egg', 'sugar', 'milk'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "usa",
         "recipeUrl"  : "https://www.tasteatlas.com/doughnut/recipe"   
     },
@@ -392,7 +392,7 @@ export const recipes = [
         "ingredients": ['avocado', 'lemon', 'onion', 'pepper', 'tomato'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "starter",
         "country"    : "mexico",
         "recipeUrl"  : "https://www.tasteatlas.com/guacamole/recipe/guacamole-with-tomatoes"   
     },
@@ -412,7 +412,7 @@ export const recipes = [
         "ingredients": ['flour', 'water', 'sugar', 'bean', 'potato'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "japan",
         "recipeUrl"  : "https://www.tasteatlas.com/mochi/recipe"   
     },
@@ -422,7 +422,7 @@ export const recipes = [
         "ingredients": ['flour', 'egg', 'seafood', 'onion', 'soy'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "starter",
         "country"    : "china",
         "recipeUrl"  : "https://www.tasteatlas.com/wonton"   
     },
@@ -442,7 +442,7 @@ export const recipes = [
         "ingredients": ['leafygreen', 'onion', 'fish', 'seafood', 'garlic'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "starter",
         "country"    : "south korea",
         "recipeUrl"  : "https://www.tasteatlas.com/kimchi/recipe"   
     },
@@ -452,7 +452,7 @@ export const recipes = [
         "ingredients": ['flour', 'butter', 'egg', 'milk', 'sugar'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "usa",
         "recipeUrl"  : "https://www.tasteatlas.com/cupcake/recipe"   
     },
@@ -462,7 +462,7 @@ export const recipes = [
         "ingredients": ['milk', 'egg', 'lemon', 'cinnamon', 'sugar'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "spain",
         "recipeUrl"  : "https://www.jamieoliver.com/recipes/eggs-recipes/crema-catalana/"   
     },
@@ -472,7 +472,7 @@ export const recipes = [
         "ingredients": ['bread', 'tomato', 'garlic', 'oil', 'salt'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "starter",
         "country"    : "italy",
         "recipeUrl"  : "https://www.delish.com/uk/cooking/recipes/a30165416/best-bruschetta-tomato-recipe/"   
     },
@@ -502,7 +502,7 @@ export const recipes = [
         "ingredients": ['flour', 'butter', 'milk', 'egg', 'sugar'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "portugal",
         "recipeUrl"  : "https://www.tasteatlas.com/pastel-de-nata/recipe"   
     },
@@ -522,7 +522,7 @@ export const recipes = [
         "ingredients": ['bread', 'milk', 'egg', 'sugar', 'butter'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "france",
         "recipeUrl"  : "https://tastesbetterfromscratch.com/classic-french-toast/"   
     },
@@ -532,7 +532,7 @@ export const recipes = [
         "ingredients": ['bread', 'tomato', 'onion', 'pepper', 'oil'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "starter",
         "country"    : "spain",
         "recipeUrl"  : "https://www.tasteatlas.com/gazpacho/recipe"   
     },
@@ -542,7 +542,7 @@ export const recipes = [
         "ingredients": ['chocolate', 'flour', 'egg', 'milk', 'sugar'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/chocolate-souffle/recipe"   
     },
@@ -552,7 +552,7 @@ export const recipes = [
         "ingredients": ['chocolate', 'egg', 'butter', 'sugar', 'salt'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/mousse-au-chocolat/recipe"   
     },
@@ -582,7 +582,7 @@ export const recipes = [
         "ingredients": ['flour', 'cheese', 'chocolate', 'sugar', 'egg'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "dessert",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/cannoli/recipe" 
     }

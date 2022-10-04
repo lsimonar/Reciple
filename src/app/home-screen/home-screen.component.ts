@@ -1,4 +1,4 @@
-import { Component, Renderer2, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, Renderer2, ElementRef, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
 import { Observable, of } from 'rxjs';
@@ -28,6 +28,9 @@ export const recipleAvailableLangs = ['en', 'es'];
 export class HomeScreenComponent implements OnInit, AfterContentChecked {
 
   @ViewChild('recipleInput') input1ElementRef: { nativeElement: any; } | undefined;
+  @ViewChild('starterTab') starterTab: ElementRef | undefined;
+  @ViewChild('mainTab') mainTab: ElementRef | undefined;
+  @ViewChild('dessertsTab') dessertsTab: ElementRef | undefined;
 
   recipes = recipes;
   ingredientToEmoji = ingredientToEmoji;
@@ -38,6 +41,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   isRecipeValid: boolean  = false; 
   guessedRecipe: RecipleInterface = {} as RecipleInterface;
   recipeList   : RecipleInterface[] = [];
+  filteredRecipeList : RecipleInterface[] = [];
   solution = recipes[7];
   todaySolved : boolean = false;
   guessedRecipes : RecipleInterface[] = [];
@@ -124,7 +128,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       startWith(''),
       map(value => this._filter(value || '')),
     );
-
+    this.filteredRecipeList = this.recipeFilter('main');
     let inputButton = document.getElementById("Input");
     inputButton?.addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
@@ -222,7 +226,8 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
           this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
       });
     });
-    this.control.setValue('');    
+    this.control.setValue(''); 
+    this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active')   
   }
 
   _filter(value: string): RecipleInterface[] {
@@ -259,12 +264,44 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   recipeSelectorHandler(event: any, recipe : RecipleInterface) {
     this.isRecipeValid = true;
     this.guessedRecipe = recipe;
-    this.renderer.addClass(event.target, 'recipe-button-active')
-    if(this.prevEvent !== undefined){
+    if(this.prevEvent){
       this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active')
     }
+    this.renderer.addClass(event.target, 'recipe-button-active')
     this.prevEvent = event;
-    
+  }
+
+  tabHandler(tab : string){
+    this.starterTab?.nativeElement.classList.remove("activated");
+    this.mainTab?.nativeElement.classList.remove("activated");
+    this.dessertsTab?.nativeElement.classList.remove("activated");
+
+    if(tab === 'starter'){
+      this.starterTab?.nativeElement.classList.add("activated");
+      this.filteredRecipeList = this.recipeFilter('starter');
+    } else if(tab === 'main'){
+      this.mainTab?.nativeElement.classList.add("activated");
+      this.filteredRecipeList = this.recipeFilter('main');
+    } else if(tab === 'dessert'){
+      this.dessertsTab?.nativeElement.classList.add("activated");
+      this.filteredRecipeList = this.recipeFilter('dessert');
+    }
+    this.isRecipeValid = false;
+    this.guessedRecipe = {} as RecipleInterface;
+  }
+
+  recipeFilter(tab: string): RecipleInterface[] {
+    const filterValue = tab;
+    const filteredRecipeList = this.recipeList.filter(recipe => {
+      const guessedRecipes = this.todaysGuesses?.attempts?.map(a => a.recipe.toLowerCase());
+      if(guessedRecipes && guessedRecipes.length){
+        return recipe.foodType == filterValue
+               && guessedRecipes.indexOf(recipe.name.toLowerCase()) == -1
+      } else{
+        return recipe.foodType == filterValue
+      }
+    });
+    return filteredRecipeList.sort((a,b) => a.name.localeCompare(b.name))
   }
 
   checkFirstLogin() {

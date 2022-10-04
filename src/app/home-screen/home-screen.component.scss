@@ -212,21 +212,13 @@ h2{
     font-size: 20px;
     font-family: 'Sofia';
     margin: 0px;
-    color:rgb(255, 139, 139);
-}
-
-.ingredients-ctn{
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    width: 90%;
-    padding: 5px;
-    height: 20vh;
+    //color:rgb(255, 139, 139);
 }
 
 .dishes-container{
     border: rgba(211, 211, 211, 0.664) 5px ridge;
     width: 90%;
-    height: 25vh;
+    height: 22vh;
     padding: 5px;
     background-color: rgb(244, 244, 244);
     border-radius: 15px;
@@ -235,16 +227,18 @@ h2{
 .recipe-tabs{
     height: 30px;
     background-color: rgb(255, 203, 107);
-    border-radius: 10px;
     text-align: center;
+    cursor: pointer;
     border:none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+    -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
+    -moz-tap-highlight-color: rgba(0,0,0,0) !important;
+    margin-bottom: 5px;
     .activated{
         height: 100%;
-        width: 100%;
+        width: 101%;
         line-height: 30px;
         background-color: rgb(251, 128, 52);
-        //border-top-right-radius: 10px;
-        //border-bottom-right-radius: 10px;
     }
 }
 
@@ -272,4 +266,14 @@ h2{
     -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
     -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
     -moz-tap-highlight-color: rgba(0,0,0,0) !important;
+  }
+
+  .input-button{
+    line-height: 10px; 
+    height: 25px;
+    width: 8em;
+    border-radius: 5px; 
+    text-align: center;
+    margin: 5px 0;
+    font-size: 20px;
   }

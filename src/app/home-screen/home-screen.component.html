@@ -44,8 +44,8 @@
             </mat-form-field>
             -->
 
-            <button id="Btn" style="line-height: 10px; border-radius: 25%; text-align: center;" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
-                <mat-icon>keyboard_return</mat-icon>
+            <button id="Btn" class="input-button" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
+                Serve
             </button>
         </div>
         <ng-container *ngIf="todaySolved">
@@ -53,14 +53,14 @@
         </ng-container>
         <div class="dishes-container">
             <ng-scrollbar>
-                <div fxLayout="row" fxLayoutAlign="center center" class="recipe-tabs">
-                    <div fxFlex="33">🥗 Starters</div>
-                    <div fxFlex="33" >🍽️ Mains</div>
-                    <div fxFlex="33" class="activated">🥞 Desserts</div>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="recipe-tabs">
+                    <div #starterTab fxFlex="33" (click)="tabHandler('starter')">🥗 Starters</div>
+                    <div #mainTab fxFlex="33" class="activated" (click)="tabHandler('main')">🍽️ Mains</div>
+                    <div #dessertsTab fxFlex="33" (click)="tabHandler('dessert')">🥞 Desserts</div>
                 </div>
                 <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
-                    <ng-container *ngFor="let recipe of recipeList">
-                        <button fxFlex="40%" type="radio" class="recipe-button" (click)="recipeSelectorHandler($event, recipe)">{{'recipe.' + recipe.name | translate}}</button>
+                    <ng-container *ngFor="let recipe of filteredRecipeList">
+                        <button fxFlex="40%" class="recipe-button" (click)="recipeSelectorHandler($event, recipe)">{{'recipe.' + recipe.name | translate}}</button>
                     </ng-container>
                 </div>
              </ng-scrollbar>
