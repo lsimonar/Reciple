@@ -32,6 +32,7 @@
             </div>
         </ng-container>
         <div *ngIf="!todaySolved">
+            <!--
             <mat-form-field class="input-box">
                 <input #recipleInput matInput type="text" placeholder="{{'homePage.inputPlaceholder' | translate}}" (ngModelChange)="onChange() " 
                 autocomplete="off" [matAutocomplete]="auto" matAutocompletePosition="above" [formControl]="control"> 
@@ -41,6 +42,8 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
+            -->
+
             <button id="Btn" style="line-height: 10px; border-radius: 25%; text-align: center;" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
                 <mat-icon>keyboard_return</mat-icon>
             </button>
@@ -48,6 +51,20 @@
         <ng-container *ngIf="todaySolved">
             <h3>{{'recipe.' + solution.name | translate}}!</h3>
         </ng-container>
+        <div class="dishes-container">
+            <ng-scrollbar>
+                <div fxLayout="row" fxLayoutAlign="center center" class="recipe-tabs">
+                    <div fxFlex="33">🥗 Starters</div>
+                    <div fxFlex="33" >🍽️ Mains</div>
+                    <div fxFlex="33" class="activated">🥞 Desserts</div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
+                    <ng-container *ngFor="let recipe of recipeList">
+                        <button fxFlex="40%" type="radio" class="recipe-button" (click)="recipeSelectorHandler($event, recipe)">{{'recipe.' + recipe.name | translate}}</button>
+                    </ng-container>
+                </div>
+             </ng-scrollbar>
+        </div>
     </div>
 </div>
 

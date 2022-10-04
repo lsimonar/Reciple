@@ -33,11 +33,11 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   ingredientToEmoji = ingredientToEmoji;
   control = new FormControl('');
 
-  filteredOptions: Observable<string[]> = of([]);
+  filteredOptions: Observable<RecipleInterface[]> = of([]);
 
   isRecipeValid: boolean  = false; 
   guessedRecipe: RecipleInterface = {} as RecipleInterface;
-  recipeList   : string[] = [];
+  recipeList   : RecipleInterface[] = [];
   solution = recipes[7];
   todaySolved : boolean = false;
   guessedRecipes : RecipleInterface[] = [];
@@ -50,6 +50,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
   attempt: number = 0;
   isDarkMode: boolean = false;
   isHighContrast: boolean = false;
+  prevEvent : any = undefined;
 
   todaysGuesses?: DailyGuesses = {} as DailyGuesses;
   gameHistoric?: GameHistoric;
@@ -224,14 +225,14 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     this.control.setValue('');    
   }
 
-  _filter(value: string): string[] {
+  _filter(value: string): RecipleInterface[] {
     const filterValue = this.normalizeValue(value);
     return this.recipeList.filter(recipe => {
       const guessedRecipes = this.todaysGuesses?.attempts?.map(a => a.recipe.toLowerCase());
       const translatedRecipe: string = this.translate.instant('recipe.'+recipe).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       if(guessedRecipes && guessedRecipes.length){
         return this.normalizeValue(translatedRecipe).toLowerCase().includes(filterValue)
-               && guessedRecipes.indexOf(recipe.toLowerCase()) == -1
+               && guessedRecipes.indexOf(recipe.name.toLowerCase()) == -1
       } else{
         return this.normalizeValue(translatedRecipe).toLowerCase().includes(filterValue);
       }
@@ -246,13 +247,24 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     return value ? this.translate.instant('recipe.'+value) : undefined;
   }
 
-  getRecipeList(): string[] {
+  getRecipeList(): RecipleInterface[] {
     let recipeList=[];
     for (let i = 0; i < Object.values(this.recipes).length; i++) {
-      recipeList.push(this.recipes[i].name);
+      recipeList.push(this.recipes[i]);
     }
-    recipeList = recipeList.sort((a,b) => a.localeCompare(b))
+    recipeList = recipeList.sort((a,b) => a.name.localeCompare(b.name))
     return recipeList;
+  }
+
+  recipeSelectorHandler(event: any, recipe : RecipleInterface) {
+    this.isRecipeValid = true;
+    this.guessedRecipe = recipe;
+    this.renderer.addClass(event.target, 'recipe-button-active')
+    if(this.prevEvent !== undefined){
+      this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active')
+    }
+    this.prevEvent = event;
+    
   }
 
   checkFirstLogin() {
