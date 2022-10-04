@@ -27,7 +27,6 @@
                         </div>
                     </div>
                 </ng-container>
-                <div *ngIf="false" class="guessed-recipe-text">{{guessBoxList[j]}}</div>
                 <div class="attempt-circle" [ngClass]="attempt <=j? '' : todaysGuesses!.attempts[j].hit? 'attempted right-guess' : 'attempted wrong-guess'"></div>
             </div>
         </ng-container>
