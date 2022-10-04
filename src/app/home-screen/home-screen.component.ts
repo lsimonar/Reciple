@@ -1,4 +1,4 @@
-import { Component, Renderer2, ElementRef, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, Renderer2, ElementRef, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation, ViewChild, OnChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
 import { Observable, of } from 'rxjs';
@@ -25,7 +25,7 @@ export const recipleAvailableLangs = ['en', 'es'];
   styleUrls: ['./home-screen.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HomeScreenComponent implements OnInit, AfterContentChecked {
+export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChanges {
 
   @ViewChild('recipleInput') input1ElementRef: { nativeElement: any; } | undefined;
   @ViewChild('starterTab') starterTab: ElementRef | undefined;
@@ -120,31 +120,24 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
       });
     });
 
-    this.control.valueChanges.subscribe((value: any) => {
-      this.isRecipeValid=false;
-      this.filteredOptions;
+    this.translate.get('recipe.Paella').subscribe(() => {
+      this.starterTab?.nativeElement.classList.remove("activated");
+      this.mainTab?.nativeElement.classList.remove("activated");
+      this.dessertsTab?.nativeElement.classList.remove("activated");
+
+      this.filteredRecipeList = this.recipeFilter('main');
+      this.mainTab?.nativeElement.classList.add("activated");
     });
-    this.filteredOptions = this.control.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-    this.filteredRecipeList = this.recipeFilter('main');
-    let inputButton = document.getElementById("Input");
-    inputButton?.addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("Btn")?.click();
-      }
-    });
+
+
   }
 
   ngAfterContentChecked() {
     this.cdref.detectChanges();
   }
 
-  captureKeyboardChange(event: any){
-    this.control.setValue(event,{emitEvent: true});
-    this.filteredOptions;
+  ngOnChanges(){
+    this.filteredRecipeList = this.recipeFilter('main');
   }
 
   fetchSettings(){
@@ -198,16 +191,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     this.dialog.open(InfoDialogComponent, {width: '450px', maxWidth: '100vw', height: '90vh', maxHeight : '90vh'});
   }
 
-  onChange(){
-    this.isRecipeValid = false;
-    this.recipes.find(r => {
-      if(r.name === this.control.value){
-        this.isRecipeValid = true;
-        this.guessedRecipe = r;
-      }
-    });
-  }
-
   makeGuess() {
     this.todaysGuesses = this.service.makeGuess(this.guessedRecipe);
     if(this.todaysGuesses.complete === true) {
@@ -257,7 +240,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
     for (let i = 0; i < Object.values(this.recipes).length; i++) {
       recipeList.push(this.recipes[i]);
     }
-    recipeList = recipeList.sort((a,b) => a.name.localeCompare(b.name))
     return recipeList;
   }
 
@@ -301,7 +283,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked {
         return recipe.foodType == filterValue
       }
     });
-    return filteredRecipeList.sort((a,b) => a.name.localeCompare(b.name))
+    return filteredRecipeList.sort((a,b) => this.translate.instant('recipe.'+a.name).localeCompare(this.translate.instant('recipe.'+b.name)))
   }
 
   checkFirstLogin() {

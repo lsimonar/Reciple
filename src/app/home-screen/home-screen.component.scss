@@ -154,27 +154,28 @@ h2{
 }
 
 .dishes-container{
-    border: rgba(211, 211, 211, 0.664) 5px ridge;
+    border: rgba(211, 211, 211, 0.664) 3px solid;
     width: 90%;
+    max-width: 300px;
     height: 22vh;
-    padding: 5px;
-    background-color: rgb(244, 244, 244);
+    padding: 0px;
+    background-color: white;
     border-radius: 15px;
+    overflow: hidden;
 }
 
 .recipe-tabs{
     height: 30px;
-    background-color: rgb(255, 203, 107);
+    background-color: rgb(255, 231, 187);
     text-align: center;
     cursor: pointer;
-    border:none;
     -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
     -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
     -moz-tap-highlight-color: rgba(0,0,0,0) !important;
     margin-bottom: 5px;
     .activated{
         height: 100%;
-        width: 101%;
+        width: 100%;
         line-height: 30px;
         background-color: rgb(251, 128, 52);
     }
@@ -186,16 +187,17 @@ h2{
     text-align: center;
     text-decoration: none;
     outline: none;
+    font-weight: 600;
     color: #fff;
-    background-color: black;
+    background-color: rgb(106, 106, 106);
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 5px #999;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
     min-height: 30px;
 }
 
 .recipe-button-active {
-    background-color: rgb(245, 199, 17);
+    background-color: rgb(255, 203, 107);
     box-shadow: 0 2px #666;
     color: black;
     transform: translateY(2px);
