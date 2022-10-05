@@ -31,7 +31,6 @@ h2{
 
 .reciple-tile-inner {
     position: relative;
-    border: 1.7px solid grey;
     margin: 3px;
     width: 100%;    
     height: 100%;
@@ -55,30 +54,28 @@ h2{
     backface-visibility: hidden;
   }
   
-  .reciple-tile-back {
-    &.right-guess{
-        background-color: #73d25d7f;
-        color: green;
-        &.high-contrast{
-            background-color: #f5783a8d;
-        }
+.right-guess{
+    background-color: #73d25d7f;
+    color: green;
+    outline: 1.5px solid grey;
+    &.high-contrast{
+        background-color: #f5783a8d;
     }
-    &.wrong-guess{
-        background-color: rgba(255, 0, 0, 0.326);
-        color: red;
-        &.high-contrast{
-            background-color: #85c1f994;
-        }
-    }    
-    transform: rotateY(180deg);
-  }
+}
+.wrong-guess{
+    background-color: rgba(255, 0, 0, 0.326);
+    color: red;
+    outline: 1.5px solid grey;
+    &.high-contrast{
+        background-color: #85c1f994;
+    }
+}
 
   .attempt-circle{
     width: 2em;
     height: 2em;
     margin-left: 8px;
     margin-top: 9px;
-    border-radius: 50%;
     text-align: center;
     line-height: 2em;
     outline: 1px solid rgb(211, 214, 218);
@@ -99,3 +96,40 @@ h2{
     border-bottom: 1px solid rgb(180, 178, 178);
     padding-bottom:10px;
 }
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: visible;
+    width: 120px;
+    background-color: rgb(30, 30, 30);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 56%;
+    margin-left: -40px;
+    width: 80px;
+    min-width: fit-content;
+  }
+
+  .tooltip .tooltiptext::after{
+        content: " ";
+        position: absolute;
+        bottom: 100%;  /* At the top of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent rgb(30, 30, 30) transparent; 
+  }

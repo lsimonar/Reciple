@@ -63,8 +63,8 @@ li{
 }
 
 .share-button{
-    border: 3px solid;
     color: white;
+    border:none;
     border-radius: 10px;
     text-align: center;
     text-decoration: none;
@@ -74,12 +74,23 @@ li{
     height: 50px;
     cursor: pointer;
     background-color: #4CAF50;
-    border-color: #3b8a3e;
+    box-shadow: 0 5px #3b8a3e;
+}
+
+.share-button:active{
+    box-shadow: 0 2px #3b8a3e;
+    transform: translateY(2px);
+    -webkit-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+    -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
+    -moz-tap-highlight-color: rgba(0,0,0,0) !important;
 }
 
 .recipe-url{
-    background-color: rgb(72, 169, 253);
+    background-color: rgb(255, 145, 123);
     margin-left: 10px;
+    margin-bottom: 10px;
     color: white;
     font-weight: 700;
     font-size: 17px;
@@ -87,8 +98,18 @@ li{
     padding: 5px;
     text-align:center;
     display: inline-block;
-    border: rgb(27, 142, 243) solid 3px;
+    box-shadow: 0 5px rgb(255, 110, 81);
     border-radius: 10px;
     height: 50px;
     cursor: pointer;
+}
+
+.recipe-url:active{
+    box-shadow: 0 2px rgb(255, 110, 81);
+    transform: translateY(2px);
+    -webkit-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+    -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
+    -moz-tap-highlight-color: rgba(0,0,0,0) !important;
 }

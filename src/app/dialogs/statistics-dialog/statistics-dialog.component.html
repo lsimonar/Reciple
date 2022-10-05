@@ -39,7 +39,7 @@
         <app-countdown [nextDate]="nextCountryDate"></app-countdown>
         <div fxLayout="row" fxLayoutAlign="space-between start">
             <button fxLayoutAlign="center center" class="share-button" (click)="notifyClipboard()" [cdkCopyToClipboard]="getSummaryToClipboard()">
-                {{'statisticsPage.share' | translate}} <mat-icon style="margin-left: 5px; font-size: 20px;">content_copy</mat-icon>
+                {{'statisticsPage.share' | translate}} <mat-icon style="margin-left: 5px; font-size: 20px; pointer-events: none;">content_copy</mat-icon>
             </button>
             <a fxLayoutAlign="center center" class="recipe-url" href="{{todaySolution.recipeUrl}}" target="_blank">
                 {{'statisticsPage.recipe' | translate}} <mat-icon style="margin-left: 3px"> restaurant_menu</mat-icon>

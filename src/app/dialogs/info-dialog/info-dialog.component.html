@@ -17,32 +17,35 @@
                         <div></div>
                     </div>
                     <div class="reciple-tile-back" 
-                        [ngClass]="i ===1 || i === 2? 'right-guess' : 'wrong-guess'"
+                        [ngClass]="i ===2 || i === 4? 'right-guess' : 'wrong-guess'"
                         [class.high-contrast]="isHighContrast">
                         {{example2Icons[i]}}
                     </div>
                 </div>
             </div>
         </ng-container>
-        <div class="attempt-circle attempted wrong-guess"></div>
+        <div [class.high-contrast]="isHighContrast" class="attempt-circle attempted wrong-guess"></div>
     </div>
     <p>{{'infoPage.example1' | translate}}</p>
-    <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
-        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
-            <div class="reciple-tile" style="margin:3px;">
-                <div class="reciple-tile-inner reciple-tile-inner-rotate" style="--delay:{{i}}">
-                    <div class="reciple-tile-front" style="margin:2px;">
-                        <div></div>
-                    </div>
-                    <div class="reciple-tile-back" 
-                        [ngClass]="i ===0 || i === 3 || i === 4 ? 'right-guess' : 'wrong-guess'"
-                        [class.high-contrast]="isHighContrast">
-                        {{example1Icons[i]}}
+    <div class="img-ctn" style="margin-bottom: 35px;" fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">    
+            <div [ngClass]="i==2? 'tooltip' : ''" > 
+                <span *ngIf="i==2" class="tooltiptext">{{'ingredients.cheese' | translate}}</span>      
+                <div class="reciple-tile" style="margin:3px;">
+                    <div class="reciple-tile-inner reciple-tile-inner-rotate" style="--delay:{{i}}">
+                        <div class="reciple-tile-front" style="margin:2px;">
+                            <div></div>
+                        </div>
+                        <div class="reciple-tile-back" 
+                            [ngClass]="i ===2 || i === 4? 'right-guess' : 'wrong-guess'"
+                            [class.high-contrast]="isHighContrast">
+                            {{example2Icons[i]}}
+                        </div>
                     </div>
                 </div>
             </div>
         </ng-container>
-        <div class="attempt-circle attempted wrong-guess"></div>
+        <div [class.high-contrast]="isHighContrast" class="attempt-circle attempted wrong-guess"></div>
     </div>
     <p>{{'infoPage.example2' | translate}}</p>
     <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
@@ -54,12 +57,12 @@
                     </div>
                     <div class="reciple-tile-back right-guess" 
                         [class.high-contrast]="isHighContrast">
-                        {{example3Icons[i]}}
+                        <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(example3Icons[i])></span>
                     </div>
                 </div>
             </div>
         </ng-container>
-        <div class="attempt-circle attempted right-guess"></div>
+        <div [class.high-contrast]="isHighContrast" class="attempt-circle attempted right-guess"></div>
     </div>
     <p class="line-separator">{{'infoPage.example3' | translate}}</p>
     <p class="line-separator"><b>{{'infoPage.newReciple' | translate}}</b></p>

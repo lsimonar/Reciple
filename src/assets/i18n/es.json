@@ -104,7 +104,7 @@
 
     },
     "homePage":{
-        "inputButton": "SIRVE EL PLATO",
+        "inputButton": "SIRVE-LO",
         "sides" : "Entrantes",
         "mains" : "Principales",
         "desserts" : "Postres",
@@ -125,18 +125,19 @@
         "guessTitle" : "Distribucion de Aciertos",
         "share" : "Compartelo!",
         "recipe" : "Receta",
-        "nextIn" : "SIGUIENTE RECIPLE EN"
+        "nextIn" : "SIGUIENTE RECIPLE EN",
+        "resultCopied" : "Resultado copiado al portapapeles."
     },
     "infoPage":{
         "infoTitle": "Como jugar",
         "intro1-p1": "Adivina el",
         "intro1-p2": "diario en 6 intentos.",
-        "intro2": "Cada intento debe ser uno de los platos mas populares del mundo. Utiliza el filtro del campo de texto para conocer las opciones válidas.",
+        "intro2": "Cada intento debe ser uno de los platos del panel inferior. Selecciona un plato y submite el intento haciendo click en 'SIRVE-LO'.",
         "intro3": "Despues de cada intento, las casillas mostraran los cinco ingredientes principales del plato que has escogido - de color verde si coinciden con los de la solución.",
         "example": "Ejemplo",
-        "example1": "Si intentamos \"Lasaña\" los ingredientes 'pasta' y 'queso' aparecen en color verde. ¡Significa que se encuentran en el RECIPLE de hoy!",
-        "example2": "El segundo intento es \"pasta bolognesa\", hemos descubierto un nuevo ingrediente!",
-        "example3": "El siguiente intento es \"pasta carbonara\", lo hemos acertado ¡Felicidades!",
+        "example1": "Si intentamos \"Lasaña de ternera\" los ingredientes 'tomate' y 'queso' aparecen de color verde. ¡Significa que se encuentran en el RECIPLE de hoy!",
+        "example2": "Si no estas seguro del significado de alguna imagen, toca o pasa el cursor por encima del ingrediente.",
+        "example3": "El siguiente intento es \"Pizza margarita\", lo hemos acertado ¡Felicidades!",
         "newReciple": "¡Un nuevo RECIPLE cada día!",
         "inspiredBy-p1": "RECIPLE esta inspirado en",
         "inspiredBy-p2": "creado por"

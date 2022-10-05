@@ -184,7 +184,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
   }
 
   openStatisticsDialog(){
-    this.dialog.open(StatisticsDialogComponent, {width: '300px', height: '500px', maxHeight : '95vh'});
+    this.dialog.open(StatisticsDialogComponent, {width: '320px', height: '520px', maxHeight : '95vh'});
   }
 
   openInfoDialog(){

@@ -29,7 +29,7 @@
                 </ng-container>
                 <div [ngClass]="attempt >j? 'tooltip' : ''" > 
                     <span *ngIf="attempt > j" class="tooltiptext">{{'recipe.' + todaysGuesses!.attempts[j].recipe | translate}}</span>    
-                    <div class="attempt-circle" [ngClass]="attempt <=j? '' : todaysGuesses!.attempts[j].hit? 
+                    <div class="attempt-circle" [class.high-contrast]="isHighContrast" [ngClass]="attempt <=j? '' : todaysGuesses!.attempts[j].hit? 
                         'attempted right-guess' : 'attempted wrong-guess'">
                     </div>
                 </div>

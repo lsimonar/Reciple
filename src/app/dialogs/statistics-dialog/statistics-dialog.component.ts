@@ -6,7 +6,7 @@ import { recipes, DailyGuesses, GameHistoric, RecipleInterface } from 'src/app/m
 import { selectGameHistoric, selectIsDarkMode } from 'src/app/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { dailyReciples } from 'src/app/models/dailyReciples';
-
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-statistics-dialog',
@@ -34,7 +34,8 @@ export class StatisticsDialogComponent implements OnInit {
   constructor(
     private store : Store,
     private service: AppService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public translate: TranslateService,
   ) { 
     this.store.select(selectGameHistoric).subscribe((gameHistoric: GameHistoric) => {
       if(JSON.stringify(gameHistoric) === "{}") {
@@ -156,7 +157,7 @@ export class StatisticsDialogComponent implements OnInit {
   }
 
   notifyClipboard() {
-    this._snackBar.open('Game copied to clipboard.', undefined, {
+    this._snackBar.open(this.translate.instant('statisticsPage.resultCopied'), undefined, {
       horizontalPosition: 'center',
       verticalPosition: 'top',
       duration: 3000 //milliseconds
