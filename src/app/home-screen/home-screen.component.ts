@@ -2,7 +2,6 @@ import { Component, Renderer2, ElementRef, OnInit, AfterContentChecked, ChangeDe
 import { FormControl } from '@angular/forms';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
 import { Observable, of } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statistics-dialog.component';
 import { SettingsDialogComponent } from '../dialogs/settings-dialog/settings-dialog.component';
@@ -98,6 +97,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
 
     const todayRecipe = this.recipes.find(c => c.id === recipeId);
     this.solution = todayRecipe!;
+    this.todaySolved = false;
     if(todayRecipe != undefined) {
       this.service.setTodaysRecipe(todayRecipe);
       this.service.setTodaysNumber(dailyReciples[stringDate as keyof typeof dailyReciples].number);

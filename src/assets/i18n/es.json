@@ -107,7 +107,8 @@
         "inputButton": "SIRVE EL PLATO",
         "sides" : "Entrantes",
         "mains" : "Principales",
-        "desserts" : "Postres"
+        "desserts" : "Postres",
+        "yummy" : "delicioso"
     },
     "settingsPage":{
         "settingsTitle" : "Ajustes",

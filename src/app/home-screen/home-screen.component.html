@@ -41,9 +41,9 @@
             </button>
         </div>
         <ng-container *ngIf="todaySolved">
-            <h3 style="margin:5px;">{{'recipe.' + solution.name | translate}}!</h3>
+            <h3 style="margin:5px;">{{'recipe.' + solution.name | translate}}, {{'homePage.yummy' | translate}}!</h3>
         </ng-container>
-        <div class="dishes-container" [class.inverted]="isDarkMode">
+        <div *ngIf="!todaySolved" class="dishes-container" [class.inverted]="isDarkMode">
             <ng-scrollbar>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="recipe-tabs">
                     <div #starterTab  fxFlex="33" (click)="tabHandler('starter')">🥗 {{'homePage.sides' | translate}}</div>

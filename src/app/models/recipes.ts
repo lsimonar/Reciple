@@ -389,7 +389,7 @@ export const recipes = [
     {        
         "id"         : 18,
         "name"       : "guacamole",
-        "ingredients": ['avocado', 'lemon', 'onion', 'pepper', 'tomato'],
+        "ingredients": ['avocado', 'lemon', 'onion', 'tomato', 'salt'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
         "foodType"   : "starter",
@@ -529,7 +529,7 @@ export const recipes = [
     {        
         "id"         : 27,
         "name"       : "gazpacho",
-        "ingredients": ['bread', 'tomato', 'onion', 'pepper', 'oil'],
+        "ingredients": ['bread', 'tomato', 'onion', 'pepper', 'water'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
         "foodType"   : "starter",

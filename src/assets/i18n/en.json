@@ -106,7 +106,8 @@
         "inputButton": "SERVE IT",
         "sides" : "Sides",
         "mains" : "Mains",
-        "desserts" : "Desserts"
+        "desserts" : "Desserts",
+        "yummy" : "yummy"
     },
     "settingsPage":{
         "settingsTitle" : "Settings",
