@@ -25,6 +25,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -57,6 +59,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     ClipboardModule,
     MatSnackBarModule,
     StoreModule.forRoot({reciple: recipleReducer }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: true,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
     TranslateModule.forRoot({
       defaultLanguage: recipleAvailableLangs[0],
       loader: {
@@ -64,6 +72,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
   providers: [AppService],
