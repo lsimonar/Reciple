@@ -1,5 +1,6 @@
 export const dailyReciples = 
 {
+    "05/10/2022": {"recipe":1, "number":0},
     "06/10/2022": {"recipe":18, "number":1},
     "07/10/2022": {"recipe":22, "number":2},
     "08/10/2022": {"recipe":24, "number":3},
