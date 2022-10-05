@@ -152,7 +152,7 @@ export class StatisticsDialogComponent implements OnInit {
         summary += '\n';
       });
     }
-    //summary += 'www.reciple.com';
+    summary += '\nwww.reciple-wordle.com';
     return summary;
   }
 

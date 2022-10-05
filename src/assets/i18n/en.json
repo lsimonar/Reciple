@@ -94,7 +94,7 @@
         "sugar": "Sugar",
         "oil": "Oil",
         "jelly": "Jelly",
-        "soy" : "Soy sauce",
+        "sauce" : "Soy sauce or bechamel sauce",
         "apple" : "Apple",
         "water" : "Water",
         "potato" : "Potato",
@@ -122,7 +122,7 @@
         "streak" : "Streak",
         "max" : "Max",
         "guessTitle" : "Guess Distribution",
-        "share" : "Share it!",
+        "share" : "Share it",
         "recipe" : "Recipe",
         "nextIn" : "NEXT RECIPLE IN",
         "resultCopied" : "Result copied to clipboard."

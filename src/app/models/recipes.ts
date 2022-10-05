@@ -46,7 +46,7 @@ export const ingredientToEmoji = {
     'egg': '🥚',
     'bread': '🥖',
     'rabbit': '🐇',
-    'bean': '🫘',
+    'bean': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/bean.png" alt="Bean"/>',
     'fish' : '🐟',
     'pepper' : '🌶️',
     'milk' : '🥛',
@@ -54,12 +54,12 @@ export const ingredientToEmoji = {
     'avocado' : '🥑',
     'beef' : '🐄',
     'pork' : '🐖',
-    'wrap' : '🌯',
+    'wrap' : '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/tortillas.png" alt="Tortilla wrap"/>',
     'alcohol' : '🍶',
     'broth' : '🥣',
     'garlic': '🧄',
     'apple' : '🍏',
-    'water' : '🥤',
+    'water' : '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/water.png" alt="Water"/>',
     'lemon' : '🍋',
     'potato' : '🥔',
     'chocolate' : '🍫',
@@ -71,7 +71,7 @@ export const ingredientToEmoji = {
     'sugar': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/sugar.svg" alt="Sugar"/>',
     'oil': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/oil.png" alt="Oil"/>',
     'jelly': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/jelly.svg" alt="Jelly"/>',
-    'soy' : '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/soy.png" alt="Soy Sauce"/>'
+    'sauce' : '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/sauces.png" alt="Sauces"/>',
 
 } 
 
@@ -140,7 +140,7 @@ export const recipes = [
     {
         "id"         : 4,
         "name"       : "Lasagne",
-        "ingredients": ['beef', 'pasta', 'cheese', 'milk', 'tomato'],
+        "ingredients": ['beef', 'pasta', 'cheese', 'sauce', 'tomato'],
         "cookTime"   : 1,
         "serves"     : 4,
         "foodType"   : "main",
@@ -210,7 +210,7 @@ export const recipes = [
     /*{
         "id"         : 14,
         "name"       : "Yakisoba",
-        "ingredients": ['pasta', 'pork', 'soy', 'onion', 'carrot'],
+        "ingredients": ['pasta', 'pork', 'sauce', 'onion', 'carrot'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
@@ -419,7 +419,7 @@ export const recipes = [
     {        
         "id"         : 20,
         "name"       : "shrimp wonton",
-        "ingredients": ['flour', 'egg', 'seafood', 'onion', 'soy'],
+        "ingredients": ['flour', 'egg', 'seafood', 'onion', 'sauce'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
         "foodType"   : "starter",

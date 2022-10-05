@@ -93,7 +93,7 @@
         "sugar": "Azucar",
         "oil": "Aceite",
         "jelly": "Gelatina",
-        "soy" : "Salsa de soja",
+        "sauce" : "Salsa de soja o bechamel",
         "apple": "Manzana",
         "water" : "Agua",
         "potato" : "Patata",
@@ -104,7 +104,7 @@
 
     },
     "homePage":{
-        "inputButton": "SIRVE-LO",
+        "inputButton": "SIRVELO",
         "sides" : "Entrantes",
         "mains" : "Principales",
         "desserts" : "Postres",
@@ -123,7 +123,7 @@
         "streak" : "Racha",
         "max" : "Mejor",
         "guessTitle" : "Distribucion de Aciertos",
-        "share" : "Compartelo!",
+        "share" : "Compartelo",
         "recipe" : "Receta",
         "nextIn" : "SIGUIENTE RECIPLE EN",
         "resultCopied" : "Resultado copiado al portapapeles."
@@ -132,7 +132,7 @@
         "infoTitle": "Como jugar",
         "intro1-p1": "Adivina el",
         "intro1-p2": "diario en 6 intentos.",
-        "intro2": "Cada intento debe ser uno de los platos del panel inferior. Selecciona un plato y submite el intento haciendo click en 'SIRVE-LO'.",
+        "intro2": "Cada intento debe ser uno de los platos del panel inferior. Selecciona un plato y submite el intento haciendo click en 'SIRVELO'.",
         "intro3": "Despues de cada intento, las casillas mostraran los cinco ingredientes principales del plato que has escogido - de color verde si coinciden con los de la solución.",
         "example": "Ejemplo",
         "example1": "Si intentamos \"Lasaña de ternera\" los ingredientes 'tomate' y 'queso' aparecen de color verde. ¡Significa que se encuentran en el RECIPLE de hoy!",

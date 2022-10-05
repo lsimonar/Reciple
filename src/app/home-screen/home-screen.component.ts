@@ -158,7 +158,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     } else {
       const navigatorLang = navigator.language;
       let chosenLang = 'en';
-      if(navigatorLang.toLowerCase().indexOf('es') > -1) {
+      if(navigatorLang.toLowerCase().indexOf('es') > -1 || navigatorLang.toLowerCase().indexOf('ca') > -1) {
         chosenLang = 'es';
       }
       this.translate.use(chosenLang);
