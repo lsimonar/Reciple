@@ -123,33 +123,37 @@
   /* Tooltip text */
   .tooltip .tooltiptext {
     visibility: hidden;
-    width: fit-content;
-    word-break:keep-all;
-    min-width: 2.35em;
-    height: 2.35em;
-    line-height: 2.35em;
-    margin-left: 6px;
-    margin-top: 2.5px;
-    background-color: white;
+    width: 120px;
+    background-color: rgb(30, 30, 30);
+    color: #fff;
     text-align: center;
-    padding: 5px 5px;
-    border: 1.5px solid grey;
+    padding: 5px 0;
+    border-radius: 6px;
    
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
+    width: 80px;
+    min-width: fit-content;
+    top: 100%;
+    left: 56%;
+    margin-left: -40px;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent rgb(30, 30, 30) transparent;
   }
   
   /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext {
     visibility: visible;
-  }
-
-
-h2{
-    font-size: 20px;
-    font-family: 'Sofia';
-    margin: 0px;
 }
 
 .dishes-container{
@@ -161,6 +165,9 @@ h2{
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
+    &.inverted{
+        background-color: inherit;
+    }
 }
 
 .recipe-tabs{
@@ -171,6 +178,7 @@ h2{
     background-color: lightgrey;
     text-align: center;
     cursor: pointer;
+    color: black;
     -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
     -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
     -moz-tap-highlight-color: rgba(0,0,0,0) !important;
@@ -184,7 +192,7 @@ h2{
 }
 
 .recipe-button{
-    margin: 5px 0;
+    margin: 5px 15px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -196,6 +204,7 @@ h2{
     border-radius: 12px;
     box-shadow: 0 3px #999;
     min-height: 30px;
+    width: 40% !important;
 }
 
 .recipe-button-active {
