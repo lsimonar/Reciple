@@ -79,7 +79,6 @@ export class StatisticsDialogComponent implements OnInit {
           wins ++;
           playedGames ++;
           tries = this.gameHistoric![key].attempts.length;
-          console.log(tries)
           data.push(tries);
         } else if(this.gameHistoric![key].complete){
           playedGames ++;

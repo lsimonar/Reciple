@@ -49,7 +49,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
   guess: Array<boolean[]> = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
   guessList: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
   guessListText: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
-  guessBoxList: string[] = ['','','','','','']
   attempt: number = 0;
   isDarkMode: boolean = false;
   isHighContrast: boolean = false;
@@ -98,6 +97,10 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     const todayRecipe = this.recipes.find(c => c.id === recipeId);
     this.solution = todayRecipe!;
     this.todaySolved = false;
+    this.guess = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
+    this.guessListText = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+    this.guessList = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+
     if(todayRecipe != undefined) {
       this.service.setTodaysRecipe(todayRecipe);
       this.service.setTodaysNumber(dailyReciples[stringDate as keyof typeof dailyReciples].number);
@@ -109,11 +112,9 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
        && this.todaysGuesses?.complete === true) {
       this.todaySolved = true;
     }
-    
     this.todaysGuesses === undefined? this.attempt = 0 : this.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
       this.guess[index] = attempt.ingredientsHit
-      this.guessBoxList[index] = attempt.recipe
       attempt.ingredients.forEach((ingredient, index2) => {
         this.guessListText[index][index2] = ingredient;
           this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
