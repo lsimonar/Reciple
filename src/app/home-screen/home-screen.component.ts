@@ -125,8 +125,8 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
       this.mainTab?.nativeElement.classList.remove("activated");
       this.dessertsTab?.nativeElement.classList.remove("activated");
 
-      this.filteredRecipeList = this.recipeFilter('main');
-      this.mainTab?.nativeElement.classList.add("activated");
+      this.filteredRecipeList = this.recipeFilter('starter');
+      this.starterTab?.nativeElement.classList.add("activated");
     });
 
 
@@ -209,31 +209,13 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
           this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
       });
     });
-    this.control.setValue(''); 
-    this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active')   
+    this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active');
+    this.renderer.setStyle(this.prevEvent.target, 'opacity', '0');
+    this.renderer.setStyle(this.prevEvent.target, 'pointer-events', 'none');
+    this.isRecipeValid = false;
+    this.guessedRecipe = {} as RecipleInterface;
   }
 
-  _filter(value: string): RecipleInterface[] {
-    const filterValue = this.normalizeValue(value);
-    return this.recipeList.filter(recipe => {
-      const guessedRecipes = this.todaysGuesses?.attempts?.map(a => a.recipe.toLowerCase());
-      const translatedRecipe: string = this.translate.instant('recipe.'+recipe).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      if(guessedRecipes && guessedRecipes.length){
-        return this.normalizeValue(translatedRecipe).toLowerCase().includes(filterValue)
-               && guessedRecipes.indexOf(recipe.name.toLowerCase()) == -1
-      } else{
-        return this.normalizeValue(translatedRecipe).toLowerCase().includes(filterValue);
-      }
-    });
-  }
-
-  normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
-
-  displayCountryFn(value?: any) {      
-    return value ? this.translate.instant('recipe.'+value) : undefined;
-  }
 
   getRecipeList(): RecipleInterface[] {
     let recipeList=[];
@@ -278,7 +260,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
       const guessedRecipes = this.todaysGuesses?.attempts?.map(a => a.recipe.toLowerCase());
       if(guessedRecipes && guessedRecipes.length){
         return recipe.foodType == filterValue
-               && guessedRecipes.indexOf(recipe.name.toLowerCase()) == -1
       } else{
         return recipe.foodType == filterValue
       }

@@ -296,7 +296,7 @@ export const recipes = [
         "country"    : "germany",
         "recipeUrl"  : "https://www.tasteatlas.com/pretzel/recipe"
     },
-    {
+    /*{
         "id"         : 23,
         "name"       : "croissant",
         "ingredients": ['flour', 'butter', 'milk', 'egg', 'sugar'],
@@ -305,7 +305,7 @@ export const recipes = [
         "foodType"   : "dessert",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/croissant/recipe"
-    },
+    },*/
     {
         "id"         : 24,
         "name"       : "crumble",
@@ -326,7 +326,7 @@ export const recipes = [
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/margherita/recipe"   
     },
-    {
+    /*{
         "id"         : 26,
         "name"       : "eclair",
         "ingredients": ['flour', 'egg', 'butter', 'milk', 'sugar'],
@@ -335,7 +335,7 @@ export const recipes = [
         "foodType"   : "dessert",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/eclair/recipe"   
-    },
+    },*/
     {
         "id"         : 27,
         "name"       : "apple pie",
@@ -446,7 +446,7 @@ export const recipes = [
         "country"    : "south korea",
         "recipeUrl"  : "https://www.tasteatlas.com/kimchi/recipe"   
     },
-    {        
+    /*{        
         "id"         : 38,
         "name"       : "cupcake",
         "ingredients": ['flour', 'butter', 'egg', 'milk', 'sugar'],
@@ -455,7 +455,7 @@ export const recipes = [
         "foodType"   : "dessert",
         "country"    : "usa",
         "recipeUrl"  : "https://www.tasteatlas.com/cupcake/recipe"   
-    },
+    },*/
     {        
         "id"         : 39,
         "name"       : "catalan cream",
@@ -536,7 +536,7 @@ export const recipes = [
         "country"    : "spain",
         "recipeUrl"  : "https://www.tasteatlas.com/gazpacho/recipe"   
     },
-    {        
+    /*{        
         "id"         : 46,
         "name"       : "souffle au chocolat",
         "ingredients": ['chocolate', 'flour', 'egg', 'milk', 'sugar'],
@@ -545,7 +545,7 @@ export const recipes = [
         "foodType"   : "dessert",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/chocolate-souffle/recipe"   
-    },
+    },*/
     {        
         "id"         : 47,
         "name"       : "mousse au chocolat",

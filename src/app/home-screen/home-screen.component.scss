@@ -150,7 +150,6 @@ h2{
     font-size: 20px;
     font-family: 'Sofia';
     margin: 0px;
-    //color:rgb(255, 139, 139);
 }
 
 .dishes-container{
@@ -166,7 +165,7 @@ h2{
 
 .recipe-tabs{
     height: 30px;
-    line-height: 30px;
+    line-height: 20px;
     font-size: 14px;
     font-weight: 600;
     background-color: lightgrey;
@@ -214,6 +213,7 @@ h2{
   .input-button{
     line-height: 15px; 
     height: 25px;
+    font-weight: 600;
     cursor: pointer;
     width: 10em;
     border-radius: 5px; 
