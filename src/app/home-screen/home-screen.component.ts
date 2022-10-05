@@ -210,10 +210,11 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
       });
     });
     this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active');
-    this.renderer.setStyle(this.prevEvent.target, 'opacity', '0');
-    this.renderer.setStyle(this.prevEvent.target, 'pointer-events', 'none');
     this.isRecipeValid = false;
     this.guessedRecipe = {} as RecipleInterface;
+    this.filteredRecipeList = this.filteredRecipeList.filter((recipe)=> {
+      return recipe.name !== this.todaysGuesses?.attempts[this.todaysGuesses.attempts.length - 1]?.recipe
+    });
   }
 
 
@@ -259,7 +260,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     const filteredRecipeList = this.recipeList.filter(recipe => {
       const guessedRecipes = this.todaysGuesses?.attempts?.map(a => a.recipe.toLowerCase());
       if(guessedRecipes && guessedRecipes.length){
-        return recipe.foodType == filterValue
+        return recipe.foodType == filterValue && guessedRecipes.indexOf(recipe.name.toLowerCase()) == -1
       } else{
         return recipe.foodType == filterValue
       }

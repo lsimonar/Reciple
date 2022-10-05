@@ -56,7 +56,11 @@ $angular-dark-theme: mat.define-dark-theme(
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;//"Sofia";
 }
 html, body, app-root { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  scroll-behavior: smooth;
+ }
 
 .reciple-title{
   text-align: center;

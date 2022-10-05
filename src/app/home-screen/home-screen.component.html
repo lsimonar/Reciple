@@ -47,7 +47,9 @@
                 </div>
                 <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
                     <ng-container *ngFor="let recipe of filteredRecipeList">
-                        <button fxFlex="40%" class="recipe-button" (click)="recipeSelectorHandler($event, recipe)">{{'recipe.' + recipe.name | translate}}</button>
+                        <button fxFlex="40%" class="recipe-button" (click)="recipeSelectorHandler($event, recipe)">
+                            {{'recipe.' + recipe.name | translate}}
+                        </button>
                     </ng-container>
                 </div>
              </ng-scrollbar>
