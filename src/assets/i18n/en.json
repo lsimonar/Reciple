@@ -6,7 +6,7 @@
         "Seafood paella": "Seafood paella",
         "beef cannelloni" : "Beef Cannelloni",
         "Katso Curry"  : "Katso Curry",
-        "Lasagne" : "Lasagne",
+        "Lasagne" : "Beef Lasagne",
         "Pasta carbonara" : "Pasta carbonara",
         "caesar salad" : "Caesar Salad",
         "Cheeseburguer" : "Cheeseburguer",
@@ -50,7 +50,9 @@
         "mousse au chocolat" : "Chocolate Mousse",
         "minestrone" : "Minestrone",
         "ratatouille" : "Ratatouille",
-        "cannoli" : "Cannoli"
+        "cannoli" : "Cannoli",
+        "gyoza" : "Pork Gyoza",
+        "onion ring" : "Onion Ring"
 
     },
     "ingredients":{
@@ -100,7 +102,10 @@
         "" : ""
     },
     "homePage":{
-        "inputPlaceholder": "Start typing"
+        "inputButton": "SERVE IT",
+        "sides" : "Sides",
+        "mains" : "Mains",
+        "desserts" : "Desserts"
     },
     "settingsPage":{
         "settingsTitle" : "Settings",

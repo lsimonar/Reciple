@@ -31,19 +31,19 @@
             </div>
         </ng-container>
         <div *ngIf="!todaySolved">
-            <button id="Btn" class="input-button" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
-                Serve
+            <button class="input-button" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
+                {{'homePage.inputButton' | translate}}
             </button>
         </div>
         <ng-container *ngIf="todaySolved">
-            <h3>{{'recipe.' + solution.name | translate}}!</h3>
+            <h3 style="margin:5px;">{{'recipe.' + solution.name | translate}}!</h3>
         </ng-container>
         <div class="dishes-container">
             <ng-scrollbar>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="recipe-tabs">
-                    <div #starterTab fxFlex="33"  (click)="tabHandler('starter')">🥗 Starters</div>
-                    <div #mainTab fxFlex="33"     (click)="tabHandler('main')">🍽️ Mains</div>
-                    <div #dessertsTab fxFlex="33" (click)="tabHandler('dessert')">🥞 Desserts</div>
+                    <div #starterTab fxFlex="33"  (click)="tabHandler('starter')">🥗 {{'homePage.sides' | translate}}</div>
+                    <div #mainTab fxFlex="33"     (click)="tabHandler('main')">🍽️ {{'homePage.mains' | translate}}</div>
+                    <div #dessertsTab fxFlex="33" (click)="tabHandler('dessert')">🥞 {{'homePage.desserts' | translate}}</div>
                 </div>
                 <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
                     <ng-container *ngFor="let recipe of filteredRecipeList">

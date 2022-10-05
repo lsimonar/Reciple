@@ -6,7 +6,7 @@
         "Seafood paella": "Paella de marisco",
         "beef cannelloni" : "Canelones de carne",
         "Katso Curry"  : "Katso Curry",
-        "Lasagne" : "Lasaña",
+        "Lasagne" : "Lasaña de ternera",
         "Pasta carbonara" : "Pasta carbonara",
         "caesar salad" : "Ensalada Caesar",
         "Cheeseburguer" : "Hamburguesa de queso",
@@ -50,9 +50,9 @@
         "mousse au chocolat" : "Mousse de chocolate",
         "minestrone" : "Minestrone",
         "ratatouille" : "Ratatouille",
-        "cannoli" : "Cannoli"
-
-
+        "cannoli" : "Cannoli",
+        "gyoza" : "Gyoza de cerdo",
+        "onion ring" : "Aro de cebolla"
     },
     "ingredients":{
         "rice": "Arroz",
@@ -103,7 +103,10 @@
 
     },
     "homePage":{
-        "inputPlaceholder": "Escribe aqui"
+        "inputButton": "SIRVE EL PLATO",
+        "sides" : "Entrantes",
+        "mains" : "Principales",
+        "desserts" : "Postres"
     },
     "settingsPage":{
         "settingsTitle" : "Ajustes",

@@ -156,7 +156,7 @@ h2{
 .dishes-container{
     border: rgba(211, 211, 211, 0.664) 3px solid;
     width: 90%;
-    max-width: 300px;
+    max-width: 350px;
     height: 22vh;
     padding: 0px;
     background-color: white;
@@ -166,7 +166,10 @@ h2{
 
 .recipe-tabs{
     height: 30px;
-    background-color: rgb(255, 231, 187);
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: lightgrey;
     text-align: center;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
@@ -177,7 +180,7 @@ h2{
         height: 100%;
         width: 100%;
         line-height: 30px;
-        background-color: rgb(251, 128, 52);
+        background-color: rgb(255, 183, 49);
     }
 }
 
@@ -209,11 +212,12 @@ h2{
   }
 
   .input-button{
-    line-height: 10px; 
+    line-height: 15px; 
     height: 25px;
-    width: 8em;
+    cursor: pointer;
+    width: 10em;
     border-radius: 5px; 
     text-align: center;
     margin: 5px 0;
-    font-size: 20px;
+    font-size: 15px;
   }

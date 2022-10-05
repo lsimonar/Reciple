@@ -100,14 +100,14 @@ export const recipes = [
     {
         "id"         : 3,
         "name"       : "Pasta bolognesa",
-        "ingredients": ['pasta', 'tomato', 'beef', 'onion', 'butter'],
+        "ingredients": ['pasta', 'beef', 'tomato', 'onion', 'salt'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/bolognese/recipe"
     },
-    {
+    /*{
         "id"         : 4,
         "name"       : "Seafood paella",
         "ingredients": ['rice', 'tomato', 'seafood', 'pepper', 'broth'],
@@ -136,7 +136,7 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "japan",
         "recipeUrl"  : "https://thewoksoflife.com/chicken-katsu-curry-rice/"
-    },
+    },*/
     {
         "id"         : 7,
         "name"       : "Lasagne",
@@ -147,7 +147,7 @@ export const recipes = [
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/lasagne/recipe"
     },
-    {
+    /*{
         "id"         : 8,
         "name"       : "Pasta carbonara",
         "ingredients": ['egg', 'pasta', 'onion', 'cheese', 'bacon'],
@@ -156,7 +156,7 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/carbonara/recipe"
-    },
+    },*/
     {
         "id"         : 9,
         "name"       : "caesar salad",
@@ -177,7 +177,7 @@ export const recipes = [
         "country"    : "usa",
         "recipeUrl"  : "https://www.tasteatlas.com/cheeseburger/recipe"
     },
-    {
+    /*{
         "id"         : 11,
         "name"       : "Lobster bisque",
         "ingredients": ['seafood', 'butter', 'onion', 'carrot', 'celery'],
@@ -196,18 +196,18 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "mexico",
         "recipeUrl"  : "https://www.tasteatlas.com/tortas/recipe"
-    },
+    },*/
     {
         "id"         : 13,
         "name"       : "Gyros",
-        "ingredients": ['wrap' ,'beef', 'bean', 'avocado', 'cheese'],
+        "ingredients": ['wrap' ,'beef', 'tomato', 'onion', 'leafygreen'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
         "country"    : "greece",
         "recipeUrl"  : "https://www.tasteatlas.com/gyros/recipe"
     },
-    {
+    /*{
         "id"         : 14,
         "name"       : "Yakisoba",
         "ingredients": ['pasta', 'pork', 'soy', 'onion', 'carrot'],
@@ -236,11 +236,11 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "south korea",
         "recipeUrl"  : "https://www.tasteatlas.com/bibimbap"
-    },
+    },*/
     {
         "id"         : 17,
         "name"       : "Fajita",
-        "ingredients": ['wrap', 'beef', 'onion', 'avocado', 'garlic'],
+        "ingredients": ['wrap', 'beef', 'pepper', 'avocado', 'onion'],
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
@@ -257,7 +257,7 @@ export const recipes = [
         "country"    : "vietnam",
         "recipeUrl"  : "https://www.tasteatlas.com/pho"
     },
-    {
+    /*{
         "id"         : 19,
         "name"       : "Quiche",
         "ingredients": ['egg', 'milk', 'cheese', 'bacon', 'butter'],
@@ -266,7 +266,7 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/quiche/recipe"
-    },
+    },*/
     {
         "id"         : 20,
         "name"       : "Ramen",
@@ -277,16 +277,16 @@ export const recipes = [
         "country"    : "japan",
         "recipeUrl"  : "https://www.tasteatlas.com/ramen/recipe"
     },
-    {
+    /*{
         "id"         : 21,
         "name"       : "Chicken croquetas",
-        "ingredients": ['chicken', 'milk', 'butter', 'egg', 'bread'],
+        "ingredients": ['chicken', 'milk', 'butter', 'flour', 'bread'],
         "cookTime"   : 2,
         "cookMethod" : "fried",
         "foodType"   : "starter",
         "country"    : "spain",
         "recipeUrl"  : "https://www.tasteatlas.com/croquetas"
-    },
+    },*/
     {
         "id"         : 22,
         "name"       : "pretzel",
@@ -366,7 +366,7 @@ export const recipes = [
         "country"    : "china",
         "recipeUrl"  : "https://www.tasteatlas.com/spring-rolls/recipe"   
     },
-    {
+    /*{
         "id"         : 30,
         "name"       : "ceviche",
         "ingredients": ['fish', 'lemon', 'pepper', 'onion', 'salt'],
@@ -375,7 +375,7 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "peru",
         "recipeUrl"  : "https://www.tasteatlas.com/ceviche/recipe"   
-    },
+    },*/
     {        
         "id"         : 31,
         "name"       : "doughnut",
@@ -396,7 +396,7 @@ export const recipes = [
         "country"    : "mexico",
         "recipeUrl"  : "https://www.tasteatlas.com/guacamole/recipe/guacamole-with-tomatoes"   
     },
-    {        
+    /*{        
         "id"         : 33,
         "name"       : "tonkatsu",
         "ingredients": ['pork', 'flour', 'bread', 'egg', 'oil'],
@@ -405,7 +405,7 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "japan",
         "recipeUrl"  : "https://www.tasteatlas.com/tonkatsu/recipe"   
-    },
+    },*/
     {        
         "id"         : 34,
         "name"       : "mochi",
@@ -426,7 +426,7 @@ export const recipes = [
         "country"    : "china",
         "recipeUrl"  : "https://www.tasteatlas.com/wonton"   
     },
-    {        
+    /*{        
         "id"         : 36,
         "name"       : "spanish omelette",
         "ingredients": ['egg', 'potato', 'onion', 'salt', 'oil'],
@@ -435,7 +435,7 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "spain",
         "recipeUrl"  : "https://spanishsabores.com/best-spanish-omelet-recipe/"   
-    },
+    },*/
     {        
         "id"         : 37,
         "name"       : "kimchi",
@@ -489,14 +489,14 @@ export const recipes = [
     {        
         "id"         : 42,
         "name"       : "onion soup",
-        "ingredients": ['onion', 'flour', 'butter', 'broth', 'bread'],
+        "ingredients": ['onion', 'flour', 'butter', 'water', 'bread'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
         "foodType"   : "main",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/soupe-a-loignon/recipe"   
     },
-    {        
+    /*{        
         "id"         : 43,
         "name"       : "custard tart",
         "ingredients": ['flour', 'butter', 'milk', 'egg', 'sugar'],
@@ -515,7 +515,7 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/pastel-de-nata/recipe"   
-    },
+    },*/
     {        
         "id"         : 44,
         "name"       : "french toast",
@@ -556,7 +556,7 @@ export const recipes = [
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/mousse-au-chocolat/recipe"   
     },
-    {        
+    /*{        
         "id"         : 48,
         "name"       : "minestrone",
         "ingredients": ['pasta', 'onion', 'bean', 'potato', 'water'],
@@ -565,14 +565,14 @@ export const recipes = [
         "foodType"   : "main",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/minestrone/recipe"   
-    },
+    },*/
     {
         "id"         : 49,
         "name"       : "ratatouille",
         "ingredients": ['leafygreen', 'pepper', 'tomato', 'onion', 'garlic'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
-        "foodType"   : "main",
+        "foodType"   : "starter",
         "country"    : "france",
         "recipeUrl"  : "https://www.tasteatlas.com/ratatouille/recipe" 
     },
@@ -585,5 +585,25 @@ export const recipes = [
         "foodType"   : "dessert",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/cannoli/recipe" 
+    },
+    {
+        "id"         : 51,
+        "name"       : "gyoza",
+        "ingredients": ['flour', 'egg', 'pork', 'leafygreen', 'garlic'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "starter",
+        "country"    : "japan",
+        "recipeUrl"  : "https://www.tasteatlas.com/gyoza" 
+    },
+    {
+        "id"         : 52,
+        "name"       : "onion ring",
+        "ingredients": ['onion', 'flour', 'egg', 'milk', 'oil'],
+        "cookTime"   : 1.5,
+        "cookMethod" : "raw",
+        "foodType"   : "starter",
+        "country"    : "usa",
+        "recipeUrl"  : "https://www.tasteatlas.com/onion-rings/recipe" 
     }
 ] as Array<RecipleInterface>
