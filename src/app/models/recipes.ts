@@ -529,7 +529,7 @@ export const recipes = [
     {        
         "id"         : 27,
         "name"       : "gazpacho",
-        "ingredients": ['bread', 'tomato', 'onion', 'pepper', 'water'],
+        "ingredients": ['bread', 'tomato', 'garlic', 'pepper', 'water'],
         "cookTime"   : 1.5,
         "cookMethod" : "raw",
         "foodType"   : "starter",
