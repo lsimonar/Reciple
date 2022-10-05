@@ -27,7 +27,12 @@
                         </div>
                     </div>
                 </ng-container>
-                <div class="attempt-circle" [ngClass]="attempt <=j? '' : todaysGuesses!.attempts[j].hit? 'attempted right-guess' : 'attempted wrong-guess'"></div>
+                <div [ngClass]="attempt >j? 'tooltip' : ''" > 
+                    <span *ngIf="attempt > j" class="tooltiptext">{{'recipe.' + todaysGuesses!.attempts[j].recipe | translate}}</span>    
+                    <div class="attempt-circle" [ngClass]="attempt <=j? '' : todaysGuesses!.attempts[j].hit? 
+                        'attempted right-guess' : 'attempted wrong-guess'">
+                    </div>
+                </div>
             </div>
         </ng-container>
         <div *ngIf="!todaySolved">
@@ -41,8 +46,8 @@
         <div class="dishes-container" [class.inverted]="isDarkMode">
             <ng-scrollbar>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="recipe-tabs">
-                    <div #starterTab fxFlex="33"  (click)="tabHandler('starter')">🥗 {{'homePage.sides' | translate}}</div>
-                    <div #mainTab fxFlex="33"     (click)="tabHandler('main')">🍽️ {{'homePage.mains' | translate}}</div>
+                    <div #starterTab  fxFlex="33" (click)="tabHandler('starter')">🥗 {{'homePage.sides' | translate}}</div>
+                    <div #mainTab     fxFlex="33" (click)="tabHandler('main')">🍽️ {{'homePage.mains' | translate}}</div>
                     <div #dessertsTab fxFlex="33" (click)="tabHandler('dessert')">🥞 {{'homePage.desserts' | translate}}</div>
                 </div>
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center">

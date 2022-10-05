@@ -1,3 +1,13 @@
+.home-screen-ctn{
+    margin-top: 1em;
+
+    .img-ctn{
+        
+        height: 80%;
+        width: 95%;
+    }
+}
+
 .paper {
     height: 98%;
     min-height: 35em;
@@ -15,20 +25,20 @@
     width: 2em;
     height: 2em;
     margin-left: 8px;
-    margin-top: 9px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -khtml-border-radius: 50%;
+    margin-top: 3px;
+    //border-radius: 50%;
+    //-webkit-border-radius: 50%;
+    //-moz-border-radius: 50%;
+    //-khtml-border-radius: 50%;
     text-align: center;
     line-height: 2em;
     outline: 1px solid rgb(211, 214, 218);
 
     &.attempted{
-        border-radius:50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -khtml-border-radius: 50%;
+        //border-radius:50%;
+        //-webkit-border-radius: 50%;
+        //-moz-border-radius: 50%;
+        //-khtml-border-radius: 50%;
         outline: 1.5px solid grey;
     }
 
@@ -40,18 +50,9 @@
     }
 }
 
-.home-screen-ctn{
-    margin-top: 1em;
-
-    .img-ctn{
-        
-        height: 80%;
-        width: 95%;
-    }
-}
-
 .reciple-tile{
     perspective: 1000px;
+    cursor:context-menu;
 }
 
 .reciple-tile, .reciple-tile-front, .reciple-tile-back {
@@ -89,16 +90,6 @@
     transform: rotateY(180deg);
   }
 
-.guess-box{
-    margin-top: 10px;
-    padding: 0 5px 0;
-    min-width: 30px;
-    margin-bottom: -4.5px;
-    border: 1.5px solid grey;
-    border-radius: 5px;
-    font-size:13px;
-}
-
 .right-guess{
     background-color: #73d25d7f;
     outline: 1.5px solid grey;
@@ -133,22 +124,22 @@
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-    width: 80px;
-    min-width: fit-content;
     top: 100%;
     left: 56%;
     margin-left: -40px;
+    width: 80px;
+    min-width: fit-content;
   }
 
-  .tooltip .tooltiptext::after {
-    content: " ";
-    position: absolute;
-    bottom: 100%;  /* At the top of the tooltip */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent rgb(30, 30, 30) transparent;
+  .tooltip .tooltiptext::after{
+        content: " ";
+        position: absolute;
+        bottom: 100%;  /* At the top of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent rgb(30, 30, 30) transparent; 
   }
   
   /* Show the tooltip text when you mouse over the tooltip container */
