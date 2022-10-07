@@ -13,9 +13,9 @@ export class InfoDialogComponent implements OnInit {
 
   isHighContrast: boolean = false;
 
-  example1Icons=['🐄', '🍝', '🧀', '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/sauces.png" alt="Sauces"/>', '🍅']
+  example1Icons=['🐄', '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/pasta.png" alt="Pasta"/>', '🧀', '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/sauces.png" alt="Sauces"/>', '🍅']
   example2Icons=['<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/flour.svg" alt="Flour"/>',
-   '🥤', '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/yeast.png" alt="Yeast"/>', '🍅', '🧀']
+   '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/water.png" alt="Water"/>', '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/yeast.png" alt="Yeast"/>', '🍅', '🧀']
 
   constructor(
     private store : Store,

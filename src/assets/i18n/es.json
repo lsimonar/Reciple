@@ -100,6 +100,9 @@
         "herb" : "Hierbas aromáticas",
         "chocolate" : "Chocolate",
         "lemon" : "Limon o lima",
+        "starter" : "Entrante",
+        "main" : "Principal",
+        "dessert" : "Postre",
         "" : ""
 
     },

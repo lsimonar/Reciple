@@ -34,7 +34,7 @@ export const ingredientToEmoji = {
     'mushroom': '🍄',
     'cheese': '🧀',
     'wine' : '🍷',
-    'pasta': '🍝',
+    'pasta': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/pasta.png" alt="Pasta"/>',
     'onion' : '🧅',
     'meat' : '🥩',
     'seafood': '🦐',
@@ -72,7 +72,9 @@ export const ingredientToEmoji = {
     'oil': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/oil.png" alt="Oil"/>',
     'jelly': '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/jelly.svg" alt="Jelly"/>',
     'sauce' : '<img style="width:1.3em; margin-top: 0.5em;" src = "../assets/food-icons/sauces.png" alt="Sauces"/>',
-
+    'starter' : '🥗',
+    'main' : '🍽️',
+    'dessert' : '🥞' 
 } 
 
 export const recipes = [
@@ -83,6 +85,7 @@ export const recipes = [
         "cookTime"   : 2,
         "serves"     : 4,
         "foodType"   : "main",
+        //"cookMethod" : "boiled",
         "country"    : "spain",
         "recipeUrl"  : "https://www.tasteatlas.com/paella/recipe"
     },
@@ -93,6 +96,7 @@ export const recipes = [
         "cookTime"   : 1,
         "serves"     : 4,
         "foodType"   : "main",
+        //"cookMethod" : "boiled",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/risotto/recipe"
 
@@ -104,6 +108,7 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
+        //"cookMethod" : "boiled",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/bolognese/recipe"
     },
@@ -144,6 +149,7 @@ export const recipes = [
         "cookTime"   : 1,
         "serves"     : 4,
         "foodType"   : "main",
+        //"cookMethod" : "oven",
         "country"    : "italy",
         "recipeUrl"  : "https://www.tasteatlas.com/lasagne/recipe"
     },
@@ -164,6 +170,7 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "starter",
+        //"cookMethod" : "raw",
         "country"    : "mexico",
         "recipeUrl"  : "https://www.tasteatlas.com/caesar-salad/recipe"
     },
@@ -174,6 +181,7 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
+        //"cookMethod" : "fried",
         "country"    : "usa",
         "recipeUrl"  : "https://www.tasteatlas.com/cheeseburger/recipe"
     },
@@ -204,6 +212,7 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
+        //"cookMethod" : "oven",
         "country"    : "greece",
         "recipeUrl"  : "https://www.tasteatlas.com/gyros/recipe"
     },
@@ -244,6 +253,7 @@ export const recipes = [
         "cookTime"   : 0.5,
         "serves"     : 4,
         "foodType"   : "main",
+        //"cookMethod" : "boiled",
         "country"    : "mexico",
         "recipeUrl"  : "https://www.tasteatlas.com/fajitas/recipe"
     },
