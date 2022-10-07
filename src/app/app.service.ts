@@ -56,19 +56,22 @@ export class AppService {
     const attempt: Attempt = {} as Attempt;
     if(gameSolution.id != null && gameSolution.id != undefined && gameSolution.id != 0) {
       attempt.recipe = guess.name;
-      attempt.ingredients = guess.ingredients.slice(0,4);
+      attempt.ingredients = guess.ingredients.slice(0,5);
       attempt.ingredients.push(guess.foodType)
-      attempt.ingredientsHit = [false, false , false, false, false]
+      attempt.ingredientsHit = [false, false , false, false, false, false]
       attempt.hit = false;
       if(guess.id === gameSolution.id) {
         attempt.hit = true;
-        attempt.ingredientsHit = [true, true, true, true, true]
+        attempt.ingredientsHit = [true, true, true, true, true, true]
       } else {
           guess.ingredients.forEach((ingredient, i) => {
             if(gameSolution.ingredients.indexOf(ingredient) !== -1) {
               attempt.ingredientsHit[i] = true;
             }
         });
+        if(guess.foodType === gameSolution.foodType){
+          attempt.ingredientsHit[5] = true;
+        }
       }
     }
     return attempt;

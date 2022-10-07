@@ -97,7 +97,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     const todayRecipe = this.recipes.find(c => c.id === recipeId);
     this.solution = todayRecipe!;
     this.todaySolved = false;
-    this.guess = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
+    this.guess = [[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false]];
     this.guessListText = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
     this.guessList = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
 

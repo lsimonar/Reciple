@@ -29,8 +29,17 @@
                 </ng-container>
                 <div [ngClass]="attempt >j? 'tooltip' : ''" > 
                     <span *ngIf="attempt > j" class="tooltiptext">{{'recipe.' + todaysGuesses!.attempts[j].recipe | translate}}</span>    
-                    <div class="attempt-circle" [class.high-contrast]="isHighContrast" [ngClass]="attempt <=j? '' : todaysGuesses!.attempts[j].hit? 
-                        'attempted right-guess' : 'attempted wrong-guess'">
+                    <div class="reciple-tile" style="margin:3px;">
+                        <div class="attempt-circle" [class.high-contrast]="isHighContrast" [ngClass]="attempt <=j? '' : 'reciple-tile-inner-rotate'" style="--delay:{{5}}">
+                            <div class="reciple-tile-front" style="margin:2px;">
+                                <div></div>
+                            </div>
+                            <div class="reciple-tile-back" 
+                                [ngClass]="attempt <=j? '' : guess[j][5]? 'right-guess' : 'wrong-guess'"
+                                [class.high-contrast]="isHighContrast" >
+                                <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(guessList[j][5])></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,7 +50,7 @@
             </button>
         </div>
         <ng-container *ngIf="todaySolved">
-            <h3 style="margin:5px;">{{'recipe.' + solution.name | translate}}, {{'homePage.yummy' | translate}}!</h3>
+            <h3 style="margin:5px;">{{'recipe.' + solution.name | translate}} 🎉</h3>
         </ng-container>
         <div *ngIf="!todaySolved" class="dishes-container" [class.inverted]="isDarkMode">
             <ng-scrollbar>
