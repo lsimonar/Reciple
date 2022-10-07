@@ -7,62 +7,61 @@
 <div>
     <p>{{'infoPage.intro1-p1' | translate}} <span style="font-weight:600;">RECIPLE</span> {{'infoPage.intro1-p2' | translate}}</p>
     <p>{{'infoPage.intro2' | translate}}</p>
-    <p class="line-separator">{{'infoPage.intro3' | translate}}</p>
+    <p class="line-separator" [innerHtml]="'infoPage.intro3' | translate"></p>
     <p style="font-weight:600">{{'infoPage.example' | translate}}</p>
     <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
-        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4, 5]">      
             <div class="reciple-tile" style="margin:3px;">
-                <div class="reciple-tile-inner reciple-tile-inner-rotate" style="--delay:{{i}}">
+                <div [ngClass]="{'reciple-tile-inner' : i < 5, 'attempt-circle' : i === 5, 'reciple-tile-inner-rotate' : true}">
                     <div class="reciple-tile-front" style="margin:2px;">
                         <div></div>
                     </div>
                     <div class="reciple-tile-back" 
-                        [ngClass]="i ===2 || i === 4? 'right-guess' : 'wrong-guess'"
-                        [class.high-contrast]="isHighContrast">
+                        [ngClass]="i ===2 || i === 4 || i === 5? 'right-guess' : 'wrong-guess'"
+                        [class.high-contrast]="isHighContrast" >
                         <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(example1Icons[i])></span>
                     </div>
                 </div>
             </div>
         </ng-container>
-        <div [class.high-contrast]="isHighContrast" class="attempt-circle attempted wrong-guess"></div>
     </div>
     <p>{{'infoPage.example1' | translate}}</p>
-    <div class="img-ctn" style="margin-bottom: 35px;" fxLayout="row" fxLayoutAlign="center center">
-        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">    
+    <div class="img-ctn" style="margin-bottom: 35px;" fxLayout="row" fxLayoutAlign="center center">  
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4, 5]"> 
             <div [ngClass]="i==2? 'tooltip' : ''" > 
-                <span *ngIf="i==2" class="tooltiptext">{{'ingredients.cheese' | translate}}</span>      
-                <div class="reciple-tile" style="margin:3px;">
-                    <div class="reciple-tile-inner reciple-tile-inner-rotate" style="--delay:{{i}}">
-                        <div class="reciple-tile-front" style="margin:2px;">
-                            <div></div>
+                <span *ngIf="i==2" class="tooltiptext">{{'ingredients.cheese' | translate}}</span>           
+                    <div class="reciple-tile" style="margin:3px;">
+                        <div [ngClass]="{'reciple-tile-inner' : i < 5, 'attempt-circle' : i === 5, 'reciple-tile-inner-rotate' : true}">
+                            <div class="reciple-tile-front" style="margin:2px;">
+                                <div></div>
+                            </div>
+                            <div class="reciple-tile-back" 
+                                [ngClass]="i ===2 || i === 4 || i === 5? 'right-guess' : 'wrong-guess'"
+                                [class.high-contrast]="isHighContrast" >
+                                <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(example1Icons[i])></span>
+                            </div>
                         </div>
-                        <div class="reciple-tile-back" 
-                            [ngClass]="i ===2 || i === 4? 'right-guess' : 'wrong-guess'"
-                            [class.high-contrast]="isHighContrast">
-                            <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(example1Icons[i])></span>                        </div>
                     </div>
                 </div>
-            </div>
         </ng-container>
-        <div [class.high-contrast]="isHighContrast" class="attempt-circle attempted wrong-guess"></div>
     </div>
     <p>{{'infoPage.example2' | translate}}</p>
     <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
-        <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">         
+        <ng-container *ngFor="let i of [0, 1, 2, 3, 4, 5]">      
             <div class="reciple-tile" style="margin:3px;">
-                <div class="reciple-tile-inner reciple-tile-inner-rotate" style="--delay:{{i}}">
+                <div [ngClass]="{'reciple-tile-inner' : i < 5, 'attempt-circle' : i === 5, 'reciple-tile-inner-rotate' : true}">
                     <div class="reciple-tile-front" style="margin:2px;">
                         <div></div>
                     </div>
                     <div class="reciple-tile-back right-guess" 
-                        [class.high-contrast]="isHighContrast">
+                        [class.high-contrast]="isHighContrast" >
                         <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(example2Icons[i])></span>
                     </div>
                 </div>
             </div>
         </ng-container>
-        <div [class.high-contrast]="isHighContrast" class="attempt-circle attempted right-guess"></div>
     </div>
+    <h3 style="margin:5px; text-align: center;">{{'recipe.pizza margarita' | translate}} 🎉</h3>
     <p class="line-separator">{{'infoPage.example3' | translate}}</p>
     <p class="line-separator"><b>{{'infoPage.newReciple' | translate}}</b></p>
     <p style="margin-bottom: 0.3em;">{{'infoPage.inspiredBy-p1' | translate}} <a href="https://www.nytimes.com/games/wordle/index.html" target='_blank'>Wordle</a> {{'infoPage.inspiredBy-p2' | translate}} <a href="https://twitter.com/powerlanguish" target='_blank'>Josh Wardle (@powerlanguish)</a>.</p>

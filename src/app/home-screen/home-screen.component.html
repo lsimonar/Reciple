@@ -14,7 +14,7 @@
                     <div [ngClass]="attempt >j? 'tooltip' : ''" > 
                         <span class="tooltiptext">{{'ingredients.' + guessListText[j][i] | translate}}</span>    
                         <div class="reciple-tile" style="margin:3px;">
-                            <div class="reciple-tile-inner" [ngClass]="attempt >= j+1? 'reciple-tile-inner-rotate': ''" style="--delay:{{i}}">
+                            <div [ngClass]="{'reciple-tile-inner' : i < 5, 'attempt-circle' : i === 5, 'reciple-tile-inner-rotate' : attempt >= j+1}" style="--delay:{{i}}">
                                 <div class="reciple-tile-front" style="margin:2px;">
                                     <div></div>
                                 </div>
@@ -27,21 +27,6 @@
                         </div>
                     </div>
                 </ng-container>
-                <div [ngClass]="attempt >j? 'tooltip' : ''" > 
-                    <span *ngIf="attempt > j" class="tooltiptext">{{'recipe.' + todaysGuesses!.attempts[j].recipe | translate}}</span>    
-                    <div class="reciple-tile" style="margin:3px;">
-                        <div class="attempt-circle" [class.high-contrast]="isHighContrast" [ngClass]="attempt <=j? '' : 'reciple-tile-inner-rotate'" style="--delay:{{5}}">
-                            <div class="reciple-tile-front" style="margin:2px;">
-                                <div></div>
-                            </div>
-                            <div class="reciple-tile-back" 
-                                [ngClass]="attempt <=j? '' : guess[j][5]? 'right-guess' : 'wrong-guess'"
-                                [class.high-contrast]="isHighContrast" >
-                                <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(guessList[j][5])></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </ng-container>
         <div *ngIf="!todaySolved">
@@ -66,7 +51,7 @@
                         </button>
                     </ng-container>
                 </div>
-             </ng-scrollbar>
+            </ng-scrollbar>
         </div>
     </div>
 </div>

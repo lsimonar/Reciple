@@ -36,13 +36,6 @@
     &.attempted{
         border: 1.5px solid grey;
     }
-
-    &.wrong-guess::after{
-        content: '❌';
-    }
-    &.right-guess::after{ 
-        content: '🎉';
-    }
 }
 
 .reciple-tile{

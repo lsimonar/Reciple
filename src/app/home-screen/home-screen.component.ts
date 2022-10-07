@@ -44,7 +44,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
   solution = recipes[7];
   todaySolved : boolean = false;
   guessedRecipes : RecipleInterface[] = [];
-  numberOfSquares: number[] = [0, 1, 2, 3, 4];
+  numberOfSquares: number[] = [0, 1, 2, 3, 4, 5];
   numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
   guess: Array<boolean[]> = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
   guessList: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
@@ -98,8 +98,8 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     this.solution = todayRecipe!;
     this.todaySolved = false;
     this.guess = [[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false]];
-    this.guessListText = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
-    this.guessList = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+    this.guessListText = [['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','','']];
+    this.guessList = [['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','','']];
 
     if(todayRecipe != undefined) {
       this.service.setTodaysRecipe(todayRecipe);
@@ -189,7 +189,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
   }
 
   openInfoDialog(){
-    this.dialog.open(InfoDialogComponent, {width: '450px', maxWidth: '100vw', height: '90vh', maxHeight : '90vh'});
+    this.dialog.open(InfoDialogComponent, {width: '440px', maxWidth: '100vw', height: '90vh', maxHeight : '90vh'});
   }
 
   makeGuess() {

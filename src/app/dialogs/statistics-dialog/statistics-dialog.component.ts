@@ -101,18 +101,10 @@ export class StatisticsDialogComponent implements OnInit {
     if(Object.keys(this.gameHistoric).length !== 0){
       let prevNumber = this.gameHistoric![Object.keys(this.gameHistoric!)[0]].number;
       for (let day in this.gameHistoric) {
-        if(day !== this.todayDate){
-          if(this.gameHistoric[day].number != prevNumber + 1){
-            if(this.gameHistoric[day].solved === false){
-              streak = 0;
-            } else {
-              streak = 1;
-            }
-          } else if(this.gameHistoric[day].solved && this.gameHistoric[day].number === prevNumber + 1){
-            streak += 1;
-          }
-        } else{
-          if(this.gameHistoric[day].solved){
+        if(this.gameHistoric[day].complete){
+          if(this.gameHistoric[day].solved === false){
+            streak = 0;
+          } else {
             streak += 1;
           }
         }

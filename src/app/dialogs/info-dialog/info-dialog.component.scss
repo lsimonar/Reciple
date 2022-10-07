@@ -71,24 +71,20 @@ h2{
     }
 }
 
-  .attempt-circle{
+.attempt-circle{
     width: 2em;
     height: 2em;
     margin-left: 8px;
-    margin-top: 9px;
+    top: 0.75em;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position : relative;
     text-align: center;
     line-height: 2em;
-    outline: 1px solid rgb(211, 214, 218);
+    border: 1px solid rgb(211, 214, 218);
 
     &.attempted{
-        outline: 1.7px solid grey;
-    }
-
-    &.wrong-guess::after{
-        content: '❌';
-    }
-    &.right-guess::after{ 
-        content: '🎉';
+        border: 1.5px solid grey;
     }
 }
 
