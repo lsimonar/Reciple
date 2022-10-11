@@ -110,7 +110,8 @@
         "sides" : "Sides",
         "mains" : "Mains",
         "desserts" : "Desserts",
-        "yummy" : "yummy"
+        "yummy" : "yummy",
+        "completeText" : "Today's recipe was"
     },
     "settingsPage":{
         "settingsTitle" : "Settings",

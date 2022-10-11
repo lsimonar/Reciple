@@ -111,9 +111,13 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
 
     this.gameHistoric = this.service.getLocalStoreGameHistoric();
     this.todaysGuesses = this.service.getDayHistoric(stringDate);
-    if(this.todaysGuesses?.attempts && this.todaysGuesses?.attempts.length > 0 
-       && this.todaysGuesses?.complete === true) {
+    if(this.todaysGuesses?.attempts && this.todaysGuesses?.attempts.length > 0) {
+      if (this.todaysGuesses?.solved === true){
       this.todaySolved = true;
+      }
+      else if (this.todaysGuesses.complete) {
+        this.todayFailed = true;
+      }
     }
     this.todaysGuesses === undefined? this.attempt = 0 : this.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
@@ -202,7 +206,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
   makeGuess() {
     this.todaysGuesses = this.service.makeGuess(this.guessedRecipe);
     if(this.todaysGuesses.complete === true) {
-      this.todaySolved = true;
+      this.todaysGuesses.solved ? this.todaySolved = true : this.todayFailed = true ; 
       const todayRecipe = this.solution.name;
       this.recipeUrl = this.recipes.find(c => c.name === todayRecipe)?.recipeUrl;
       this.gameHistoric = this.service.getLocalStoreGameHistoric();

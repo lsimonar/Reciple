@@ -111,7 +111,8 @@
         "sides" : "Entrantes",
         "mains" : "Principales",
         "desserts" : "Postres",
-        "yummy" : "delicioso"
+        "yummy" : "delicioso",
+        "completeText" : "La receta de hoy era"
     },
     "settingsPage":{
         "settingsTitle" : "Ajustes",
