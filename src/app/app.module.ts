@@ -27,6 +27,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ContactDialogComponent } from './dialogs/contact-dialog/contact-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -41,7 +42,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     KeyboardComponent,
     StatisticsDialogComponent,
     InfoDialogComponent,
-    CountdownComponent
+    CountdownComponent,
+    ContactDialogComponent
   ],
   imports: [
     BrowserModule,

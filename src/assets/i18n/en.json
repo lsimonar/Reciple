@@ -143,6 +143,9 @@
         "newReciple": "A new RECIPLE will be available every day!",
         "inspiredBy-p1": "RECIPLE has been inspired by",
         "inspiredBy-p2": "created by"
+    },
+    "contactPage":{
+        "contactTitle": "Contact"
     }
 
 

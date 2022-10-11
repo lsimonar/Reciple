@@ -15,6 +15,7 @@ import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.componen
 import { dailyReciples } from '../models/dailyReciples';
 import { TranslateService } from '@ngx-translate/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ContactDialogComponent } from '../dialogs/contact-dialog/contact-dialog.component';
 
 export const recipleAvailableLangs = ['en', 'es'];
 
@@ -43,6 +44,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
   filteredRecipeList : RecipleInterface[] = [];
   solution = recipes[7];
   todaySolved : boolean = false;
+  todayFailed : boolean = false;
   guessedRecipes : RecipleInterface[] = [];
   numberOfSquares: number[] = [0, 1, 2, 3, 4, 5];
   numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
@@ -97,6 +99,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     const todayRecipe = this.recipes.find(c => c.id === recipeId);
     this.solution = todayRecipe!;
     this.todaySolved = false;
+    this.todayFailed = false;
     this.guess = [[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false]];
     this.guessListText = [['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','','']];
     this.guessList = [['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','','']];
@@ -190,6 +193,10 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
 
   openInfoDialog(){
     this.dialog.open(InfoDialogComponent, {width: '440px', maxWidth: '100vw', height: '90vh', maxHeight : '90vh'});
+  }
+
+  openContactDialog(){
+    this.dialog.open(ContactDialogComponent, {width: '300px', maxWidth: '100vw', height: '290px', maxHeight : '90vh'});
   }
 
   makeGuess() {

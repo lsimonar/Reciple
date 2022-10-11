@@ -144,5 +144,9 @@
         "newReciple": "¡Un nuevo RECIPLE cada día!",
         "inspiredBy-p1": "RECIPLE esta inspirado en",
         "inspiredBy-p2": "creado por"
+    },
+    "contactPage":{
+        "contactTitle": "Contacto"
     }
+
 }
