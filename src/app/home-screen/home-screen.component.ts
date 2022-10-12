@@ -19,6 +19,14 @@ import { ContactDialogComponent } from '../dialogs/contact-dialog/contact-dialog
 
 export const recipleAvailableLangs = ['en', 'es'];
 
+export interface GameStatus {
+  attempt        : number,
+  guessedRecipes : RecipleInterface[],
+  squareHit      : Array<boolean[]>,
+  tooltipText    : Array<string[]>,
+  squareEmoji    : Array<string[]>,
+}
+
 @Component({
   selector: 'app-home-screen',
   templateUrl: './home-screen.component.html',
@@ -27,7 +35,6 @@ export const recipleAvailableLangs = ['en', 'es'];
 })
 export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChanges {
 
-  @ViewChild('recipleInput') input1ElementRef: { nativeElement: any; } | undefined;
   @ViewChild('starterTab') starterTab: ElementRef | undefined;
   @ViewChild('mainTab') mainTab: ElementRef | undefined;
   @ViewChild('dessertsTab') dessertsTab: ElementRef | undefined;
@@ -45,21 +52,19 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
   solution = recipes[7];
   todaySolved : boolean = false;
   todayFailed : boolean = false;
-  guessedRecipes : RecipleInterface[] = [];
+
   numberOfSquares: number[] = [0, 1, 2, 3, 4, 5];
   numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
-  guess: Array<boolean[]> = [[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]];
-  guessList: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
-  guessListText: Array<string[]> = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
-  attempt: number = 0;
+
+
+
   isDarkMode: boolean = false;
   isHighContrast: boolean = false;
-  prevEvent : any = undefined;
 
+  prevEvent : any = undefined;
+  gameStatus : GameStatus = {} as GameStatus;
   todaysGuesses?: DailyGuesses = {} as DailyGuesses;
   gameHistoric?: GameHistoric;
-  recipeUrl: string | undefined;
-
 
   constructor(
     private cdref: ChangeDetectorRef,
@@ -100,9 +105,9 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     this.solution = todayRecipe!;
     this.todaySolved = false;
     this.todayFailed = false;
-    this.guess = [[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false]];
-    this.guessListText = [['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','','']];
-    this.guessList = [['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','','']];
+    this.gameStatus.squareHit   = new Array(6).fill(0).map(e => new Array(6).fill(false));
+    this.gameStatus.tooltipText = new Array(6).fill(0).map(e => new Array(6).fill(''));
+    this.gameStatus.squareEmoji = new Array(6).fill(0).map(e => new Array(6).fill(''));
 
     if(todayRecipe != undefined) {
       this.service.setTodaysRecipe(todayRecipe);
@@ -119,12 +124,12 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
         this.todayFailed = true;
       }
     }
-    this.todaysGuesses === undefined? this.attempt = 0 : this.attempt = this.todaysGuesses.attempts.length;
+    this.todaysGuesses === undefined? this.gameStatus.attempt = 0 : this.gameStatus.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
-      this.guess[index] = attempt.ingredientsHit
+      this.gameStatus.squareHit[index] = attempt.ingredientsHit
       attempt.ingredients.forEach((ingredient, index2) => {
-        this.guessListText[index][index2] = ingredient;
-          this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
+        this.gameStatus.tooltipText[index][index2] = ingredient;
+          this.gameStatus.squareEmoji[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
       });
     });
 
@@ -207,18 +212,16 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     this.todaysGuesses = this.service.makeGuess(this.guessedRecipe);
     if(this.todaysGuesses.complete === true) {
       this.todaysGuesses.solved ? this.todaySolved = true : this.todayFailed = true ; 
-      const todayRecipe = this.solution.name;
-      this.recipeUrl = this.recipes.find(c => c.name === todayRecipe)?.recipeUrl;
       this.gameHistoric = this.service.getLocalStoreGameHistoric();
       this.store.dispatch(setGameHistoric({gameHistoric: this.gameHistoric}));
       setTimeout(() => { this.openStatisticsDialog(); }, 2000);
     }
-    this.attempt = this.todaysGuesses.attempts.length;
+    this.gameStatus.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
-      this.guess[index] = attempt.ingredientsHit
+      this.gameStatus.squareHit[index] = attempt.ingredientsHit
       attempt.ingredients.forEach((ingredient, index2) => {
-          this.guessListText[index][index2] = ingredient;
-          this.guessList[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
+          this.gameStatus.tooltipText[index][index2] = ingredient;
+          this.gameStatus.squareEmoji[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
       });
     });
     this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active');

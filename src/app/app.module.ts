@@ -14,10 +14,8 @@ import { AppComponent } from './app.component';
 import { HomeScreenComponent, recipleAvailableLangs } from './home-screen/home-screen.component';
 import { SettingsDialogComponent } from './dialogs/settings-dialog/settings-dialog.component';
 import { StoreModule } from '@ngrx/store';
-import { ContactPageComponent } from './screens/contact-page/contact-page.component';
 import { recipleReducer } from './store/reciple.reducer';
 import { AppService } from './app.service';
-import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { StatisticsDialogComponent } from './dialogs/statistics-dialog/statistics-dialog.component';
 import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -38,8 +36,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     HomeScreenComponent,
     SettingsDialogComponent,
-    ContactPageComponent,
-    KeyboardComponent,
     StatisticsDialogComponent,
     InfoDialogComponent,
     CountdownComponent,

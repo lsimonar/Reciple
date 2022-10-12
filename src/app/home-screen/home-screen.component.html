@@ -12,17 +12,17 @@
         <ng-container *ngFor="let j of numberOfTries">
             <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
                 <ng-container *ngFor="let i of numberOfSquares">    
-                    <div [ngClass]="attempt >j? 'tooltip' : ''" > 
-                        <span class="tooltiptext">{{'ingredients.' + guessListText[j][i] | translate}}</span>    
+                    <div [ngClass]="gameStatus.attempt >j? 'tooltip' : ''" > 
+                        <span class="tooltiptext">{{'ingredients.' + gameStatus.tooltipText[j][i] | translate}}</span>    
                         <div class="reciple-tile" style="margin:3px;">
-                            <div [ngClass]="{'reciple-tile-inner' : i < 5, 'attempt-circle' : i === 5, 'reciple-tile-inner-rotate' : attempt >= j+1}" style="--delay:{{i}}">
+                            <div [ngClass]="{'reciple-tile-inner' : i < 5, 'attempt-circle' : i === 5, 'reciple-tile-inner-rotate' : gameStatus.attempt >= j+1}" style="--delay:{{i}}">
                                 <div class="reciple-tile-front" style="margin:2px;">
                                     <div></div>
                                 </div>
                                 <div class="reciple-tile-back" 
-                                    [ngClass]="attempt <=j? '' : guess[j][i]? 'right-guess' : 'wrong-guess'"
+                                    [ngClass]="gameStatus.attempt <=j? '' : gameStatus.squareHit[j][i]? 'right-guess' : 'wrong-guess'"
                                     [class.high-contrast]="isHighContrast" >
-                                    <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(guessList[j][i])></span>
+                                    <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(gameStatus.squareEmoji[j][i])></span>
                                 </div>
                             </div>
                         </div>
