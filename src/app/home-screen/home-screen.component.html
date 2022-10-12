@@ -1,10 +1,11 @@
 <div class="paper" [class.inverted]="isDarkMode">
     <div class="app-header" fxLayout="row" fxLayoutAlign="space-between center">
         <h1 class="reciple-title">Reciple</h1>
-        <div fxLayout="row">
+        <div fxLayout="row" fxLayoutAlign="center center">
             <mat-icon (click)="openStatisticsDialog()" class="left-icon">leaderboard</mat-icon>
             <mat-icon (click)="openSettingsDialog()" class="left-icon">settings</mat-icon>
-            <mat-icon (click)="openInfoDialog()">help_outline</mat-icon>
+            <mat-icon (click)="openInfoDialog()" class="left-icon">help_outline</mat-icon>
+            <img class="img-icon" (click)="openContactDialog()" src="../../assets/chef-icon.png" alt="chef hat">
         </div>
     </div>
     <div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
@@ -35,9 +36,10 @@
             </button>
         </div>
         <ng-container *ngIf="todaySolved">
-            <h3 style="margin:5px;">{{'recipe.' + solution.name | translate}} 🎉</h3>
+            <h3 style="margin:5px;">{{"homePage.completeText"| translate}}  {{'recipe.' + solution.name | translate}} 🎉</h3>
         </ng-container>
-        <div *ngIf="!todaySolved" class="dishes-container" [class.inverted]="isDarkMode">
+        <h3 *ngIf="todayFailed" style="margin:5px;"> {{"homePage.completeText"| translate}}  {{'recipe.' + solution.name | translate}}  ☹️ </h3>
+        <div *ngIf="!todaySolved && !todayFailed" class="dishes-container" [class.inverted]="isDarkMode">
             <ng-scrollbar>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="recipe-tabs">
                     <div #starterTab  fxFlex="33" (click)="tabHandler('starter')">🥗 {{'homePage.sides' | translate}}</div>

@@ -15,6 +15,7 @@ import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.componen
 import { dailyReciples } from '../models/dailyReciples';
 import { TranslateService } from '@ngx-translate/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ContactDialogComponent } from '../dialogs/contact-dialog/contact-dialog.component';
 
 export const recipleAvailableLangs = ['en', 'es'];
 
@@ -43,6 +44,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
   filteredRecipeList : RecipleInterface[] = [];
   solution = recipes[7];
   todaySolved : boolean = false;
+  todayFailed : boolean = false;
   guessedRecipes : RecipleInterface[] = [];
   numberOfSquares: number[] = [0, 1, 2, 3, 4, 5];
   numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
@@ -97,6 +99,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     const todayRecipe = this.recipes.find(c => c.id === recipeId);
     this.solution = todayRecipe!;
     this.todaySolved = false;
+    this.todayFailed = false;
     this.guess = [[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false],[false,false,false,false,false,false]];
     this.guessListText = [['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','','']];
     this.guessList = [['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','',''],['','','','','','']];
@@ -108,9 +111,13 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
 
     this.gameHistoric = this.service.getLocalStoreGameHistoric();
     this.todaysGuesses = this.service.getDayHistoric(stringDate);
-    if(this.todaysGuesses?.attempts && this.todaysGuesses?.attempts.length > 0 
-       && this.todaysGuesses?.complete === true) {
+    if(this.todaysGuesses?.attempts && this.todaysGuesses?.attempts.length > 0) {
+      if (this.todaysGuesses?.solved === true){
       this.todaySolved = true;
+      }
+      else if (this.todaysGuesses.complete) {
+        this.todayFailed = true;
+      }
     }
     this.todaysGuesses === undefined? this.attempt = 0 : this.attempt = this.todaysGuesses.attempts.length;
     this.todaysGuesses?.attempts.forEach((attempt, index) => {
@@ -192,10 +199,14 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     this.dialog.open(InfoDialogComponent, {width: '440px', maxWidth: '100vw', height: '90vh', maxHeight : '90vh'});
   }
 
+  openContactDialog(){
+    this.dialog.open(ContactDialogComponent, {width: '300px', maxWidth: '100vw', height: '290px', maxHeight : '90vh'});
+  }
+
   makeGuess() {
     this.todaysGuesses = this.service.makeGuess(this.guessedRecipe);
     if(this.todaysGuesses.complete === true) {
-      this.todaySolved = true;
+      this.todaysGuesses.solved ? this.todaySolved = true : this.todayFailed = true ; 
       const todayRecipe = this.solution.name;
       this.recipeUrl = this.recipes.find(c => c.name === todayRecipe)?.recipeUrl;
       this.gameHistoric = this.service.getLocalStoreGameHistoric();

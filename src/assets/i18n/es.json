@@ -1,14 +1,14 @@
 {
     "recipe":{
         "Paella" : "Paella",
-        "Risotto": "Risoto",
+        "Risotto": "Risotto",
         "Pasta bolognesa": "Pasta boloñesa",
         "Seafood paella": "Paella de marisco",
         "beef cannelloni" : "Canelones de carne",
         "Katso Curry"  : "Katso Curry",
         "Lasagne" : "Lasaña de ternera",
         "Pasta carbonara" : "Pasta carbonara",
-        "caesar salad" : "Ensalada Caesar",
+        "caesar salad" : "Ensalada césar",
         "Cheeseburguer" : "Hamburguesa de queso",
         "Lobster bisque" : "Bisque de langosta",
         "Tortas" : "Tortas",
@@ -23,7 +23,7 @@
         "Chicken croquetas" : "Croquetas de pollo",
         "pretzel" : "Pretzel",
         "croissant" : "Croissant",
-        "crumble" : "Apple crumble",
+        "crumble" : "Crocante de manzana",
         "pizza margarita" : "Pizza Margarita",
         "eclair" : "Éclair",
         "apple pie": "Tarta de manzana",
@@ -40,9 +40,9 @@
         "cupcake" : "Cupcake",
         "catalan cream" : "Crema catalana",
         "bruschetta" : "Bruschetta",
-        "english breakfast" : "Desayuno Inglés",
+        "english breakfast" : "Desayuno inglés",
         "onion soup" : "Sopa de cebolla",
-        "custard tart" : "Pastel de Nata Portugues",
+        "custard tart" : "Pastel de Nata Portugués",
         "spaghetti alla puttanesca" : "Espaguetis a la puttanesca",
         "french toast" : "Tostadas francesas",
         "gazpacho" : "Gazpacho",
@@ -73,7 +73,7 @@
         "egg": "Huevo",
         "bread": "Pan",
         "rabbit": "Conejo",
-        "bean": "Judia",
+        "bean": "Judía",
         "fish" : "Pescado",
         "pepper" : "Pimiento",
         "milk" : "Leche",
@@ -90,7 +90,7 @@
         "cinnamon": "Canela",
         "yeast": "Levadura",
         "salt": "Sal",
-        "sugar": "Azucar",
+        "sugar": "Azúcar",
         "oil": "Aceite",
         "jelly": "Gelatina",
         "sauce" : "Salsa de soja o bechamel",
@@ -99,7 +99,7 @@
         "potato" : "Patata",
         "herb" : "Hierbas aromáticas",
         "chocolate" : "Chocolate",
-        "lemon" : "Limon o lima",
+        "lemon" : "Limón o lima",
         "starter" : "Entrante",
         "main" : "Principal",
         "dessert" : "Postre",
@@ -107,11 +107,12 @@
 
     },
     "homePage":{
-        "inputButton": "SIRVELO",
+        "inputButton": "SÍRVELO",
         "sides" : "Entrantes",
         "mains" : "Principales",
         "desserts" : "Postres",
-        "yummy" : "delicioso"
+        "yummy" : "delicioso",
+        "completeText" : "La receta de hoy era"
     },
     "settingsPage":{
         "settingsTitle" : "Ajustes",
@@ -125,24 +126,28 @@
         "wins" : "Victorias",
         "streak" : "Racha",
         "max" : "Mejor",
-        "guessTitle" : "Distribucion de Aciertos",
-        "share" : "Compartelo",
+        "guessTitle" : "Distribución de Aciertos",
+        "share" : "Compártelo",
         "recipe" : "Receta",
         "nextIn" : "SIGUIENTE RECIPLE EN",
         "resultCopied" : "Resultado copiado al portapapeles."
     },
     "infoPage":{
-        "infoTitle": "Como jugar",
+        "infoTitle": "Cómo jugar",
         "intro1-p1": "Adivina el",
         "intro1-p2": "diario en 6 intentos.",
-        "intro2": "Cada intento debe ser uno de los platos del panel inferior, distribuidos en distintas pestañas para que sean mas fáciles de encontrar. Selecciona un plato y submite el intento haciendo click en 'SIRVELO'.",
-        "intro3": "Despues de cada intento, las casillas mostraran los <b>cinco ingredientes principales</b> del plato que has escogido (por orden de cantidad) y el <b>tipo de plato</b> (entrante, principal o postre). Estas serán de color verde si coinciden con los de la solución.",
+        "intro2": "Cada intento debe ser uno de los platos del panel inferior, distribuidos en distintas pestañas para que sean más fáciles de encontrar. Selecciona un plato y envía el intento haciendo click en 'SÍRVELO'.",
+        "intro3": "Después de cada intento, las casillas mostrarán los <b>cinco ingredientes principales</b> del plato que has escogido (por orden de cantidad) y el <b>tipo de plato</b> (entrante, principal o postre). Estas serán de color verde si coinciden con los de la solución.",
         "example": "Ejemplo",
-        "example1": "Si intentamos \"Lasaña de ternera\" los ingredientes 'tomate' y 'queso' aparecen de color verde. La casilla mas pequeña indica que se trata de un plato principal. Por lo tanto, estamos buscando un plato principal que contenga tomate y queso.",
-        "example2": "Si no estas seguro del significado de alguna imagen, toca o pasa el cursor por encima del ingrediente.",
+        "example1": "Si intentamos \"Lasaña de ternera\" los ingredientes 'tomate' y 'queso' aparecen de color verde. La casilla más pequeña indica que se trata de un plato principal. Por lo tanto, estamos buscando un plato principal que contenga tomate y queso.",
+        "example2": "Si no estás seguro del significado de alguna imagen, toca o pasa el cursor por encima del ingrediente.",
         "example3": "Nos movemos a la pestaña 'Principales' e intentamos \"Pizza margarita\". Lo hemos acertado ¡Felicidades!",
         "newReciple": "¡Un nuevo RECIPLE cada día!",
-        "inspiredBy-p1": "RECIPLE esta inspirado en",
+        "inspiredBy-p1": "RECIPLE está inspirado en",
         "inspiredBy-p2": "creado por"
+    },
+    "contactPage":{
+        "contactTitle": "Contacto"
     }
+
 }
