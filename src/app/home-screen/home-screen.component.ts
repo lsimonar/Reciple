@@ -1,18 +1,18 @@
 import { Component, Renderer2, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
 import { MatDialog } from '@angular/material/dialog';
-import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statistics-dialog.component';
-import { SettingsDialogComponent } from '../dialogs/settings-dialog/settings-dialog.component';
 import { AppService } from '../app.service';
 import { Store } from '@ngrx/store';
 import { setAvailableLanguages, setGameHistoric, setIsDarkMode, setIsFirstLogin, setIsHighContrast, setLanguage } from '../store/reciple.actions';
 import { TodayDateHelper } from '../helpers/todayDateHelper';
 import { selectSettings } from '../store';
 import { RecipleSettings } from '../store/reciple.reducer';
-import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
 import { dailyReciples } from '../models/dailyReciples';
 import { TranslateService } from '@ngx-translate/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
+import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statistics-dialog.component';
+import { SettingsDialogComponent } from '../dialogs/settings-dialog/settings-dialog.component';
 import { ContactDialogComponent } from '../dialogs/contact-dialog/contact-dialog.component';
 
 export const recipleAvailableLangs = ['en', 'es'];
