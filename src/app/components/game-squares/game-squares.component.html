@@ -1,0 +1,23 @@
+<div class="squares-ctn" fxLayout="column" fxLayoutAlign="center center">
+    <ng-container *ngFor="let j of [0, 1, 2, 3, 4, 5]">
+        <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
+            <ng-container *ngFor="let i of [0, 1, 2, 3, 4, 5]">    
+                <div [ngClass]="gameStatus.attempt >j? 'tooltip' : ''" > 
+                    <span class="tooltiptext">{{'ingredients.' + gameStatus.tooltipText[j][i] | translate}}</span>    
+                    <div class="reciple-tile" style="margin:3px;">
+                        <div [ngClass]="{'reciple-tile-inner' : i < 5, 'attempt-circle' : i === 5, 'reciple-tile-inner-rotate' : gameStatus.attempt >= j+1}" style="--delay:{{i}}">
+                            <div class="reciple-tile-front" style="margin:2px;">
+                                <div></div>
+                            </div>
+                            <div class="reciple-tile-back" 
+                                [ngClass]="gameStatus.attempt <=j? '' : gameStatus.squareHit[j][i]? 'right-guess' : 'wrong-guess'"
+                                [class.high-contrast]="isHighContrast" >
+                                <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(gameStatus.squareEmoji[j][i])></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

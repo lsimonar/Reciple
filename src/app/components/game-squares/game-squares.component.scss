@@ -1,0 +1,122 @@
+.squares-ctn{
+    margin-top: 1em;
+
+    .img-ctn{
+        height: 80%;
+        width: 95%;
+    }
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(30, 30, 30);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 56%;
+    margin-left: -40px;
+    width: 80px;
+    min-width: fit-content;
+  }
+
+  .tooltip .tooltiptext::after{
+        content: " ";
+        position: absolute;
+        bottom: 100%;  /* At the top of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent rgb(30, 30, 30) transparent; 
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.attempt-circle{
+    width: 2em;
+    height: 2em;
+    margin-left: 8px;
+    top: 0.6em;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position : relative;
+    text-align: center;
+    line-height: 2em;
+    border: 1px solid rgb(211, 214, 218);
+
+    &.attempted{
+        border: 1.5px solid grey;
+    }
+}
+
+.reciple-tile{
+    perspective: 1000px;
+    cursor:context-menu;
+}
+
+.reciple-tile, .reciple-tile-front, .reciple-tile-back {
+    width: 3em;
+    height: 3em;
+}
+
+.reciple-tile-inner {
+    position: relative;
+    border: 1px solid rgb(211, 214, 218);
+    margin: 3px;
+    width: 100%;    
+    height: 100%;
+    text-align: center;
+    line-height: 2.5em;
+    font-size: 20px;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .reciple-tile-inner-rotate {
+    transform: rotateY(180deg);
+    transition-delay: calc(var(--delay)*0.25s);
+  }
+
+  .reciple-tile-front, .reciple-tile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  .reciple-tile-back {    
+    transform: rotateY(180deg);
+  }
+
+  .right-guess{
+    background-color: #73d25d7f;
+    outline: 1.5px solid grey;
+    &.high-contrast{
+        background-color: #f5783a8d;
+    }
+}
+.wrong-guess{
+    background-color: rgba(255, 0, 0, 0.326);
+    outline: 1.5px solid grey;
+    &.high-contrast{
+        background-color: #85c1f994;
+    }
+}

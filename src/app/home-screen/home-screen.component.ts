@@ -17,14 +17,6 @@ import { ContactDialogComponent } from '../dialogs/contact-dialog/contact-dialog
 
 export const recipleAvailableLangs = ['en', 'es'];
 
-export interface GameStatus {
-  attempt        : number,
-  guessedRecipes : RecipleInterface[],
-  squareHit      : Array<boolean[]>,
-  tooltipText    : Array<string[]>,
-  squareEmoji    : Array<string[]>,
-}
-
 @Component({
   selector: 'app-home-screen',
   templateUrl: './home-screen.component.html',
@@ -43,7 +35,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked{
   isDarkMode: boolean = false;
   isHighContrast: boolean = false;
 
-  gameStatus : GameStatus = {} as GameStatus;
   todaysGuesses?: DailyGuesses = {} as DailyGuesses;
   gameHistoric?: GameHistoric;
 
@@ -83,11 +74,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked{
 
     const todayRecipe = this.recipes.find(c => c.id === recipeId);
     this.solution = todayRecipe!;
-    this.todaySolved = false;
-    this.todayFailed = false;
-    this.gameStatus.squareHit   = new Array(6).fill(0).map(e => new Array(6).fill(false));
-    this.gameStatus.tooltipText = new Array(6).fill(0).map(e => new Array(6).fill(''));
-    this.gameStatus.squareEmoji = new Array(6).fill(0).map(e => new Array(6).fill(''));
 
     if(todayRecipe != undefined) {
       this.service.setTodaysRecipe(todayRecipe);
@@ -104,14 +90,9 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked{
         this.todayFailed = true;
       }
     }
-    this.todaysGuesses === undefined? this.gameStatus.attempt = 0 : this.gameStatus.attempt = this.todaysGuesses.attempts.length;
-    this.todaysGuesses?.attempts.forEach((attempt, index) => {
-      this.gameStatus.squareHit[index] = attempt.ingredientsHit
-      attempt.ingredients.forEach((ingredient, index2) => {
-        this.gameStatus.tooltipText[index][index2] = ingredient;
-          this.gameStatus.squareEmoji[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
-      });
-    });
+
+    this.todaySolved = false;
+    this.todayFailed = false;
 
   }
 
@@ -175,21 +156,14 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked{
   }
 
   makeGuess(guessedRecipe: RecipleInterface) {
-    this.todaysGuesses = this.service.makeGuess(guessedRecipe);
+    let todaysGuesses = this.service.makeGuess(guessedRecipe);
+    this.todaysGuesses = {...todaysGuesses}; //so that angular detects a change!
     if(this.todaysGuesses.complete === true) {
       this.todaysGuesses.solved ? this.todaySolved = true : this.todayFailed = true ; 
       this.gameHistoric = this.service.getLocalStoreGameHistoric();
       this.store.dispatch(setGameHistoric({gameHistoric: this.gameHistoric}));
       setTimeout(() => { this.openStatisticsDialog(); }, 2000);
     }
-    this.gameStatus.attempt = this.todaysGuesses.attempts.length;
-    this.todaysGuesses?.attempts.forEach((attempt, index) => {
-      this.gameStatus.squareHit[index] = attempt.ingredientsHit
-      attempt.ingredients.forEach((ingredient, index2) => {
-          this.gameStatus.tooltipText[index][index2] = ingredient;
-          this.gameStatus.squareEmoji[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
-      });
-    });
   }
 
   checkFirstLogin() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, Renderer2, Output, EventEmitter, OnChanges, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { DailyGuesses, recipes, RecipleInterface } from 'src/app/models/recipes';
@@ -7,9 +7,10 @@ import { selectIsDarkMode } from 'src/app/store';
 @Component({
   selector: 'app-recipes-panel',
   templateUrl: './recipes-panel.component.html',
-  styleUrls: ['./recipes-panel.component.scss']
+  styleUrls: ['./recipes-panel.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class RecipesPanelComponent implements OnInit, OnChanges {
+export class RecipesPanelComponent implements OnChanges, AfterViewInit {
 
   @Input() todaySolved: boolean = false;
   @Input() todayFailed: boolean = false;
@@ -34,29 +35,26 @@ export class RecipesPanelComponent implements OnInit, OnChanges {
   constructor(
     private store : Store,
     public translate : TranslateService,
-    private renderer : Renderer2
+    private renderer : Renderer2,
   ) { 
 
     this.recipeList = Object.values(recipes);
-    console.log(this.recipeList)
     this.store.select(selectIsDarkMode).subscribe((isDarkMode: boolean) => {
       this.isDarkMode = isDarkMode;
     })
   }
 
-  ngOnInit(): void {
-    this.translate.get('recipe.Paella').subscribe(() => {
-      this.starterTab?.nativeElement.classList.remove("activated");
-      this.mainTab?.nativeElement.classList.remove("activated");
-      this.dessertsTab?.nativeElement.classList.remove("activated");
+  ngAfterViewInit(): void{
+    this.starterTab?.nativeElement.classList.remove("activated");
+    this.mainTab?.nativeElement.classList.remove("activated");
+    this.dessertsTab?.nativeElement.classList.remove("activated");
 
-      this.filteredRecipeList = this.recipeFilter('starter');
-      this.starterTab?.nativeElement.classList.add("activated");
-    });
+    this.filteredRecipeList = this.recipeFilter('starter');
+    this.starterTab?.nativeElement.classList.add("activated");
   }
 
   ngOnChanges(){
-    this.filteredRecipeList = this.recipeFilter('main');
+    this.filteredRecipeList = this.recipeFilter('starter');
   }
 
   getRecipeList(): RecipleInterface[] {
