@@ -28,6 +28,7 @@ import { environment } from '../environments/environment';
 import { ContactDialogComponent } from './dialogs/contact-dialog/contact-dialog.component';
 import { RecipesPanelComponent } from './components/recipes-panel/recipes-panel.component';
 import { GameSquaresComponent } from './components/game-squares/game-squares.component';
+import { HeaderComponent } from './components/header/header.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -43,7 +44,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CountdownComponent,
     ContactDialogComponent,
     RecipesPanelComponent,
-    GameSquaresComponent
+    GameSquaresComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

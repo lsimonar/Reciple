@@ -1,6 +1,5 @@
 import { Component, Renderer2, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
-import { MatDialog } from '@angular/material/dialog';
 import { AppService } from '../app.service';
 import { Store } from '@ngrx/store';
 import { setAvailableLanguages, setGameHistoric, setIsDarkMode, setIsFirstLogin, setIsHighContrast, setLanguage } from '../store/reciple.actions';
@@ -9,11 +8,6 @@ import { selectSettings } from '../store';
 import { RecipleSettings } from '../store/reciple.reducer';
 import { dailyReciples } from '../models/dailyReciples';
 import { TranslateService } from '@ngx-translate/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
-import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statistics-dialog.component';
-import { SettingsDialogComponent } from '../dialogs/settings-dialog/settings-dialog.component';
-import { ContactDialogComponent } from '../dialogs/contact-dialog/contact-dialog.component';
 
 export const recipleAvailableLangs = ['en', 'es'];
 
@@ -39,14 +33,12 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked{
   gameHistoric?: GameHistoric;
 
   constructor(
-    private cdref: ChangeDetectorRef,
-    private service: AppService,
-    private renderer: Renderer2,
-    private store: Store,
-    public dialog: MatDialog,
-    public translate: TranslateService,
-    public sanitizer: DomSanitizer
-  ) {
+      private cdref: ChangeDetectorRef,
+      private service: AppService,
+      private renderer: Renderer2,
+      private store: Store,
+      public translate: TranslateService,
+    ) {
     translate.addLangs(recipleAvailableLangs);
     this.store.dispatch(setAvailableLanguages({availableLanguages: recipleAvailableLangs}));
     // this language will be used as a fallback when a translation isn't found in the current language
@@ -139,22 +131,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked{
     this.store.dispatch(setIsDarkMode({isDarkMode: isDarkMode}));
   }
 
-  openSettingsDialog(){
-    this.dialog.open(SettingsDialogComponent, {width: '300px', height: '300px', maxHeight : '95vh'});
-  }
-
-  openStatisticsDialog(){
-    this.dialog.open(StatisticsDialogComponent, {width: '320px', height: '520px', maxHeight : '95vh'});
-  }
-
-  openInfoDialog(){
-    this.dialog.open(InfoDialogComponent, {width: '440px', maxWidth: '100vw', height: '90vh', maxHeight : '90vh'});
-  }
-
-  openContactDialog(){
-    this.dialog.open(ContactDialogComponent, {width: '300px', maxWidth: '100vw', height: '290px', maxHeight : '90vh'});
-  }
-
   makeGuess(guessedRecipe: RecipleInterface) {
     let todaysGuesses = this.service.makeGuess(guessedRecipe);
     this.todaysGuesses = {...todaysGuesses}; //so that angular detects a change!
@@ -162,7 +138,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked{
       this.todaysGuesses.solved ? this.todaySolved = true : this.todayFailed = true ; 
       this.gameHistoric = this.service.getLocalStoreGameHistoric();
       this.store.dispatch(setGameHistoric({gameHistoric: this.gameHistoric}));
-      setTimeout(() => { this.openStatisticsDialog(); }, 2000);
+      setTimeout(() => { this.service.openStatisticsDialog(); }, 2000);
     }
   }
 
@@ -170,7 +146,7 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked{
     const isFirstLogin = this.service.isFirstLogin();
     this.store.dispatch(setIsFirstLogin({isFirstLogin: isFirstLogin}));
     if(isFirstLogin) {
-      this.openInfoDialog();
+      this.service.openInfoDialog();
       this.service.setFirstLoginToFalse();
     }
   }

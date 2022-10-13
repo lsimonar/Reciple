@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { RecipleInterface, Attempt, DailyGuesses, GameHistoric } from './models/recipes';
 import { TodayDateHelper } from './helpers/todayDateHelper';
 import { recipes } from './models/recipes';
+import { SettingsDialogComponent } from './dialogs/settings-dialog/settings-dialog.component';
+import { StatisticsDialogComponent } from './dialogs/statistics-dialog/statistics-dialog.component';
+import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
+import { ContactDialogComponent } from './dialogs/contact-dialog/contact-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +25,8 @@ export class AppService {
 
   constructor(
     private router: Router,
-    rendererFactory: RendererFactory2
+    rendererFactory: RendererFactory2,
+    public dialog: MatDialog,
     ) { 
       this.renderer = rendererFactory.createRenderer(null, null);
       this.gameHistoric = this.getLocalStoreGameHistoric();
@@ -195,6 +201,24 @@ export class AppService {
   
   private isTrue(checkVar: any) {
     return checkVar == true || checkVar == 'true' || checkVar == 'True';
+  }
+
+  //open dialogs
+
+  openSettingsDialog(){
+    this.dialog.open(SettingsDialogComponent, {width: '300px', height: '300px', maxHeight : '95vh'});
+  }
+
+  openStatisticsDialog(){
+    this.dialog.open(StatisticsDialogComponent, {width: '320px', height: '520px', maxHeight : '95vh'});
+  }
+
+  openInfoDialog(){
+    this.dialog.open(InfoDialogComponent, {width: '440px', maxWidth: '100vw', height: '90vh', maxHeight : '90vh'});
+  }
+
+  openContactDialog(){
+    this.dialog.open(ContactDialogComponent, {width: '300px', maxWidth: '100vw', height: '290px', maxHeight : '90vh'});
   }
   
 }

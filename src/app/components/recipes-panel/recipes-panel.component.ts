@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, Renderer2, Output, EventEmitter, OnChanges, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, Renderer2, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { DailyGuesses, recipes, RecipleInterface } from 'src/app/models/recipes';
