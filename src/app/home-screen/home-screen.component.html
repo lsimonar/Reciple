@@ -9,9 +9,9 @@
         </div>
     </div>
     <div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
-        <ng-container *ngFor="let j of numberOfTries">
+        <ng-container *ngFor="let j of [0, 1, 2, 3, 4, 5]">
             <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
-                <ng-container *ngFor="let i of numberOfSquares">    
+                <ng-container *ngFor="let i of [0, 1, 2, 3, 4, 5]">    
                     <div [ngClass]="gameStatus.attempt >j? 'tooltip' : ''" > 
                         <span class="tooltiptext">{{'ingredients.' + gameStatus.tooltipText[j][i] | translate}}</span>    
                         <div class="reciple-tile" style="margin:3px;">
@@ -30,31 +30,14 @@
                 </ng-container>
             </div>
         </ng-container>
-        <div *ngIf="!todaySolved">
-            <button class="input-button" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
-                {{'homePage.inputButton' | translate}}
-            </button>
-        </div>
-        <ng-container *ngIf="todaySolved">
-            <h3 style="margin:5px;">{{"homePage.completeText"| translate}}  {{'recipe.' + solution.name | translate}} 🎉</h3>
-        </ng-container>
-        <h3 *ngIf="todayFailed" style="margin:5px;"> {{"homePage.completeText"| translate}}  {{'recipe.' + solution.name | translate}}  ☹️ </h3>
-        <div *ngIf="!todaySolved && !todayFailed" class="dishes-container" [class.inverted]="isDarkMode">
-            <ng-scrollbar>
-                <div fxLayout="row" fxLayoutAlign="space-between center" class="recipe-tabs">
-                    <div #starterTab  fxFlex="33" (click)="tabHandler('starter')">🥗 {{'homePage.sides' | translate}}</div>
-                    <div #mainTab     fxFlex="33" (click)="tabHandler('main')">🍽️ {{'homePage.mains' | translate}}</div>
-                    <div #dessertsTab fxFlex="33" (click)="tabHandler('dessert')">🥞 {{'homePage.desserts' | translate}}</div>
-                </div>
-                <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                    <ng-container *ngFor="let recipe of filteredRecipeList">
-                        <button fxFlex="40%" class="recipe-button" (click)="recipeSelectorHandler($event, recipe)">
-                            {{'recipe.' + recipe.name | translate}}
-                        </button>
-                    </ng-container>
-                </div>
-            </ng-scrollbar>
-        </div>
     </div>
+    <app-recipes-panel
+        [todaySolved]="todaySolved"
+        [todayFailed]="todayFailed"
+        [todaysGuesses]="todaysGuesses"
+        [solution]="solution"
+        (guessMade)="makeGuess($event)"
+    > 
+    </app-recipes-panel>
 </div>
 

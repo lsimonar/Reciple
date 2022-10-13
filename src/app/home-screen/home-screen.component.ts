@@ -1,7 +1,5 @@
-import { Component, Renderer2, ElementRef, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation, ViewChild, OnChanges } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Renderer2, OnInit, AfterContentChecked, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import {recipes, RecipleInterface, ingredientToEmoji, DailyGuesses, GameHistoric} from 'src/app/models/recipes';
-import { Observable, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { StatisticsDialogComponent } from '../dialogs/statistics-dialog/statistics-dialog.component';
 import { SettingsDialogComponent } from '../dialogs/settings-dialog/settings-dialog.component';
@@ -33,35 +31,18 @@ export interface GameStatus {
   styleUrls: ['./home-screen.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChanges {
-
-  @ViewChild('starterTab') starterTab: ElementRef | undefined;
-  @ViewChild('mainTab') mainTab: ElementRef | undefined;
-  @ViewChild('dessertsTab') dessertsTab: ElementRef | undefined;
+export class HomeScreenComponent implements OnInit, AfterContentChecked{
 
   recipes = recipes;
   ingredientToEmoji = ingredientToEmoji;
-  control = new FormControl('');
 
-  filteredOptions: Observable<RecipleInterface[]> = of([]);
-
-  isRecipeValid: boolean  = false; 
-  guessedRecipe: RecipleInterface = {} as RecipleInterface;
-  recipeList   : RecipleInterface[] = [];
-  filteredRecipeList : RecipleInterface[] = [];
   solution = recipes[7];
   todaySolved : boolean = false;
   todayFailed : boolean = false;
 
-  numberOfSquares: number[] = [0, 1, 2, 3, 4, 5];
-  numberOfTries: number[] = [0, 1, 2, 3, 4, 5];
-
-
-
   isDarkMode: boolean = false;
   isHighContrast: boolean = false;
 
-  prevEvent : any = undefined;
   gameStatus : GameStatus = {} as GameStatus;
   todaysGuesses?: DailyGuesses = {} as DailyGuesses;
   gameHistoric?: GameHistoric;
@@ -82,7 +63,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     this.store.dispatch(setLanguage({language: recipleAvailableLangs[0]}));
 
     const self = this;
-    this.recipeList = this.getRecipeList();
     document.addEventListener("visibilitychange", function() {
       if(!document.hidden) {
         self.ngOnInit();
@@ -133,24 +113,10 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
       });
     });
 
-    this.translate.get('recipe.Paella').subscribe(() => {
-      this.starterTab?.nativeElement.classList.remove("activated");
-      this.mainTab?.nativeElement.classList.remove("activated");
-      this.dessertsTab?.nativeElement.classList.remove("activated");
-
-      this.filteredRecipeList = this.recipeFilter('starter');
-      this.starterTab?.nativeElement.classList.add("activated");
-    });
-
-
   }
 
   ngAfterContentChecked() {
     this.cdref.detectChanges();
-  }
-
-  ngOnChanges(){
-    this.filteredRecipeList = this.recipeFilter('main');
   }
 
   fetchSettings(){
@@ -208,8 +174,8 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
     this.dialog.open(ContactDialogComponent, {width: '300px', maxWidth: '100vw', height: '290px', maxHeight : '90vh'});
   }
 
-  makeGuess() {
-    this.todaysGuesses = this.service.makeGuess(this.guessedRecipe);
+  makeGuess(guessedRecipe: RecipleInterface) {
+    this.todaysGuesses = this.service.makeGuess(guessedRecipe);
     if(this.todaysGuesses.complete === true) {
       this.todaysGuesses.solved ? this.todaySolved = true : this.todayFailed = true ; 
       this.gameHistoric = this.service.getLocalStoreGameHistoric();
@@ -224,63 +190,6 @@ export class HomeScreenComponent implements OnInit, AfterContentChecked, OnChang
           this.gameStatus.squareEmoji[index][index2] = ingredientToEmoji[ingredient as keyof typeof ingredientToEmoji];
       });
     });
-    this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active');
-    this.isRecipeValid = false;
-    this.guessedRecipe = {} as RecipleInterface;
-    this.filteredRecipeList = this.filteredRecipeList.filter((recipe)=> {
-      return recipe.name !== this.todaysGuesses?.attempts[this.todaysGuesses.attempts.length - 1]?.recipe
-    });
-  }
-
-
-  getRecipeList(): RecipleInterface[] {
-    let recipeList=[];
-    for (let i = 0; i < Object.values(this.recipes).length; i++) {
-      recipeList.push(this.recipes[i]);
-    }
-    return recipeList;
-  }
-
-  recipeSelectorHandler(event: any, recipe : RecipleInterface) {
-    this.isRecipeValid = true;
-    this.guessedRecipe = recipe;
-    if(this.prevEvent){
-      this.renderer.removeClass(this.prevEvent.target, 'recipe-button-active')
-    }
-    this.renderer.addClass(event.target, 'recipe-button-active')
-    this.prevEvent = event;
-  }
-
-  tabHandler(tab : string){
-    this.starterTab?.nativeElement.classList.remove("activated");
-    this.mainTab?.nativeElement.classList.remove("activated");
-    this.dessertsTab?.nativeElement.classList.remove("activated");
-
-    if(tab === 'starter'){
-      this.starterTab?.nativeElement.classList.add("activated");
-      this.filteredRecipeList = this.recipeFilter('starter');
-    } else if(tab === 'main'){
-      this.mainTab?.nativeElement.classList.add("activated");
-      this.filteredRecipeList = this.recipeFilter('main');
-    } else if(tab === 'dessert'){
-      this.dessertsTab?.nativeElement.classList.add("activated");
-      this.filteredRecipeList = this.recipeFilter('dessert');
-    }
-    this.isRecipeValid = false;
-    this.guessedRecipe = {} as RecipleInterface;
-  }
-
-  recipeFilter(tab: string): RecipleInterface[] {
-    const filterValue = tab;
-    const filteredRecipeList = this.recipeList.filter(recipe => {
-      const guessedRecipes = this.todaysGuesses?.attempts?.map(a => a.recipe.toLowerCase());
-      if(guessedRecipes && guessedRecipes.length){
-        return recipe.foodType == filterValue && guessedRecipes.indexOf(recipe.name.toLowerCase()) == -1
-      } else{
-        return recipe.foodType == filterValue
-      }
-    });
-    return filteredRecipeList.sort((a,b) => this.translate.instant('recipe.'+a.name).localeCompare(this.translate.instant('recipe.'+b.name)))
   }
 
   checkFirstLogin() {
