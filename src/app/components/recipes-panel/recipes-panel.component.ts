@@ -8,9 +8,8 @@ import { selectIsDarkMode } from 'src/app/store';
   selector: 'app-recipes-panel',
   templateUrl: './recipes-panel.component.html',
   styleUrls: ['./recipes-panel.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
-export class RecipesPanelComponent implements OnChanges, AfterViewInit {
+export class RecipesPanelComponent implements AfterViewInit {
 
   @Input() todaySolved: boolean = false;
   @Input() todayFailed: boolean = false;
@@ -51,10 +50,6 @@ export class RecipesPanelComponent implements OnChanges, AfterViewInit {
 
     this.filteredRecipeList = this.recipeFilter('starter');
     this.starterTab?.nativeElement.classList.add("activated");
-  }
-
-  ngOnChanges(){
-    this.filteredRecipeList = this.recipeFilter('starter');
   }
 
   getRecipeList(): RecipleInterface[] {
