@@ -14,10 +14,8 @@ import { AppComponent } from './app.component';
 import { HomeScreenComponent, recipleAvailableLangs } from './home-screen/home-screen.component';
 import { SettingsDialogComponent } from './dialogs/settings-dialog/settings-dialog.component';
 import { StoreModule } from '@ngrx/store';
-import { ContactPageComponent } from './screens/contact-page/contact-page.component';
 import { recipleReducer } from './store/reciple.reducer';
 import { AppService } from './app.service';
-import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { StatisticsDialogComponent } from './dialogs/statistics-dialog/statistics-dialog.component';
 import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -28,6 +26,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ContactDialogComponent } from './dialogs/contact-dialog/contact-dialog.component';
+import { RecipesPanelComponent } from './components/recipes-panel/recipes-panel.component';
+import { GameSquaresComponent } from './components/game-squares/game-squares.component';
+import { HeaderComponent } from './components/header/header.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -38,12 +39,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     HomeScreenComponent,
     SettingsDialogComponent,
-    ContactPageComponent,
-    KeyboardComponent,
     StatisticsDialogComponent,
     InfoDialogComponent,
     CountdownComponent,
-    ContactDialogComponent
+    ContactDialogComponent,
+    RecipesPanelComponent,
+    GameSquaresComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,60 +1,20 @@
 <div class="paper" [class.inverted]="isDarkMode">
-    <div class="app-header" fxLayout="row" fxLayoutAlign="space-between center">
-        <h1 class="reciple-title">Reciple</h1>
-        <div fxLayout="row" fxLayoutAlign="center center">
-            <mat-icon (click)="openStatisticsDialog()" class="left-icon">leaderboard</mat-icon>
-            <mat-icon (click)="openSettingsDialog()" class="left-icon">settings</mat-icon>
-            <mat-icon (click)="openInfoDialog()" class="left-icon">help_outline</mat-icon>
-            <img class="img-icon" [class.inverted]="isDarkMode" (click)="openContactDialog()" src="../../assets/chef-icon.png" alt="chef hat">
-        </div>
-    </div>
-    <div class="home-screen-ctn" fxLayout="column" fxLayoutAlign="center center">
-        <ng-container *ngFor="let j of numberOfTries">
-            <div class="img-ctn" fxLayout="row" fxLayoutAlign="center center">
-                <ng-container *ngFor="let i of numberOfSquares">    
-                    <div [ngClass]="attempt >j? 'tooltip' : ''" > 
-                        <span class="tooltiptext">{{'ingredients.' + guessListText[j][i] | translate}}</span>    
-                        <div class="reciple-tile" style="margin:3px;">
-                            <div [ngClass]="{'reciple-tile-inner' : i < 5, 'attempt-circle' : i === 5, 'reciple-tile-inner-rotate' : attempt >= j+1}" style="--delay:{{i}}">
-                                <div class="reciple-tile-front" style="margin:2px;">
-                                    <div></div>
-                                </div>
-                                <div class="reciple-tile-back" 
-                                    [ngClass]="attempt <=j? '' : guess[j][i]? 'right-guess' : 'wrong-guess'"
-                                    [class.high-contrast]="isHighContrast" >
-                                    <span [innerHtml] = sanitizer.bypassSecurityTrustHtml(guessList[j][i])></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ng-container>
-            </div>
-        </ng-container>
-        <div *ngIf="!todaySolved">
-            <button class="input-button" mat-raised-button [disabled]="isRecipeValid === false" (click)="makeGuess()">
-                {{'homePage.inputButton' | translate}}
-            </button>
-        </div>
-        <ng-container *ngIf="todaySolved">
-            <h3 style="margin:5px;">{{"homePage.completeText"| translate}}  {{'recipe.' + solution.name | translate}} 🎉</h3>
-        </ng-container>
-        <h3 *ngIf="todayFailed" style="margin:5px;"> {{"homePage.completeText"| translate}}  {{'recipe.' + solution.name | translate}}  ☹️ </h3>
-        <div *ngIf="!todaySolved && !todayFailed" class="dishes-container" [class.inverted]="isDarkMode">
-            <ng-scrollbar>
-                <div fxLayout="row" fxLayoutAlign="space-between center" class="recipe-tabs">
-                    <div #starterTab  fxFlex="33" (click)="tabHandler('starter')">🥗 {{'homePage.sides' | translate}}</div>
-                    <div #mainTab     fxFlex="33" (click)="tabHandler('main')">🍽️ {{'homePage.mains' | translate}}</div>
-                    <div #dessertsTab fxFlex="33" (click)="tabHandler('dessert')">🥞 {{'homePage.desserts' | translate}}</div>
-                </div>
-                <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                    <ng-container *ngFor="let recipe of filteredRecipeList">
-                        <button fxFlex="40%" class="recipe-button" (click)="recipeSelectorHandler($event, recipe)">
-                            {{'recipe.' + recipe.name | translate}}
-                        </button>
-                    </ng-container>
-                </div>
-            </ng-scrollbar>
-        </div>
-    </div>
+    <app-header
+        [isDarkMode]="isDarkMode"    
+    >
+    </app-header>
+    <app-game-squares
+        [todaysGuesses]="todaysGuesses"  
+        [isHighContrast]="isHighContrast"  
+    >
+    </app-game-squares>
+    <app-recipes-panel
+        [todaySolved]="todaySolved"
+        [todayFailed]="todayFailed"
+        [todaysGuesses]="todaysGuesses"
+        [solution]="solution"
+        (guessMade)="makeGuess($event)"
+    > 
+    </app-recipes-panel>
 </div>
 

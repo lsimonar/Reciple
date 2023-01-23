@@ -1,0 +1,9 @@
+<div class="app-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <h1 class="reciple-title">Reciple</h1>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon (click)="openStatisticsDialog()" class="left-icon">leaderboard</mat-icon>
+        <mat-icon (click)="openSettingsDialog()" class="left-icon">settings</mat-icon>
+        <mat-icon (click)="openInfoDialog()" class="left-icon">help_outline</mat-icon>
+        <img class="img-icon" [class.inverted]="isDarkMode" (click)="openContactDialog()" src="../../../assets/chef-icon.png" alt="chef hat">
+    </div>
+</div>

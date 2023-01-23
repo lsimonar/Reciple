@@ -1,0 +1,80 @@
+.input-button{
+    line-height: 15px; 
+    height: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 10em;
+    border-radius: 5px; 
+    text-align: center;
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.dishes-container{
+    border: rgba(211, 211, 211, 0.664) 3px solid;
+    width: 90%;
+    max-width: 350px;
+    height: 22vh;
+    padding: 0px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    &.inverted{
+        background-color: inherit;
+    }
+}
+
+.recipe-tabs{
+    height: 30px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: lightgrey;
+    text-align: center;
+    cursor: pointer;
+    color: black;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+    -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
+    -moz-tap-highlight-color: rgba(0,0,0,0) !important;
+    margin-bottom: 5px;
+    .activated{
+        height: 100%;
+        width: 100%;
+        line-height: 30px;
+        background-color: rgb(255, 183, 49);
+    }
+}
+
+.recipe-button{
+    margin: 5px 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    font-weight: 600;
+    color: #fff;
+    background-color: rgb(106, 106, 106);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+    min-height: 30px;
+    width: 40% !important;
+}
+
+.recipe-button-active {
+    background-color: rgb(255, 203, 107);
+    box-shadow: 0 2px #666;
+    color: black;
+    transform: translateY(2px);
+    -webkit-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+    -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
+    -moz-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+button{
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+    -khtml-tap-highlight-color: rgba(0,0,0,0) !important;
+    -moz-tap-highlight-color: rgba(0,0,0,0) !important;
+}
